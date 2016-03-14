@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E4B585C5-26C2-48C8-AB4C-F4ED858283CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.LocalStorage", "Virgl.LocalStorage\Virgil.LocalStorage.csproj", "{09AD9C7C-D857-493C-8E03-81D5B552F73D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{460D7389-57A4-4600-948D-55EF933868E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.FolderLink", "Virgil.FolderLink\Virgil.FolderLink.csproj", "{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.Disk", "Virgil.Disk\Virgil.Disk.csproj", "{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderLink.Tests", "FolderLink.Tests\FolderLink.Tests.csproj", "{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{78D4B7B2-F483-4702-84D4-ACBE4BA52B81}"
+	ProjectSection(SolutionItems) = preProject
+		..\Setup\virgil.disk.aip = ..\Setup\virgil.disk.aip
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09AD9C7C-D857-493C-8E03-81D5B552F73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09AD9C7C-D857-493C-8E03-81D5B552F73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09AD9C7C-D857-493C-8E03-81D5B552F73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09AD9C7C-D857-493C-8E03-81D5B552F73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09AD9C7C-D857-493C-8E03-81D5B552F73D} = {E4B585C5-26C2-48C8-AB4C-F4ED858283CE}
+		{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E} = {460D7389-57A4-4600-948D-55EF933868E4}
+		{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E} = {460D7389-57A4-4600-948D-55EF933868E4}
+		{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2} = {460D7389-57A4-4600-948D-55EF933868E4}
+		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA} = {460D7389-57A4-4600-948D-55EF933868E4}
+	EndGlobalSection
+EndGlobal

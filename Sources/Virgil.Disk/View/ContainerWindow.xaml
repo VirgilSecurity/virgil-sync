@@ -1,0 +1,173 @@
+﻿<Window x:Class="Virgil.Disk.View.ContainerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:Virgil.Disk.View"
+        xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
+        xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
+        xmlns:converters="clr-namespace:Virgil.Disk.View.Converters"
+        SnapsToDevicePixels="True"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Background="{x:Null}"
+        AllowsTransparency="False"
+        Title="Virgil Sync"                                    
+        ResizeMode="NoResize"
+        Icon="Images/virgil_icon.ico"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="400"
+        Height="650" 
+        Width="395">
+
+    <Window.Resources>
+        <Style x:Key="BorderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle MinWidth="4" MinHeight="4" StrokeThickness="0">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="Transparent"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Viewbox SnapsToDevicePixels="True" x:Name="Viewbox" Stretch="Fill">
+
+        <Grid>
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type viewModels:ErrorMessageViewModel}">
+                    <local:ErrorMessageView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </local:ErrorMessageView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:DropBoxSignInViewModel}">
+                    <local:DropBoxSignInView />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:SignInViewModel}">
+                    <local:SignInView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </local:SignInView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:FolderSettingsViewModel}">
+                    <local:FolderSettingsDropBoxView >
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </local:FolderSettingsDropBoxView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:CreateAccountViewModel}">
+                    <local:CreateAccountView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </local:CreateAccountView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:ConfirmationCodeViewModel}">
+                    <local:ConfirmationCodeView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </local:ConfirmationCodeView>
+                </DataTemplate>
+            </Grid.Resources>
+
+            <Border CornerRadius="5" Background="#414B54">
+                <ContentControl Content="{Binding Content}">
+
+                </ContentControl>
+            </Border>
+
+            <StackPanel
+                Margin="0 0 10 0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+                <Button
+                    Width="36"
+                    Height="25"
+                    Click="Minimize"
+                    Style="{StaticResource WindowButtonStyle}">
+                    <Path
+                        Width="8"
+                        Height="2"
+                        Margin="0 5 0 0"
+                        Data="F1M1,1C1,1 22,1 22,1 22,1 22,5 22,5 22,5 1,5 1,5 1,5 1,1 1,1z"
+                        Fill="Gainsboro"
+                        Stretch="Fill" />
+                </Button>
+                <Button
+                    Width="36"
+                    Height="25"
+                    Click="Close"
+                    Style="{StaticResource WindowButtonStyle}">
+                    <Path
+                        Width="9"
+                        Height="9"
+                        Data="F1M64.799,50.082C64.799,50.082 97.224,17.582 97.224,17.582 98.003,16.802 98.003,15.537 97.224,14.757 97.224,14.757 85.245,2.748 85.245,2.748 84.871,2.373 84.363,2.163 83.835,2.163 83.307,2.163 82.8,2.373 82.426,2.748 82.426,2.748 49.999,35.249 49.999,35.249 49.999,35.249 17.573,2.748 17.573,2.748 16.825,1.999 15.502,1.999 14.754,2.748 14.754,2.748 2.775,14.757 2.775,14.757 1.996,15.537 1.996,16.802 2.775,17.582 2.775,17.582 35.2,50.082 35.2,50.082 35.2,50.082 2.775,82.581 2.775,82.581 1.996,83.361 1.996,84.626 2.775,85.406 2.775,85.406 14.754,97.415 14.754,97.415 15.128,97.789 15.635,98 16.164,98 16.692,98 17.199,97.789 17.573,97.415 17.573,97.415 49.999,64.915 49.999,64.915 49.999,64.915 82.426,97.416 82.426,97.416 82.8,97.79 83.307,98.001 83.835,98.001 84.363,98.001 84.871,97.79 85.245,97.416 85.245,97.416 97.224,85.407 97.224,85.407 98.003,84.627 98.003,83.362 97.224,82.582 97.224,82.582 64.799,50.082 64.799,50.082z"
+                        Fill="Gainsboro"
+                        Stretch="Fill">
+                    </Path>
+                </Button>
+            </StackPanel>
+
+            <Thumb  VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                    Cursor="SizeNWSE"
+                    Background="{x:Null}"
+                    Style="{StaticResource BorderThumb}"
+                    DragDelta="Thumb_OnDragDelta"
+                    Width="10" Height="10" IsManipulationEnabled="True"/>
+
+
+
+            <Thumb  VerticalAlignment="Top" HorizontalAlignment="Left" 
+                    Cursor="SizeNWSE"
+                    Background="{x:Null}"
+                    Style="{StaticResource BorderThumb}"
+                    DragDelta="Thumb_OnDragDeltaTop"
+                    Width="10" Height="10" IsManipulationEnabled="True"/>
+
+
+        </Grid>
+
+    </Viewbox>
+</Window>
+
+
+

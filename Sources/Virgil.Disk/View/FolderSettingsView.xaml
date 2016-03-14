@@ -1,0 +1,348 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Virgil.Disk.View.FolderSettingsView"
+             Style="{StaticResource AppPage}" d:DataContext="{d:DesignInstance viewModels:FolderSettingsViewModel}">
+
+    <Grid x:Name="grid">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Default">
+
+                <VisualState x:Name="Initial">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="FolderLogo">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TooltipTextBlock">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SourceFoldersGrid">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="SourceFoldersGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Second">
+                    <Storyboard x:Name="StoryboardSecond">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="FolderLogo">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TooltipTextBlock">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TooltipTextBlock">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="TooltipTextBlock">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="FolderLogo">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="FolderLogo">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="TooltipTextBlock">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="FolderLogo">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="FolderLogo">
+                            <EasingThicknessKeyFrame KeyTime="0:0:1" Value="30,0"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="TooltipTextBlock">
+                            <EasingThicknessKeyFrame KeyTime="0:0:1" Value="50,0"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="SourceFoldersGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock">
+                            <EasingThicknessKeyFrame KeyTime="0:0:1" Value="10"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="scrollViewer">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Row)" Storyboard.TargetName="selectFolderTextBox">
+                            <EasingInt32KeyFrame KeyTime="0" Value="3"/>
+                        </Int32AnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="selectFolderTextBox">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Top}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="button">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SourceFoldersGrid">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock1">
+                            <EasingThicknessKeyFrame KeyTime="0" Value="10"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Third">
+                    <Storyboard x:Name="StoryboardThird">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SourceFolderLogo">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="SourceFolderLogo">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="SourceFolderLogo">
+                            <EasingThicknessKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="SourceFolderLogo">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="TooltipTextBlock2">
+                            <EasingThicknessKeyFrame KeyTime="0:0:1" Value="50,0"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="TooltipTextBlock2">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TooltipTextBlock2">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="button">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="scrollViewer">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="scrollViewer">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock1">
+                            <EasingThicknessKeyFrame KeyTime="0" Value="10"/>
+                            <EasingThicknessKeyFrame KeyTime="0:0:1" Value="10"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="FolderLogo">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TooltipTextBlock">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Row)" Storyboard.TargetName="selectFolderTextBox">
+                            <EasingInt32KeyFrame KeyTime="0" Value="3"/>
+                            <EasingInt32KeyFrame KeyTime="0:0:0.3" Value="3"/>
+                            <EasingInt32KeyFrame KeyTime="0:0:0.5" Value="5"/>
+                        </Int32AnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="selectFolderTextBox">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Top}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static VerticalAlignment.Top}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static VerticalAlignment.Stretch}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="selectFolderTextBox">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="selectFolderTextBox">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Collapsed}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="selectFolderTextBox">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="50"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="50"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock">
+                            <EasingThicknessKeyFrame KeyTime="0" Value="10"/>
+                        </ThicknessAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <Image x:Name="FolderLogo" Source="Images/red_logo_folder.png" Stretch="None" Margin="30 70 30 0" RenderTransformOrigin="0.5,0.5" Width="205" Height="161">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock x:Name="textBlock" Text="Virgil Folder" Style="{StaticResource LargeText}" Grid.Row="1" Margin="10 50 10 10"/>
+            <TextBlock x:Name="TooltipTextBlock" Grid.Row="2" 
+				Margin="50 10 50 0"
+				TextWrapping="Wrap"
+				TextAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="#FFA0A5AA" 
+                       FontSize="20" 
+                       RenderTransformOrigin="0.5,0.5" 
+                       Width="350" 
+                       Height="54">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Text="Select the folder path with the data you need to encrypt:"/>
+            </TextBlock>
+            <controls:SelectFolderTextBox Grid.Row="3" 
+                                          Margin="30 5" Height="50" 
+                                          OnFolderChangedCommand="{Binding SourceFolder.OnFolderChangedCommand}"
+                                          SelectedPath="{Binding SourceFolder.FolderPath}"/>
+        </Grid>
+
+        <Grid x:Name="SourceFoldersGrid" Grid.Row="1" Background="#F5EFEE">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="textBlock1" Text="Secret Folders" Style="{StaticResource LargeText}" Grid.Row="0" Margin="10 30 10 10" Foreground="#4A504E"/>
+
+            <Image Grid.Row="1" x:Name="SourceFolderLogo" Source="Images/SourceFolderLogo.png" Stretch="None" Margin="10" RenderTransformOrigin="0.5,0.5" Width="215" Height="200" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+            <TextBlock x:Name="TooltipTextBlock2" Grid.Row="2" 
+				Margin="50 10 50 0"
+				TextWrapping="Wrap"
+				TextAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="#FFA0A5AA" FontSize="20" RenderTransformOrigin="0.5,0.5" Width="350" Height="54">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            <Run Text="Select the folder path where you want to put your encrypted files:"/>
+            </TextBlock>
+
+            <ScrollViewer x:Name="scrollViewer" Grid.Row="3"  Margin="5">
+                <ItemsControl ItemsSource="{Binding TargetFolders}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel  />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock x:Name="TooltipTextBlock" Grid.Row="0" Grid.ColumnSpan="2" 
+				                Margin="10 0 0 0"
+				                TextWrapping="Wrap"
+				                TextAlignment="Center"
+				                HorizontalAlignment="Left"
+                                Text="{Binding Alias}"
+				                Foreground="#FFA0A5AA" FontSize="20" />
+
+                                <controls:SelectFolderTextBox Height="50" Grid.Column="0" Grid.Row="1"
+                                                              OnFolderChangedCommand="{Binding OnFolderChangedCommand}"
+                                                              SelectedPath="{Binding FolderPath}"/>
+
+                                <Button Grid.Column="1" Grid.Row="1" 
+                                        CommandParameter="{Binding}"
+                                        Command="{Binding DataContext.RemoveTargetCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}">
+
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+
+                                            <Image x:Name="Image" Source="Images/BrownCross.png" Stretch="Uniform" Height="20" Margin="5 5 10 5" />
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="Image" Property="Opacity" Value="0.9" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="true">
+                                                    <Setter TargetName="Image" Property="Opacity" Value="0.8" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter TargetName="Image" Property="Opacity" Value="0.5" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+
+                                </Button>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <Border x:Name="border" Height="2" Grid.Row="4" Margin="10" Background="#E9DBD8" />
+
+            <controls:SelectFolderTextBox x:Name="selectFolderTextBox" Grid.Row="5" Margin="30 5" Height="50"
+                                          OnFolderChangedCommand="{Binding NewTargetFolder.OnFolderChangedCommand}"
+                                          SelectedPath="{Binding NewTargetFolder.FolderPath, Mode=TwoWay}"/>
+
+            <Button x:Name="button" Grid.Row="6" 
+                    Content="ADD NEW FOLDER"
+                    Command="{Binding AddNewTargetCommand}"
+                    Style="{StaticResource SignInButton}" Margin="35,10,80,10"/>
+
+        </Grid>
+    </Grid>
+
+</UserControl>
+

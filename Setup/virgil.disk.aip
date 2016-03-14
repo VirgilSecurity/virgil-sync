@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="11.7.1" version="12.7.2" Modules="professional" RootPath="." Language="en" Id="{AFEA95B5-8690-411F-9866-EE27F0388A85}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="MsiJavaComponent;MsiDriverPackagesComponent;UserAccountsComponent;ScheduledTasksComponent;SqlConnectionComponent;AutorunComponent;FirewallExceptionComponent;GameUxComponent;MsiDirectEditorComponent;SharePointSlnComponent;SilverlightSlnComponent;MultipleInstancesComponent;SccmComponent;ActSyncAppComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_IA_APPLICATION_ID" Value="56e6b5717506c8be4cc226a1"/>
+    <ROW Property="AI_IA_ENABLE" Value="0"/>
+    <ROW Property="AI_QUICKLAUNCH_SH" Type="4" MsiKey="AI_QUICKLAUNCH_SH"/>
+    <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
+    <ROW Property="AI_ThemeStyle" Value="default" MsiKey="AI_ThemeStyle"/>
+    <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPHELPLINK" Value="https://virgilsecurity.com/"/>
+    <ROW Property="ARPPRODUCTICON" Value="virgil_icon.exe" Type="8"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://virgilsecurity.com/"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="https://virgilsecurity.com/"/>
+    <ROW Property="BannerBitmap" Value="banner" MultiBuildValue="DefaultBuild:banner.bmp" Type="1" MsiKey="BannerBitmap"/>
+    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="DialogBitmap" Value="dialog" MultiBuildValue="DefaultBuild:dialog.bmp" Type="1" MsiKey="DialogBitmap"/>
+    <ROW Property="Manufacturer" Value="Virgil Security, Inc."/>
+    <ROW Property="PoroperAppName" Value="VirgilSync"/>
+    <ROW Property="ProductCode" Value="1033:{2416F8E6-F9FC-4E52-BD09-CA8BC5C4D18F} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Virgil Sync"/>
+    <ROW Property="ProductVersion" Value="1.0.24.0" Type="32" TargetFile="Virgil.Sync.exe"/>
+    <ROW Property="ProperCompanyName" Value="VirgilSecurityInc"/>
+    <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="UpgradeCode" Value="{D4212066-4490-4D95-9D17-F45146DFC678}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows Vista x64 Service Pack 2, Windows Server 2008 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64, Windows Vista x64, Windows Server 2008 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32 bit Operating Systems" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="Release_Dir" Directory_Parent="APPDIR" DefaultDir="Release"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="StartupFolder" Directory_Parent="TARGETDIR" DefaultDir="STARTU~1|StartupFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="de_Dir" Directory_Parent="Release_Dir" DefaultDir="de"/>
+    <ROW Directory="en_Dir" Directory_Parent="Release_Dir" DefaultDir="en"/>
+    <ROW Directory="es_Dir" Directory_Parent="Release_Dir" DefaultDir="es"/>
+    <ROW Directory="fr_Dir" Directory_Parent="Release_Dir" DefaultDir="fr"/>
+    <ROW Directory="it_Dir" Directory_Parent="Release_Dir" DefaultDir="it"/>
+    <ROW Directory="ja_Dir" Directory_Parent="Release_Dir" DefaultDir="ja"/>
+    <ROW Directory="ko_Dir" Directory_Parent="Release_Dir" DefaultDir="ko"/>
+    <ROW Directory="ru_Dir" Directory_Parent="Release_Dir" DefaultDir="ru"/>
+    <ROW Directory="x64_Dir" Directory_Parent="Release_Dir" DefaultDir="x64"/>
+    <ROW Directory="x86_Dir" Directory_Parent="Release_Dir" DefaultDir="x86"/>
+    <ROW Directory="zhHans_Dir" Directory_Parent="Release_Dir" DefaultDir="zh-Hans"/>
+    <ROW Directory="zhHant_Dir" Directory_Parent="Release_Dir" DefaultDir="zh-Hant"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AIShRegAnswer" ComponentId="{F9A9B94A-DAD9-49D8-B746-BC9E15BB0786}" Directory_="APPDIR" Attributes="4" KeyPath="AIShRegAnswer"/>
+    <ROW Component="AI_ExePath" ComponentId="{82530401-7D20-4EF4-917B-7347E8FEBB0F}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="AI_IA_ENABLE" ComponentId="{83CC62E0-AAE2-4E04-A8E8-FE26F2DFB067}" Directory_="APPDIR" Attributes="4" KeyPath="AI_IA_ENABLE" Options="1"/>
+    <ROW Component="B5158184F44A6981C5919229A6AEBE" ComponentId="{12B69C94-C2B4-4DDD-B534-FB05ED11508E}" Directory_="APPDIR" Attributes="4" KeyPath="B5158184F44A6981C5919229A6AEBE" Options="2"/>
+    <ROW Component="D7E473DF14F3E98497864847195F2" ComponentId="{1D6FA80E-52BF-4D30-B757-8A5467CD4816}" Directory_="APPDIR" Attributes="4" KeyPath="D7E473DF14F3E98497864847195F2" Options="2"/>
+    <ROW Component="Dropbox.Api.dll" ComponentId="{DA3F5784-2069-461E-979E-7FDA0E2F1DC5}" Directory_="Release_Dir" Attributes="0" KeyPath="Dropbox.Api.dll"/>
+    <ROW Component="Hardcodet.Wpf.TaskbarNotification.dll" ComponentId="{5130770C-9D29-464C-8917-324BA55F2664}" Directory_="Release_Dir" Attributes="0" KeyPath="Hardcodet.Wpf.TaskbarNotification.dll"/>
+    <ROW Component="Infrastructure.dll" ComponentId="{E6DC8E48-F02E-4EAD-8472-F185F43E3CE4}" Directory_="Release_Dir" Attributes="0" KeyPath="Infrastructure.dll"/>
+    <ROW Component="Interop.IWshRuntimeLibrary.dll" ComponentId="{B0FC7F01-D148-4E3E-9AE9-1B7B570EB0B3}" Directory_="Release_Dir" Attributes="0" KeyPath="Interop.IWshRuntimeLibrary.dll"/>
+    <ROW Component="Microsoft.Threading.Tasks.Extensions.Des" ComponentId="{69F2917D-8B32-4D38-8C3D-BAAB0524FA91}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Threading.Tasks.Extensions.Desktop.dll"/>
+    <ROW Component="Microsoft.Threading.Tasks.Extensions.dll" ComponentId="{2A6F1170-32F1-4F59-957B-1184755FD0D7}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Threading.Tasks.Extensions.dll"/>
+    <ROW Component="Microsoft.Threading.Tasks.dll" ComponentId="{68653CA2-E551-4186-814A-CF9DDEDF4BBB}" Directory_="Release_Dir" Attributes="0" KeyPath="Microsoft.Threading.Tasks.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{AEE93CC2-69BB-4F43-9203-16D9E6DECEA0}" Directory_="Release_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="Ninject.Extensions.Conventions.dll" ComponentId="{98814ED8-5B5E-4F6E-B8E6-997BC83EA78F}" Directory_="Release_Dir" Attributes="0" KeyPath="Ninject.Extensions.Conventions.dll"/>
+    <ROW Component="Ninject.dll" ComponentId="{0580E894-61B8-4B2C-B9D1-6A67E5A979E0}" Directory_="Release_Dir" Attributes="0" KeyPath="Ninject.dll"/>
+    <ROW Component="Ookii.Dialogs.Wpf.dll" ComponentId="{1027E572-12C9-49C6-9DF8-3DB44908391E}" Directory_="Release_Dir" Attributes="0" KeyPath="Ookii.Dialogs.Wpf.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{33A04900-D04C-4B03-811F-05E0654B1919}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{584B6C88-B729-43B0-A026-4E7C3FE7152A}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="System.Net.Http.Extensions.dll" ComponentId="{D1D231C8-CBD6-4867-9FE5-2AD210F54A8A}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Net.Http.Extensions.dll"/>
+    <ROW Component="System.Net.Http.Primitives.dll" ComponentId="{9E629DB3-0A31-4B49-818A-4950379D3613}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Net.Http.Primitives.dll"/>
+    <ROW Component="System.Reactive.Core.dll" ComponentId="{B47D0C1C-89A7-4B33-A621-078F4A94B0A9}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
+    <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{B7BE3F54-1981-4487-B7AF-13D89A106AB6}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
+    <ROW Component="System.Reactive.Linq.dll" ComponentId="{A633253A-D608-440A-B24A-A6F15A4BE0E9}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Reactive.Linq.dll"/>
+    <ROW Component="System.Windows.Interactivity.dll" ComponentId="{2C00EDE6-C579-4479-B93E-C5214BAF0B3E}" Directory_="Release_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
+    <ROW Component="System.Windows.Interactivity.resources.d" ComponentId="{1F7CF465-2466-4824-9E12-82F7AB2B4BEE}" Directory_="de_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll"/>
+    <ROW Component="System.Windows.Interactivity.resources_1" ComponentId="{EEE52CDD-B5F2-4E43-B5E3-23E194A5B265}" Directory_="en_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_1"/>
+    <ROW Component="System.Windows.Interactivity.resources_2" ComponentId="{EF8331AC-499A-4B28-AC75-386D94775622}" Directory_="es_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_2"/>
+    <ROW Component="System.Windows.Interactivity.resources_3" ComponentId="{6CF7BD2F-AEE9-4522-AB95-B229891E70CF}" Directory_="fr_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_3"/>
+    <ROW Component="System.Windows.Interactivity.resources_4" ComponentId="{22340E12-BE5C-4D71-85AA-8651BD95E2DA}" Directory_="it_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_4"/>
+    <ROW Component="System.Windows.Interactivity.resources_5" ComponentId="{800C60BF-FB22-4767-9DBF-2C9C3A4D4EAB}" Directory_="ja_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_5"/>
+    <ROW Component="System.Windows.Interactivity.resources_6" ComponentId="{5D39ADCB-D336-4DDC-A148-AAECCD50B839}" Directory_="ko_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_6"/>
+    <ROW Component="System.Windows.Interactivity.resources_7" ComponentId="{1C6148A2-6A76-4CFC-AA5F-6F9CC1994599}" Directory_="ru_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_7"/>
+    <ROW Component="System.Windows.Interactivity.resources_8" ComponentId="{3B10C614-FB76-4A3E-A1E2-425E1ADFB8AE}" Directory_="zhHans_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_8"/>
+    <ROW Component="System.Windows.Interactivity.resources_9" ComponentId="{BD3EF3D7-8050-4575-84BE-E10045BE9FF2}" Directory_="zhHant_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_9"/>
+    <ROW Component="Virgil.Crypto.dll" ComponentId="{01318AEA-F1CD-48C3-801E-E15F5AC436A7}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.Crypto.dll"/>
+    <ROW Component="Virgil.FolderLink.dll" ComponentId="{6DD6FFAD-A7B4-4043-A2AE-C044AE72D7AD}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.FolderLink.dll"/>
+    <ROW Component="Virgil.LocalStorage.dll" ComponentId="{B1D62D56-E7C0-4C64-87BC-75CE42DC04CB}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.LocalStorage.dll"/>
+    <ROW Component="Virgil.SDK.Domain.dll" ComponentId="{277F68CC-F5D5-4FBB-8E0E-4C3C51889D00}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.SDK.Domain.dll"/>
+    <ROW Component="Virgil.SDK.dll" ComponentId="{86ADB3F5-6898-4404-BB92-C911B51F449E}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.SDK.dll"/>
+    <ROW Component="Virgil.Sync.exe" ComponentId="{87A431AC-8E6D-4131-81B9-37B307698DEE}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.Sync.exe"/>
+    <ROW Component="Virgil.Sync.exe.config" ComponentId="{C3D51901-0D0C-4FE9-92C4-70A37982B815}" Directory_="Release_Dir" Attributes="0" KeyPath="Virgil.Sync.exe.config" Type="0"/>
+    <ROW Component="WpfAnimatedGif.dll" ComponentId="{943495B0-D5C3-4C3F-9646-519B72FA30A0}" Directory_="Release_Dir" Attributes="0" KeyPath="WpfAnimatedGif.dll"/>
+    <ROW Component="virgil_crypto_net.dll" ComponentId="{77D7459D-69BA-471D-BC36-C28076103BA2}" Directory_="x64_Dir" Attributes="256" KeyPath="virgil_crypto_net.dll"/>
+    <ROW Component="virgil_crypto_net.dll_1" ComponentId="{E1521586-F475-4061-BC18-D7318C1B82A5}" Directory_="x86_Dir" Attributes="0" KeyPath="virgil_crypto_net.dll_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="B5158184F44A6981C5919229A6AEBE" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="11" Level="1" Attributes="0" Components="AI_ExePath B5158184F44A6981C5919229A6AEBE"/>
+    <ROW Feature="D7E473DF14F3E98497864847195F2" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="9" Level="1" Attributes="0" Components="AI_ExePath D7E473DF14F3E98497864847195F2"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer AI_ExePath AI_IA_ENABLE Dropbox.Api.dll Hardcodet.Wpf.TaskbarNotification.dll Infrastructure.dll Interop.IWshRuntimeLibrary.dll Microsoft.Threading.Tasks.Extensions.Des Microsoft.Threading.Tasks.Extensions.dll Microsoft.Threading.Tasks.dll Newtonsoft.Json.dll Ninject.Extensions.Conventions.dll Ninject.dll Ookii.Dialogs.Wpf.dll ProductInformation SHORTCUTDIR System.Net.Http.Extensions.dll System.Net.Http.Primitives.dll System.Reactive.Core.dll System.Reactive.Interfaces.dll System.Reactive.Linq.dll System.Windows.Interactivity.dll System.Windows.Interactivity.resources.d System.Windows.Interactivity.resources_1 System.Windows.Interactivity.resources_2 System.Windows.Interactivity.resources_3 System.Windows.Interactivity.resources_4 System.Windows.Interactivity.resources_5 System.Windows.Interactivity.resources_6 System.Windows.Interactivity.resources_7 System.Windows.Interactivity.resources_8 System.Windows.Interactivity.resources_9 Virgil.Crypto.dll Virgil.FolderLink.dll Virgil.LocalStorage.dll Virgil.SDK.Domain.dll Virgil.SDK.dll Virgil.Sync.exe Virgil.Sync.exe.config WpfAnimatedGif.dll virgil_crypto_net.dll virgil_crypto_net.dll_1"/>
+    <ROW Feature="VirgilKeyRing" Title="Virgil KeyRing" Description="Virgil KeyRing" Display="3" Level="1" Attributes="0" Components="AI_ExePath"/>
+    <ROW Feature="VisualCRedistrib" Title="Visual C++ Redistributable for Visual Studio 2013 x64" Description="Visual C++ Redistributable for Visual Studio 2013 x64" Display="5" Level="1" Attributes="0" Components="AI_ExePath"/>
+    <ROW Feature="VisualCRedistrib_1" Title="Visual C++ Redistributable for Visual Studio 2013 x86" Description="Visual C++ Redistributable for Visual Studio 2013 x86" Display="7" Level="1" Attributes="0" Components="AI_ExePath"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Dropbox.Api.dll" Component_="Dropbox.Api.dll" FileName="DROPBO~1.DLL|Dropbox.Api.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Dropbox.Api.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.dll"/>
+    <ROW File="Hardcodet.Wpf.TaskbarNotification.dll" Component_="Hardcodet.Wpf.TaskbarNotification.dll" FileName="HARDCO~1.DLL|Hardcodet.Wpf.TaskbarNotification.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll" SelfReg="false" NextFile="Infrastructure.dll"/>
+    <ROW File="Infrastructure.dll" Component_="Infrastructure.dll" FileName="INFRAS~1.DLL|Infrastructure.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Infrastructure.dll" SelfReg="false" NextFile="Interop.IWshRuntimeLibrary.dll"/>
+    <ROW File="Interop.IWshRuntimeLibrary.dll" Component_="Interop.IWshRuntimeLibrary.dll" FileName="INTERO~1.DLL|Interop.IWshRuntimeLibrary.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Interop.IWshRuntimeLibrary.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_4"/>
+    <ROW File="Microsoft.Threading.Tasks.Extensions.Desktop.dll" Component_="Microsoft.Threading.Tasks.Extensions.Des" FileName="MICROS~2.DLL|Microsoft.Threading.Tasks.Extensions.Desktop.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.Extensions.dll"/>
+    <ROW File="Microsoft.Threading.Tasks.Extensions.dll" Component_="Microsoft.Threading.Tasks.Extensions.dll" FileName="MICROS~3.DLL|Microsoft.Threading.Tasks.Extensions.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.Extensions.dll" SelfReg="false" NextFile="System.Net.Http.Extensions.dll"/>
+    <ROW File="Microsoft.Threading.Tasks.dll" Component_="Microsoft.Threading.Tasks.dll" FileName="MICROS~1.DLL|Microsoft.Threading.Tasks.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.Extensions.Desktop.dll"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Newtonsoft.Json.dll" SelfReg="false" NextFile="Ninject.dll"/>
+    <ROW File="Ninject.Extensions.Conventions.dll" Component_="Ninject.Extensions.Conventions.dll" FileName="NINJEC~1.DLL|Ninject.Extensions.Conventions.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Ninject.Extensions.Conventions.dll" SelfReg="false" NextFile="Ookii.Dialogs.Wpf.dll"/>
+    <ROW File="Ninject.dll" Component_="Ninject.dll" FileName="Ninject.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Ninject.dll" SelfReg="false" NextFile="Ninject.Extensions.Conventions.dll"/>
+    <ROW File="Ookii.Dialogs.Wpf.dll" Component_="Ookii.Dialogs.Wpf.dll" FileName="OOKIID~1.DLL|Ookii.Dialogs.Wpf.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Ookii.Dialogs.Wpf.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_7"/>
+    <ROW File="System.Net.Http.Extensions.dll" Component_="System.Net.Http.Extensions.dll" FileName="SYSTEM~5.DLL|System.Net.Http.Extensions.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Net.Http.Extensions.dll" SelfReg="false" NextFile="System.Net.Http.Primitives.dll"/>
+    <ROW File="System.Net.Http.Primitives.dll" Component_="System.Net.Http.Primitives.dll" FileName="SYSTEM~6.DLL|System.Net.Http.Primitives.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Net.Http.Primitives.dll" SelfReg="false" NextFile="Virgil.Sync.exe"/>
+    <ROW File="System.Reactive.Core.dll" Component_="System.Reactive.Core.dll" FileName="SYSTEM~1.DLL|System.Reactive.Core.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Reactive.Core.dll" SelfReg="false" NextFile="System.Reactive.Interfaces.dll"/>
+    <ROW File="System.Reactive.Interfaces.dll" Component_="System.Reactive.Interfaces.dll" FileName="SYSTEM~2.DLL|System.Reactive.Interfaces.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Reactive.Interfaces.dll" SelfReg="false" NextFile="System.Reactive.Linq.dll"/>
+    <ROW File="System.Reactive.Linq.dll" Component_="System.Reactive.Linq.dll" FileName="SYSTEM~3.DLL|System.Reactive.Linq.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Reactive.Linq.dll" SelfReg="false" NextFile="System.Windows.Interactivity.dll"/>
+    <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="SYSTEM~4.DLL|System.Windows.Interactivity.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Windows.Interactivity.dll" SelfReg="false" NextFile="Virgil.Crypto.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll" Component_="System.Windows.Interactivity.resources.d" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\de\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_1"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_1" Component_="System.Windows.Interactivity.resources_1" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\en\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_2"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_2" Component_="System.Windows.Interactivity.resources_2" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\es\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_3"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_3" Component_="System.Windows.Interactivity.resources_3" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\fr\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Hardcodet.Wpf.TaskbarNotification.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_4" Component_="System.Windows.Interactivity.resources_4" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\it\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_5"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_5" Component_="System.Windows.Interactivity.resources_5" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ja\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_6"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_6" Component_="System.Windows.Interactivity.resources_6" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ko\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_7" Component_="System.Windows.Interactivity.resources_7" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ru\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Reactive.Core.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_8" Component_="System.Windows.Interactivity.resources_8" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hans\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_9"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_9" Component_="System.Windows.Interactivity.resources_9" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hant\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Dropbox.Api.dll"/>
+    <ROW File="Virgil.Crypto.dll" Component_="Virgil.Crypto.dll" FileName="VIRGIL~1.DLL|Virgil.Crypto.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Crypto.dll" SelfReg="false" NextFile="Virgil.FolderLink.dll"/>
+    <ROW File="Virgil.FolderLink.dll" Component_="Virgil.FolderLink.dll" FileName="VIRGIL~2.DLL|Virgil.FolderLink.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.FolderLink.dll" SelfReg="false" NextFile="Virgil.LocalStorage.dll"/>
+    <ROW File="Virgil.LocalStorage.dll" Component_="Virgil.LocalStorage.dll" FileName="VIRGIL~3.DLL|Virgil.LocalStorage.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.LocalStorage.dll" SelfReg="false" NextFile="Virgil.SDK.dll"/>
+    <ROW File="Virgil.SDK.Domain.dll" Component_="Virgil.SDK.Domain.dll" FileName="VIRGIL~5.DLL|Virgil.SDK.Domain.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.SDK.Domain.dll" SelfReg="false" NextFile="WpfAnimatedGif.dll"/>
+    <ROW File="Virgil.SDK.dll" Component_="Virgil.SDK.dll" FileName="VIRGIL~4.DLL|Virgil.SDK.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.SDK.dll" SelfReg="false" NextFile="Virgil.SDK.Domain.dll"/>
+    <ROW File="Virgil.Sync.exe" Component_="Virgil.Sync.exe" FileName="VIRGIL~2.EXE|Virgil.Sync.exe" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Sync.exe" SelfReg="false" NextFile="Virgil.Sync.exe.config" DigSign="true"/>
+    <ROW File="Virgil.Sync.exe.config" Component_="Virgil.Sync.exe.config" FileName="VIRGIL~1.CON|Virgil.Sync.exe.config" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Sync.exe.config" SelfReg="false"/>
+    <ROW File="WpfAnimatedGif.dll" Component_="WpfAnimatedGif.dll" FileName="WPFANI~1.DLL|WpfAnimatedGif.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\WpfAnimatedGif.dll" SelfReg="false" NextFile="virgil_crypto_net.dll"/>
+    <ROW File="virgil_crypto_net.dll" Component_="virgil_crypto_net.dll" FileName="VIRGIL~1.DLL|virgil_crypto_net.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\x64\virgil_crypto_net.dll" SelfReg="false" NextFile="virgil_crypto_net.dll_1"/>
+    <ROW File="virgil_crypto_net.dll_1" Component_="virgil_crypto_net.dll_1" FileName="VIRGIL~1.DLL|virgil_crypto_net.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\x86\virgil_crypto_net.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_8"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.custcomp.MsiEmbeddedUIComponent">
+    <ROW MsiEmbeddedUI="embeddeduiproxy" FileName="embeddeduiproxy.dll" Attributes="3" MessageFilter="201359327" Data="&lt;AI_HOME&gt;bin\x86\embeddeduiproxy.dll"/>
+    <ROW MsiEmbeddedUI="InstallerAnalytics" FileName="InstallerAnalytics.dll" Attributes="0" Data="&lt;AI_TEMPLATES&gt;PlaceHolder.dat"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
+    <ROW Property="AI_IA_ENABLE" Registry="AI_IA_ENABLE" HklmSearch="AI_IA_ENABLE" HkcuSearch="AI_IA_ENABLE_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" GeneralOptions="hq" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" EulaPathLocId="*"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="Setup" BuildOrder="1" BuildType="0" PackageFolder="Output" PackageFileName="VirgilSync_[|ProductVersion]" Languages="en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" UseLargeSchema="true" UACExecutionLevel="2"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+    <ATTRIBUTE name="TranslateSegments" value="8116002816"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" Thumbprint="1e198d4ec0d6c713b73abd2ba6ba2e82d19efb17 Subject: Virgil Security, Inc.&#10;Issuer: DigiCert SHA2 Assured ID Code Signing CA&#10;Valid from 02/26/2016 to 11/02/2016"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\LicenseAgreementDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="ShortcutsDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\ShortcutsDlg.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_DeleteLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DeleteRLzma" Description="Deleting files extracted from archive" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DownloadPrereq" Description="Downloading prerequisite software" Template="Downloading [1]{[2] completed}" DescriptionLocId="ActionText.Description.AI_DownloadPrereq" TemplateLocId="ActionText.Template.AI_DownloadPrereq"/>
+    <ROW Action="AI_ExtractFiles" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractLzma" Description="Extracting files from archive" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractPrereq" Description="Extracting prerequisite software" Template="Extracting [1]{[2] completed}" DescriptionLocId="ActionText.Description.AI_ExtractPrereq" TemplateLocId="ActionText.Template.AI_ExtractPrereq"/>
+    <ROW Action="AI_InstallPostPrerequisite" Description="Installing prerequisite software" Template="Installing [1]{[2] completed}" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_InstallPrerequisite" Description="Installing prerequisite software" Template="Installing [1]{[2] completed}" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_VerifyPrereq" Description="Verifying prerequisites" Template="[1] was not installed correctly." DescriptionLocId="ActionText.Description.AI_VerifyPrereq" TemplateLocId="ActionText.Template.AI_VerifyPrereq"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
+    <ROW Property="AI_IA_ENABLE" Signature_="AI_IA_ENABLE"/>
+    <ROW Property="AI_IA_ENABLE" Signature_="AI_IA_ENABLE_1"/>
+    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_ShRegOptionMachine"/>
+    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_ShRegOptionUser"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="InstallerAnalytics.dll" SourcePath="&lt;AI_CUSTACTS&gt;InstallerAnalytics.dll"/>
+    <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="banner.bmp" SourcePath="Resources\banner.bmp"/>
+    <ROW Name="dialog.bmp" SourcePath="Resources\dialog.bmp"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="Resources\Licence.rtf" Order="400" TextLocId="Control.Text.LicenseAgreementDlg#AgreementText" MsiKey="LicenseAgreementDlg#AgreementText"/>
+    <ROW Dialog_="ShortcutsDlg" Control="ShortcutsDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
+    <ROW Dialog_="ShortcutsDlg" Control_="DesktopShortcutsCheckBox" Action="Show" Condition="(Not Installed)"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="StartmenuShortcutsCheckBox" Action="Show" Condition="(Not Installed)"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="QuickLaunchShorcutsCheckBox" Action="Hide" Condition="(Not Installed) AND (VersionNT&lt;&quot;601&quot;)"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="StartupShorcutsCheckBox" Action="Show" Condition="(Not Installed)"/>
+    <ATTRIBUTE name="DeletedRows" value="ShortcutsDlg#DesktopShortcutsCheckBox#Show#(Not Installed)@ShortcutsDlg#QuickLaunchShorcutsCheckBox#Show#(Not Installed) AND (VersionNT&lt;&quot;601&quot;)@ShortcutsDlg#StartmenuShortcutsCheckBox#Show#(Not Installed)@ShortcutsDlg#StartupShorcutsCheckBox#Show#(Not Installed)"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+    <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="301"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="102"/>
+    <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="ShortcutsDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_INSTALL AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="4" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_INSTALL" Ordering="0" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_INSTALL" Ordering="1" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_INSTALL" Ordering="2" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_INSTALL" Ordering="2" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
+    <ROW Dialog_="CancelDlg" Control_="Yes" Event="DoAction" Argument="AI_IaLogPkgExitUserAbort" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1" Ordering="101"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="[AI_IA_ENABLE]" Argument="1" Condition="AI_INSTALL" Ordering="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_CleanPrereq" Type="65" Source="Prereq.dll" Target="CleanPrereq" WithoutSeq="true"/>
+    <ROW Action="AI_DATA_SETTER" Type="51" Source="AI_DEL_EMPTY_SHORTCUTDIR" Target="[SHORTCUTDIR]"/>
+    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="AI_ExtractFiles" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DELETE_SHORTCUTS" Type="1" Source="aicustact.dll" Target="DeleteShortcuts"/>
+    <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Type="3073" Source="aicustact.dll" Target="DeleteEmptyDirectory" AdditionalSeq="AI_DATA_SETTER"/>
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DownloadPrereq" Type="1" Source="Prereq.dll" Target="DownloadPrereq"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EstimateExtractFiles" Type="1" Source="Prereq.dll" Target="EstimateExtractFiles"/>
+    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ExtractFiles" Type="1025" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER_1"/>
+    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
+    <ROW Action="AI_ExtractPrereq" Type="65" Source="Prereq.dll" Target="ExtractPrereq"/>
+    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
+    <ROW Action="AI_IaLogInstallData" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogInstallData"/>
+    <ROW Action="AI_IaLogMachineInfo" Type="321" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogMachineInfo"/>
+    <ROW Action="AI_IaLogPkgExitFatalError" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogFatalError"/>
+    <ROW Action="AI_IaLogPkgExitFinish" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogFinish"/>
+    <ROW Action="AI_IaLogPkgExitUserAbort" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogUserAbort" WithoutSeq="true"/>
+    <ROW Action="AI_IaLogPkgStarted" Type="321" Source="InstallerAnalytics.dll" Target="OnAnalyticsLogStart"/>
+    <ROW Action="AI_IaToggle" Type="65" Source="InstallerAnalytics.dll" Target="OnAnalyticsToggle"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_InstallPostPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPostPrereq"/>
+    <ROW Action="AI_InstallPrerequisite" Type="65" Source="Prereq.dll" Target="InstallPrereq"/>
+    <ROW Action="AI_LaunchApp" Type="1" Source="aicustact.dll" Target="[#Virgil.Sync.exe]"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SETMIXINSTLOCATION" Type="1" Source="aicustact.dll" Target="MixedAllUsersInstallLocation"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[AI_UserProgramFiles][ProperCompanyName]\[PoroperAppName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="virgil_icon.exe" SourcePath="Resources\virgil_icon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="56"/>
+    <ROW Action="AI_AppSearchEx" Sequence="103"/>
+    <ROW Action="InstallFinalize" Sequence="6598" SeqType="0" MsiKey="InstallFinalize"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
+    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6597" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
+    <ROW Action="AI_DATA_SETTER_1" Sequence="3997"/>
+    <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
+    <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
+    <ROW Action="AI_DELETE_SHORTCUTS" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="1402"/>
+    <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6402"/>
+    <ROW Action="AI_DATA_SETTER" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6401"/>
+    <ROW Action="AI_SETMIXINSTLOCATION" Sequence="748"/>
+    <ROW Action="AI_IaToggle" Sequence="101"/>
+    <ROW Action="AI_IaLogPkgStarted" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1" Sequence="54"/>
+    <ROW Action="AI_IaLogPkgExitFinish" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1" Sequence="-1"/>
+    <ROW Action="AI_IaLogPkgExitFatalError" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1" Sequence="-3"/>
+    <ROW Action="AI_IaLogPkgExitUserAbort" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1" Sequence="-2"/>
+    <ROW Action="AI_IaLogInstallData" Sequence="1401"/>
+    <ROW Action="AI_IaLogMachineInfo" Sequence="55"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="ExecuteAction" Sequence="1293" SeqType="0" MsiKey="ExecuteAction"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="54"/>
+    <ROW Action="AI_DpiContentScale" Sequence="53"/>
+    <ROW Action="AI_AppSearchEx" Sequence="102"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="98"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
+    <ROW Action="AI_DownloadPrereq" Sequence="1290"/>
+    <ROW Action="AI_ExtractPrereq" Sequence="1291"/>
+    <ROW Action="AI_InstallPrerequisite" Sequence="1292"/>
+    <ROW Action="AI_InstallPostPrerequisite" Sequence="1294"/>
+    <ROW Action="AI_SETMIXINSTLOCATION" Sequence="748"/>
+    <ROW Action="AI_IaToggle" Sequence="99"/>
+    <ROW Action="AI_IaLogPkgStarted" Condition="VersionMsi &lt; &quot;4.05&quot; OR UILevel = 2 OR LIMITUI = 1" Sequence="51"/>
+    <ROW Action="AI_IaLogMachineInfo" Sequence="52"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &gt;= 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 2)))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR ((VersionNT64 = 600) AND (MsiNTProductType = 1))) ) )" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT64Display]" DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] cannot be installed on [WindowsTypeNTDisplay]" DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="SETUPEXEDIR OR (REMOVE=&quot;ALL&quot;)" Description="This package can only be run from a bootstrapper." DescriptionLocId="AI.LaunchCondition.RequireBootstrapper" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_EXE_PATH_LM" Root="2" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_IA_ENABLE" Root="2" Key="Software\[Manufacturer]\[ProductCode]" Name="AI_IA_ENABLE" Type="2"/>
+    <ROW Signature_="AI_IA_ENABLE_1" Root="1" Key="Software\[Manufacturer]\[ProductCode]" Name="AI_IA_ENABLE" Type="2"/>
+    <ROW Signature_="AI_ShRegOptionMachine" Root="2" Key="Software\Caphyon\Advanced Installer\Installs\[ProductCode]" Name="AIShRegAnswer" Type="2"/>
+    <ROW Signature_="AI_ShRegOptionUser" Root="1" Key="Software\Caphyon\Advanced Installer\Installs\[ProductCode]" Name="AIShRegAnswer" Type="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="AIShRegAnswer" Root="-1" Key="Software\Caphyon\Advanced Installer\Installs\[ProductCode]" Name="AIShRegAnswer" Value="[AI_SHORTCUTSREG]" Component_="AIShRegAnswer"/>
+    <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
+    <ROW Registry="AI_IA_ENABLE" Root="-1" Key="Software\[Manufacturer]\[ProductCode]" Name="AI_IA_ENABLE" Value="[AI_IA_ENABLE]" Component_="AI_IA_ENABLE"/>
+    <ROW Registry="B5158184F44A6981C5919229A6AEBE" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="B5158184F44A6981C5919229A6AEBE" Value="1" Component_="B5158184F44A6981C5919229A6AEBE"/>
+    <ROW Registry="D7E473DF14F3E98497864847195F2" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="D7E473DF14F3E98497864847195F2" Value="1" Component_="D7E473DF14F3E98497864847195F2"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="VirgilSync" Directory_="SHORTCUTDIR" Name="VIRGIL~1|Virgil Sync" Component_="Virgil.Sync.exe" Target="[#Virgil.Sync.exe]" Hotkey="0" Icon_="virgil_icon.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="VirgilSync_1" Directory_="DesktopFolder" Name="VIRGIL~1|Virgil Sync" Component_="Virgil.Sync.exe" Target="[#Virgil.Sync.exe]" Hotkey="0" Icon_="virgil_icon.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+    <ROW Shortcut="VirgilSync_2" Directory_="StartupFolder" Name="VIRGIL~1|Virgil Sync" Component_="Virgil.Sync.exe" Target="[#Virgil.Sync.exe]" Hotkey="0" Icon_="virgil_icon.exe" IconIndex="0" ShowCmd="1" WkDir="Release_Dir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+    <ROW PrereqKey="B5158184F44A6981C5919229A6AEBE" DisplayName="Visual C++ Redistributable for Visual Studio 2015 x64" VersionMin="14.0" SetupFileUrl="Prerequisites\Visual C++ Redistributable for Visual Studio 2015\vc_redist.x64.exe" Location="0" ExactSize="0" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" Operator="1" NoUiComLine="/q /norestart" Options="x" TargetName="Visual C++ Redistributable for Visual Studio 2015\vc_redist.x64.exe" Type="1" Feature="B5158184F44A6981C5919229A6AEBE"/>
+    <ROW PrereqKey="D7E473DF14F3E98497864847195F2" DisplayName="Visual C++ Redistributable for Visual Studio 2015 x86" VersionMin="14.0" SetupFileUrl="Prerequisites\Visual C++ Redistributable for Visual Studio 2015\vc_redist.x86.exe" Location="0" ExactSize="0" WinNT64Versions="Windows XP/Vista/Windows 7/Windows 8 x64/Windows 8.1 x64/Windows 10 x64" Operator="1" NoUiComLine="/q /norestart" TargetName="Visual C++ Redistributable for Visual Studio 2015\vc_redist.x86.exe" Type="1" Feature="D7E473DF14F3E98497864847195F2"/>
+    <ROW PrereqKey="EEDF697C58FF44AEA12537BBFB266D19" DisplayName=".NET Framework 4.6 (web installer)" SetupFileUrl="Prerequisites\.NET Framework 4.6\NDP46-KB3045560-Web.exe" Location="0" ExactSize="0" WinNTVersions="Windows 2000, Windows 2000 Service Pack 1, Windows 2000 Service Pack 2, Windows 2000 Service Pack 3, Windows 2000 Service Pack 4, Windows XP x86, Windows XP x86 Service Pack 1, Windows XP x86 Service Pack 2, Windows XP x86 Service Pack 3, Windows Server 2003 x86, Windows Server 2003 x86 Service Pack 1, Windows Server 2003 x86 Service Pack 2, Windows Vista x86, Windows Vista x86 Service Pack 1, Windows 7 x86, Windows 10 x86" WinNT64Versions="Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows 7 x64, Windows Server 2008 R2 x64, Windows 10 x64" Operator="1" NoUiComLine="/q /norestart" Options="x" TargetName=".NET Framework 4.6\NDP46-KB3045560-Web.exe"/>
+    <ATTRIBUTE name="PrereqsOrder" value="D7E473DF14F3E98497864847195F2 B5158184F44A6981C5919229A6AEBE EEDF697C58FF44AEA12537BBFB266D19"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
+    <ROW SearchKey="B5158184F44A6981C5919229A6AEBEVersion" Prereq="B5158184F44A6981C5919229A6AEBE" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_B5158184F44A6981C5919229A6AEBE"/>
+    <ROW SearchKey="D7E473DF14F3E98497864847195F2Version" Prereq="D7E473DF14F3E98497864847195F2" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_D7E473DF14F3E98497864847195F2"/>
+    <ROW SearchKey="EEDF697C58FF44AEA12537BBFB266D19Release" Prereq="EEDF697C58FF44AEA12537BBFB266D19" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G393296" Order="1" Property="PreReqSearch_EEDF697C58FF44AEA12537BBFB266D19"/>
+  </COMPONENT>
+</DOCUMENT>
