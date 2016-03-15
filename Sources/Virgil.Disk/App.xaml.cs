@@ -4,18 +4,16 @@ namespace Virgil.Disk
 {
     using System;
     using System.Diagnostics;
+    using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows.Threading;
     using FolderLink.Core;
-    using FolderLink.Dropbox;
-    using FolderLink.Dropbox.Handler;
-    using FolderLink.Dropbox.Server;
-    using FolderLink.Local;
     using Infrastructure;
     using Infrastructure.Messaging;
     using Messages;
     using Model;
     using Ninject;
+    using Sync;
     using View;
     using ViewModels;
 
@@ -32,14 +30,16 @@ namespace Virgil.Disk
             base.OnStartup(e);
 
             this.DispatcherUnhandledException += this.OnDispatcherUnhandledException;
-
+#if DEBUG
             var virgilHub = SDK.Infrastructure.VirgilConfig
-                .UseAccessToken(@"eyJpZCI6ImZhMTYxMGFkLTRjMGYtNGM5MS1hM2RhLTg5Yjk4NzQ2ZjE3YSIsImFwcGxpY2F0aW9uX2NhcmRfaWQiOiJjMDI0NmNhNC0wMTE0LTQ2OTQtYWIzNi1jNDdlNGMwZDAzYWIiLCJ0dGwiOi0xLCJjdGwiOi0xLCJwcm9sb25nIjowfQ==.MIGaMA0GCWCGSAFlAwQCAgUABIGIMIGFAkAKU6Wp1RsVEBiqNZeHvTbjJGRgeYYn23exVld/FIFOjSyjtCEWu+tQIBKgo1cMMUl3og/5evl1EfEjeZBN2myDAkEAl5odVSqje/XGqHwVfP0QmuChduJ7xXW2MxVgJme95AIHSNDCXwmidK9ny6IZ5LZPUO45L4Z0P5GQ4i2oDrfdkA==")
+                .UseAccessToken(ApiConfig.VirgilTokenStaging)
                 .WithCustomPublicServiceUri(new Uri(@"https://keys-stg.virgilsecurity.com"))
                 .WithCustomIdentityServiceUri(new Uri(@"https://identity-stg.virgilsecurity.com"))
                 .WithCustomPrivateServiceUri(new Uri(@"https://keys-private-stg.virgilsecurity.com"))
                 .Build();
-
+#else
+            var virgilHub = SDK.Infrastructure.VirgilConfig.UseAccessToken(ApiConfig.VirgilToken).Build();
+#endif
             Virgil.SDK.Domain.ServiceLocator.Setup(virgilHub);
 
             var updater = new Updater();
@@ -113,6 +113,10 @@ namespace Virgil.Disk
                 app.InitializeComponent();
                 app.Run();
             }
+            else
+            {
+                BringToFront("Virgil Sync");
+            }
         }
 
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs args)
@@ -120,9 +124,28 @@ namespace Virgil.Disk
             args.Handled = true;
             MessageBox.Show(args.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-    }
 
-    
+        [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("USER32.DLL")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        private static void BringToFront(string title)
+        {
+            // Get a handle to the Calculator application.
+            IntPtr handle = FindWindow(null, title);
+
+            // Verify that Calculator is a running process.
+            if (handle == IntPtr.Zero)
+            {
+                return;
+            }
+
+            // Make Calculator the foreground application
+            SetForegroundWindow(handle);
+        }
+    }
 
     /// <summary>
     /// Represents the different types of scaling.

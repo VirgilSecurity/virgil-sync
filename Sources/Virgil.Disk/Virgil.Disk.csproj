@@ -122,6 +122,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
@@ -184,6 +185,7 @@
     <Compile Include="Messages\DisplaySignInError.cs" />
     <Compile Include="Messages\DropboxSignInSuccessfull.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ApiConfig.cs" />
     <Compile Include="ViewModels\DropBoxSignInViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessageViewModel.cs" />
     <Compile Include="ViewModels\OperationStatusViewModel.cs" />

@@ -1,12 +1,14 @@
 namespace Virgil.Disk.ViewModels
 {
     using System;
+    using System.Configuration;
     using System.Windows.Input;
     using Dropbox.Api;
     using Infrastructure.Messaging;
     using Infrastructure.Mvvm;
     using Messages;
-    
+    using Sync;
+
     public class HandleNavigation
     {
         public HandleNavigation(Uri uri)
@@ -21,7 +23,7 @@ namespace Virgil.Disk.ViewModels
     public class DropBoxSignInViewModel : ViewModel
     {
         private readonly IEventAggregator eventAggregator;
-        private const string ApiKey = "d4x24xt4v1s4xfr";
+        
         private const string RedirectUri = "https://virgilsecurity.com/";
         private string oauth2State;
         private string authorizeUri;
@@ -53,7 +55,7 @@ namespace Virgil.Disk.ViewModels
             this.oauth2State = Guid.NewGuid().ToString("N");
 
             this.AuthorizeUri = DropboxOAuth2Helper.GetAuthorizeUri(
-                OAuthResponseType.Token, ApiKey, new Uri(RedirectUri), state: this.oauth2State)
+                OAuthResponseType.Token, ApiConfig.DropboxClientId, new Uri(RedirectUri), state: this.oauth2State)
                 .ToString();
         }
 
