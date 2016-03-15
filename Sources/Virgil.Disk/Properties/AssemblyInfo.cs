@@ -3,11 +3,11 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 
-[assembly: AssemblyTitle("Virgil.Disk")]
+[assembly: AssemblyTitle("Virgil.Sync")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Virgil.Disk")]
+[assembly: AssemblyProduct("Virgil.Sync")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,5 +22,5 @@ using System.Windows;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: AssemblyVersion("1.0.26")]
-[assembly: AssemblyFileVersion("1.0.26")]
+[assembly: AssemblyVersion("1.1.27.0")]
+[assembly: AssemblyFileVersion("1.1.27.0")]
