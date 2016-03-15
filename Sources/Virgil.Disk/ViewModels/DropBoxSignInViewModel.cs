@@ -74,7 +74,6 @@ namespace Virgil.Disk.ViewModels
                 }
                 this.eventAggregator.Publish(new DropboxSignInSuccessfull(result));
                 this.eventAggregator.Publish(new NavigateTo(typeof (FolderSettingsViewModel)));
-                this.AuthorizeUri = "about:blank";
             }
             finally
             {

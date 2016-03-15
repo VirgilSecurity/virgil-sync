@@ -24,7 +24,7 @@
         <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
 
         <TextBlock Text="We've sent you a code" Style="{StaticResource LargeText}" Grid.Row="1"/>
-        <TextBlock Text="Check the email and enter the code bellow"  Grid.Row="2" 
+        <TextBlock Text="Check the email and enter the code below"  Grid.Row="2" 
                    TextAlignment="Center"
                  FontSize="18"
                  Foreground="#BEBEBE" />

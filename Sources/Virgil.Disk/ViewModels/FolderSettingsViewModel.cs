@@ -51,6 +51,7 @@ namespace Virgil.Disk.ViewModels
             {
                 this.folderSettingsStorage.SetDropboxCredentials(new DropboxCredentials());
                 this.UpdateStorage();
+                this.eventAggregator.Publish(new DropboxSignOut());
             });
 
             eventAggregator.Subscribe(this);
