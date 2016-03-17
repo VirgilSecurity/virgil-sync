@@ -73,20 +73,22 @@
 
         public void Handle(DropboxSignOut message)
         {
-            _DeleteEveryCookie(new Uri("https://www.dropbox.com"));
-            
-            var oldBrowser = this.BrowserHolder.Child as WebBrowser;
-            if (oldBrowser != null)
-            {
-                oldBrowser.Navigating -= this.BrowserNavigating;
-                this.BrowserHolder.Child = null;
-            }
+            //_DeleteEveryCookie(new Uri("https://www.dropbox.com"));
 
-            var webBrowser = new WebBrowser();
-            webBrowser.Navigating += this.BrowserNavigating;
-            webBrowser.SetBinding(WebBrowserUtility.BindableSourceProperty, new Binding("AuthorizeUri"));
-            this.BrowserHolder.Child = webBrowser;
-            this.Browser = webBrowser;
+            this.Browser.Navigate("https://www.dropbox.com/logout");
+            
+            //var oldBrowser = this.BrowserHolder.Child as WebBrowser;
+            //if (oldBrowser != null)
+            //{
+            //    oldBrowser.Navigating -= this.BrowserNavigating;
+            //    this.BrowserHolder.Child = null;
+            //}
+
+            //var webBrowser = new WebBrowser();
+            //webBrowser.Navigating += this.BrowserNavigating;
+            //webBrowser.SetBinding(WebBrowserUtility.BindableSourceProperty, new Binding("AuthorizeUri"));
+            //this.BrowserHolder.Child = webBrowser;
+            //this.Browser = webBrowser;
         }
 
         private static void _DeleteEveryCookie(Uri url)
