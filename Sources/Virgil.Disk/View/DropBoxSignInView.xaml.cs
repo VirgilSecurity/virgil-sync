@@ -7,6 +7,7 @@
     using System.Windows;
     using ViewModels;
     using System.Windows.Controls;
+    using System.Windows.Data;
     using System.Windows.Navigation;
     using Infrastructure;
     using Infrastructure.Messaging;
@@ -73,8 +74,19 @@
         public void Handle(DropboxSignOut message)
         {
             _DeleteEveryCookie(new Uri("https://www.dropbox.com"));
-            this.Browser.Navigate(new Uri("https://www.dropbox.com"));
-            this.Browser.Navigate("javascript:void((function(){var a,b,c,e,f;f=0;a=document.cookie.split('; ');for(e=0;e<a.length&&a[e];e++){f++;for(b='.'+location.host;b;b=b.replace(/^(?:%5C.|[^%5C.]+)/,'')){for(c=location.pathname;c;c=c.replace(/.$/,'')){document.cookie=(a[e]+'; domain='+b+'; path='+c+'; expires='+new Date((new Date()).getTime()-1e11).toGMTString());}}}})())");
+            
+            var oldBrowser = this.BrowserHolder.Child as WebBrowser;
+            if (oldBrowser != null)
+            {
+                oldBrowser.Navigating -= this.BrowserNavigating;
+                this.BrowserHolder.Child = null;
+            }
+
+            var webBrowser = new WebBrowser();
+            webBrowser.Navigating += this.BrowserNavigating;
+            webBrowser.SetBinding(WebBrowserUtility.BindableSourceProperty, new Binding("AuthorizeUri"));
+            this.BrowserHolder.Child = webBrowser;
+            this.Browser = webBrowser;
         }
 
         private static void _DeleteEveryCookie(Uri url)

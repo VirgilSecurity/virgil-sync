@@ -69,6 +69,8 @@ namespace Virgil.Disk.Model
 
         public void Logout()
         {
+            this.aggregator.Publish(new BeforeLogout());
+
             this.PrivateKeyPassword = null;
             this.CurrentCard = null;
             this.HasAccount = false;

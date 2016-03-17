@@ -71,11 +71,8 @@ namespace Virgil.Disk.Model
 
         public void SetDropboxCredentials(DropboxCredentials credentials)
         {
-            if (this.appState.HasAccount)
-            {
-                this.FolderSettings.DropboxCredentials = credentials;
-                this.Save();
-            }
+            this.FolderSettings.DropboxCredentials = credentials;
+            this.Save();
         }
 
         public void Reset()

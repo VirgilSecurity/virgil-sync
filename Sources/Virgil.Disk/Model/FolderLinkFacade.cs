@@ -10,7 +10,7 @@ namespace Virgil.Disk.Model
     using Infrastructure.Messaging;
     using Messages;
 
-    public class FolderLinkFacade : IHandle<Logout>, IHandle<DropboxSessionExpired>
+    public class FolderLinkFacade : IHandle<Logout>, IHandle<DropboxSessionExpired>, IHandle<BeforeLogout>
     {
         private static readonly object m_lock = new object();
         private readonly ApplicationState applicationState;
@@ -126,7 +126,6 @@ namespace Virgil.Disk.Model
 
         public void Handle(Logout message)
         {
-            this.folderSettingsStorage.SetDropboxCredentials(new DropboxCredentials());
             this.CleanupAndStop();
         }
 
@@ -134,6 +133,11 @@ namespace Virgil.Disk.Model
         {
             this.folderSettingsStorage.SetDropboxCredentials(new DropboxCredentials());
             this.Rebuild();
+        }
+
+        public void Handle(BeforeLogout message)
+        {
+            this.folderSettingsStorage.SetDropboxCredentials(new DropboxCredentials());
         }
     }
 }

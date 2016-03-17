@@ -19,7 +19,7 @@
             <Label Content="NAVIGATE BACK" Foreground="White" FontSize="20" FontWeight="Bold"  />
         </Button>
 
-        <Border BorderThickness="2" Grid.Row="1">
+        <Border BorderThickness="0" Grid.Row="1" x:Name="BrowserHolder">
             <WebBrowser x:Name="Browser"
                         local:WebBrowserUtility.BindableSource="{Binding AuthorizeUri}"
                         Navigating="BrowserNavigating"/>
