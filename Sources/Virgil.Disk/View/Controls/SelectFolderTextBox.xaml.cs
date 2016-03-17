@@ -4,6 +4,7 @@ using System.Windows.Controls;
 namespace Virgil.Disk.View.Controls
 {
     using System.Diagnostics;
+    using System.IO;
     using Infrastructure.Mvvm;
     using Ookii.Dialogs.Wpf;
 
@@ -47,7 +48,10 @@ namespace Virgil.Disk.View.Controls
 
         private void OpenFolderInExplorer(object sender, RoutedEventArgs e)
         {
-            Process.Start(SelectedPath);
+            if (Directory.Exists(this.SelectedPath))
+            {
+                Process.Start(this.SelectedPath);
+            }
         }
     }
 }
