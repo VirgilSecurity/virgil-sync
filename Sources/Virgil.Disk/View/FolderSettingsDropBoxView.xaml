@@ -64,7 +64,6 @@
             <Image Source="Images/connected.png" Height="210"  Stretch="None"/>
 
             <Border Grid.Row="1"  Width="300" BorderBrush="#65727C" BorderThickness="3" 
-                    Margin="0 -5 0 0"
                     Background="#5DC7B9"
                     CornerRadius="20">
                 <TextBlock Margin="5"  Text="Connected" Foreground="#65727C" FontSize="20" 

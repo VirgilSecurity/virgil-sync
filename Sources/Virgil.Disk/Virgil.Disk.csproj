@@ -192,7 +192,16 @@
     <Compile Include="ViewModels\OperationStatusViewModel.cs" />
     <Compile Include="ViewModels\OperationViewModel.cs" />
     <Compile Include="View\Controls\ConstantAspectRatioWindow.cs" />
+    <Compile Include="View\Controls\DropboxConnectedView.xaml.cs">
+      <DependentUpon>DropboxConnectedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\DropboxDisconnectedView.xaml.cs">
+      <DependentUpon>DropboxDisconnectedView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\EnterKeyHelper.cs" />
+    <Compile Include="View\Controls\ThumbContent.xaml.cs">
+      <DependentUpon>ThumbContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\TooltipControl.xaml.cs">
       <DependentUpon>TooltipControl.xaml</DependentUpon>
     </Compile>
@@ -275,6 +284,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\FolderSettings.cs" />
+    <Page Include="View\Controls\DropboxConnectedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\DropboxDisconnectedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\ThumbContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\TooltipControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

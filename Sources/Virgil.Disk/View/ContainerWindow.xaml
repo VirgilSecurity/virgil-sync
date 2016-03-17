@@ -6,8 +6,9 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:Virgil.Disk.View"
         xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
-        xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
+        
         xmlns:converters="clr-namespace:Virgil.Disk.View.Converters"
+        xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
         SnapsToDevicePixels="True"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -33,6 +34,18 @@
                                 <SolidColorBrush Color="Transparent"/>
                             </Rectangle.Fill>
                         </Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BorderThumbBottomRight" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <controls:ThumbContent />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -149,10 +162,11 @@
 
             <Thumb  VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                     Cursor="SizeNWSE"
-                    Background="{x:Null}"
-                    Style="{StaticResource BorderThumb}"
+                    
+                    
+                    Style="{StaticResource BorderThumbBottomRight}"
                     DragDelta="Thumb_OnDragDelta"
-                    Width="10" Height="10" IsManipulationEnabled="True"/>
+                    Width="20" Height="20" IsManipulationEnabled="True"/>
 
 
 

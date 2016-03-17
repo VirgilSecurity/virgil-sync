@@ -8,7 +8,7 @@
 
     public class ContainerViewModel : ViewModel, IHandle<NavigateTo>, IHandle<ConfirmOperation>,
         IHandle<ConfirmationSuccessfull>, IHandle<Logout>, IHandle<DisplaySignInError>, IHandle<StartDropboxSignIn>,
-        IHandle<DropboxSessionExpired>, IHandle<NavigateBack>
+        IHandle<DropboxSessionExpired>, IHandle<NavigateBack>, IHandle<DropboxSignInSuccessfull>
     {
         private ViewModel content;
         private ViewModel previousContent;
@@ -101,6 +101,11 @@
         public void Handle(NavigateBack message)
         {
             this.Content = this.previousContent;
+        }
+
+        public void Handle(DropboxSignInSuccessfull message)
+        {
+            this.Content = ServiceLocator.Resolve<FolderSettingsViewModel>();
         }
     }
 }

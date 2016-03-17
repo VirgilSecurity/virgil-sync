@@ -73,7 +73,6 @@ namespace Virgil.Disk.ViewModels
                     return;
                 }
                 this.eventAggregator.Publish(new DropboxSignInSuccessfull(result));
-                this.eventAggregator.Publish(new NavigateTo(typeof (FolderSettingsViewModel)));
             }
             finally
             {

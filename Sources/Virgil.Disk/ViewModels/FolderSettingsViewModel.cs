@@ -321,7 +321,6 @@ namespace Virgil.Disk.ViewModels
         public void Handle(DropboxSignInSuccessfull message)
         {
             this.folderSettingsStorage.SetDropboxCredentials(message.Result);
-            this.UpdateStorage();
 
             if (this.SourceFolder.IsEmpty())
             {
@@ -341,6 +340,8 @@ namespace Virgil.Disk.ViewModels
                     Console.WriteLine(e.ToString());
                 }
             }
+
+            this.UpdateStorage();
         }
 
         public void Handle(DropBoxLinkChanged message)
