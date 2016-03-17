@@ -4,6 +4,7 @@ namespace Virgil.Disk
 {
     using System;
     using System.Diagnostics;
+    using System.Linq;
     using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows.Threading;
@@ -103,8 +104,22 @@ namespace Virgil.Disk
         /// Application Entry Point.
         /// </summary>
         [STAThread]
-        public static void Main()
+        public static void Main(string[] args)
         {
+            if (args.Any(arg => string.Equals(arg, "uninstall", StringComparison.OrdinalIgnoreCase)))
+            {
+                var bootstrapper = new Bootstrapper();
+                bootstrapper.Initialize();
+
+                var state = bootstrapper.IoC.Get<ApplicationState>();
+                var folderSettings = bootstrapper.IoC.Get<FolderSettingsStorage>();
+
+                folderSettings.Reset();
+                state.Logout();
+
+                return;
+            }
+
             bool createdNew;
             mutex = new Mutex(true, "VirgilControl", out createdNew);
             if (createdNew)
