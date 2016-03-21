@@ -108,14 +108,21 @@ namespace Virgil.Disk
         {
             if (args.Any(arg => string.Equals(arg, "uninstall", StringComparison.OrdinalIgnoreCase)))
             {
-                var bootstrapper = new Bootstrapper();
-                bootstrapper.Initialize();
+                try
+                {
+                    var bootstrapper = new Bootstrapper();
+                    bootstrapper.Initialize();
 
-                var state = bootstrapper.IoC.Get<ApplicationState>();
-                var folderSettings = bootstrapper.IoC.Get<FolderSettingsStorage>();
+                    var state = bootstrapper.IoC.Get<ApplicationState>();
+                    var folderSettings = bootstrapper.IoC.Get<FolderSettingsStorage>();
 
-                folderSettings.Reset();
-                state.Logout();
+                    folderSettings.Reset();
+                    state.Logout();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.ToString());
+                }
 
                 return;
             }
