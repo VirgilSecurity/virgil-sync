@@ -20,10 +20,10 @@
     <ROW Property="DialogBitmap" Value="dialog" MultiBuildValue="DefaultBuild:dialog.bmp" Type="1" MsiKey="DialogBitmap"/>
     <ROW Property="Manufacturer" Value="Virgil Security, Inc."/>
     <ROW Property="PoroperAppName" Value="VirgilSync"/>
-    <ROW Property="ProductCode" Value="1033:{2416F8E6-F9FC-4E52-BD09-CA8BC5C4D18F} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{A116229C-D0ED-47D4-B462-EC7972F5F84B} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Virgil Sync"/>
-    <ROW Property="ProductVersion" Value="1.0.26.0" Type="32" TargetFile="Virgil.Sync.exe"/>
+    <ROW Property="ProductVersion" Value="1.1.33.0" Type="32" TargetFile="Virgil.Sync.exe"/>
     <ROW Property="ProperCompanyName" Value="VirgilSecurityInc"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
@@ -106,9 +106,9 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="B5158184F44A6981C5919229A6AEBE" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="11" Level="1" Attributes="0" Components="AI_ExePath"/>
-    <ROW Feature="B5158184F44A6981C5919229A6AEBE_1" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="13" Level="1" Attributes="0" Components="B5158184F44A6981C5919229A6AEBE"/>
+    <ROW Feature="B5158184F44A6981C5919229A6AEBE_1" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="13" Level="1" Attributes="0" Components="AI_ExePath B5158184F44A6981C5919229A6AEBE"/>
     <ROW Feature="D7E473DF14F3E98497864847195F2" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="9" Level="1" Attributes="0" Components="AI_ExePath"/>
-    <ROW Feature="D7E473DF14F3E98497864847195F2_1" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="15" Level="1" Attributes="0" Components="D7E473DF14F3E98497864847195F2"/>
+    <ROW Feature="D7E473DF14F3E98497864847195F2_1" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="15" Level="1" Attributes="0" Components="AI_ExePath D7E473DF14F3E98497864847195F2"/>
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer AI_ExePath Dropbox.Api.dll Hardcodet.Wpf.TaskbarNotification.dll Infrastructure.dll Interop.IWshRuntimeLibrary.dll Microsoft.Threading.Tasks.Extensions.Des Microsoft.Threading.Tasks.Extensions.dll Microsoft.Threading.Tasks.dll Newtonsoft.Json.dll Ninject.Extensions.Conventions.dll Ninject.dll Ookii.Dialogs.Wpf.dll ProductInformation SHORTCUTDIR System.Net.Http.Extensions.dll System.Net.Http.Primitives.dll System.Reactive.Core.dll System.Reactive.Interfaces.dll System.Reactive.Linq.dll System.Windows.Interactivity.dll System.Windows.Interactivity.resources.d System.Windows.Interactivity.resources_1 System.Windows.Interactivity.resources_2 System.Windows.Interactivity.resources_3 System.Windows.Interactivity.resources_4 System.Windows.Interactivity.resources_5 System.Windows.Interactivity.resources_6 System.Windows.Interactivity.resources_7 System.Windows.Interactivity.resources_8 System.Windows.Interactivity.resources_9 Virgil.Crypto.dll Virgil.FolderLink.dll Virgil.LocalStorage.dll Virgil.SDK.Domain.dll Virgil.SDK.dll Virgil.Sync.exe Virgil.Sync.exe.config WpfAnimatedGif.dll virgil_crypto_net.dll virgil_crypto_net.dll_1"/>
     <ROW Feature="VirgilKeyRing" Title="Virgil KeyRing" Description="Virgil KeyRing" Display="3" Level="1" Attributes="0" Components="AI_ExePath"/>
     <ROW Feature="VisualCRedistrib" Title="Visual C++ Redistributable for Visual Studio 2013 x64" Description="Visual C++ Redistributable for Visual Studio 2013 x64" Display="5" Level="1" Attributes="0" Components="AI_ExePath"/>
@@ -294,6 +294,7 @@
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
     <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
+    <ROW Action="LaunchExeWithDirectory" Type="34" Source="Release_Dir" Target="&quot;.\Virgil.Sync.exe&quot; uninstall"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[AI_UserProgramFiles][ProperCompanyName]\[PoroperAppName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
@@ -326,6 +327,7 @@
     <ROW Action="AI_SETMIXINSTLOCATION" Sequence="748"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
+    <ROW Action="LaunchExeWithDirectory" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) ) AND ( (REMOVE=&quot;ALL&quot; AND (NOT UPGRADINGPRODUCTCODE)) )" Sequence="1601"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="ExecuteAction" Condition="(REMOVE=&quot;ALL&quot; AND (NOT UPGRADINGPRODUCTCODE))" Sequence="1293" SeqType="0" MsiKey="ExecuteAction"/>
