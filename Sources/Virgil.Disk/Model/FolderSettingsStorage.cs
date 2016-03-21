@@ -77,8 +77,7 @@ namespace Virgil.Disk.Model
 
         public void Reset()
         {
-            this.FolderSettings = new FolderSettings();
-            this.Save();
+            this.storageProvider.Save("", FilePath);
         }
 
         private void Save()

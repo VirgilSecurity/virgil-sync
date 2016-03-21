@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderLink.Tests", "FolderL
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{78D4B7B2-F483-4702-84D4-ACBE4BA52B81}"
 	ProjectSection(SolutionItems) = preProject
-		..\Setup\virgil.disk.aip = ..\Setup\virgil.disk.aip
+		..\Setup\Virgil Sync.aip = ..\Setup\Virgil Sync.aip
 	EndProjectSection
 EndProject
 Global

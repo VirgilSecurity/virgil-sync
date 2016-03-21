@@ -172,6 +172,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="EntryPoint.cs" />
     <Compile Include="Messages\DropBoxLinkChanged.cs" />
     <Compile Include="Messages\DropboxSessionExpired.cs" />
     <Compile Include="Messages\DropboxSignOut.cs" />

@@ -10,6 +10,17 @@
     using File = System.IO.File;
     using Point = System.Drawing.Point;
 
+    /// <summary>
+    /// Represents the different types of scaling.
+    /// </summary>
+    /// <seealso cref="https://msdn.microsoft.com/en-us/library/windows/desktop/dn280511.aspx"/>
+    public enum DpiType
+    {
+        EFFECTIVE = 0,
+        ANGULAR = 1,
+        RAW = 2,
+    }
+
     public class Windows
     {
         private const string VIRGIL_DISK_PATH = "%VIRGIL_DISK%";

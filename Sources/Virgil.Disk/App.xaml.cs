@@ -4,9 +4,6 @@ namespace Virgil.Disk
 {
     using System;
     using System.Diagnostics;
-    using System.Linq;
-    using System.Runtime.InteropServices;
-    using System.Threading;
     using System.Windows.Threading;
     using FolderLink.Core;
     using Infrastructure;
@@ -24,7 +21,7 @@ namespace Virgil.Disk
     public partial class App : Application
     {
         public Bootstrapper Bootstrapper { get; private set; }
-        private static Mutex mutex;
+        
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -100,83 +97,10 @@ namespace Virgil.Disk
             this.AppState.Logout();
         }
 
-        /// <summary>
-        /// Application Entry Point.
-        /// </summary>
-        [STAThread]
-        public static void Main(string[] args)
-        {
-            if (args.Any(arg => string.Equals(arg, "uninstall", StringComparison.OrdinalIgnoreCase)))
-            {
-                try
-                {
-                    var bootstrapper = new Bootstrapper();
-                    bootstrapper.Initialize();
-
-                    var state = bootstrapper.IoC.Get<ApplicationState>();
-                    var folderSettings = bootstrapper.IoC.Get<FolderSettingsStorage>();
-
-                    folderSettings.Reset();
-                    state.Logout();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.ToString());
-                }
-
-                return;
-            }
-
-            bool createdNew;
-            mutex = new Mutex(true, "VirgilControl", out createdNew);
-            if (createdNew)
-            {
-                var app = new App();
-                app.InitializeComponent();
-                app.Run();
-            }
-            else
-            {
-                BringToFront("Virgil Sync");
-            }
-        }
-
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs args)
         {
             args.Handled = true;
             MessageBox.Show(args.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
-        [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
-        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport("USER32.DLL")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        private static void BringToFront(string title)
-        {
-            // Get a handle to the Calculator application.
-            IntPtr handle = FindWindow(null, title);
-
-            // Verify that Calculator is a running process.
-            if (handle == IntPtr.Zero)
-            {
-                return;
-            }
-
-            // Make Calculator the foreground application
-            SetForegroundWindow(handle);
-        }
-    }
-
-    /// <summary>
-    /// Represents the different types of scaling.
-    /// </summary>
-    /// <seealso cref="https://msdn.microsoft.com/en-us/library/windows/desktop/dn280511.aspx"/>
-    public enum DpiType
-    {
-        EFFECTIVE = 0,
-        ANGULAR = 1,
-        RAW = 2,
     }
 }
