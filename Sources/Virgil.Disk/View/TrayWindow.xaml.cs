@@ -1,5 +1,6 @@
 ﻿namespace Virgil.Disk.View
 {
+    using System.IO;
     using System.Windows;
     using Hardcodet.Wpf.TaskbarNotification;
     using Infrastructure;
@@ -9,7 +10,11 @@
     /// <summary>
     /// Interaction logic for TrayWindow.xaml
     /// </summary>
-    public partial class TrayWindow : Window, IHandle<ErrorMessage>, IHandle<CardLoaded>, IHandle<Logout>
+    public partial class TrayWindow : Window, 
+        IHandle<ErrorMessage>, 
+        IHandle<CardLoaded>, 
+        IHandle<Logout>,
+        IHandle<FolderSettingsChanged>
     {
         public TrayWindow()
         {
@@ -21,6 +26,7 @@
             ServiceLocator.Resolve<IEventAggregator>().Subscribe(this);
 
             this.UpdateLogout();
+            this.UpdateOpenFolder();
         }
 
         private void UpdateLogout()
@@ -70,6 +76,17 @@
         public void Handle(Logout message)
         {
             this.UpdateLogout();
+        }
+
+        public void Handle(FolderSettingsChanged message)
+        {
+            this.UpdateOpenFolder();
+        }
+
+        private void UpdateOpenFolder()
+        {
+            var folderPath = ((App)Application.Current).FolderSettings.FolderSettings.SourceFolder.FolderPath;
+            this.OpenFolderItem.IsEnabled = Directory.Exists(folderPath);
         }
     }
 }

@@ -4,7 +4,9 @@ namespace Virgil.Disk.Model
     using System.Collections.Generic;
     using System.Linq;
     using Infrastructure;
+    using Infrastructure.Messaging;
     using LocalStorage;
+    using Messages;
     using Newtonsoft.Json;
 
     public class FolderSettingsStorage
@@ -12,13 +14,15 @@ namespace Virgil.Disk.Model
         private const string FilePath = "VirgilSecurity/folderSettings";
         private readonly IStorageProvider storageProvider;
         private readonly ApplicationState appState;
+        private readonly IEventAggregator aggregator;
         private PerUserFolderSettings settings;
         private string recipientId;
 
-        public FolderSettingsStorage(IStorageProvider storageProvider, ApplicationState appState)
+        public FolderSettingsStorage(IStorageProvider storageProvider, ApplicationState appState, IEventAggregator aggregator)
         {
             this.storageProvider = storageProvider;
             this.appState = appState;
+            this.aggregator = aggregator;
 
             this.LoadInternal();
         }
@@ -83,6 +87,7 @@ namespace Virgil.Disk.Model
         private void Save()
         {
             this.storageProvider.Save(JsonConvert.SerializeObject(this.settings), FilePath);
+            this.aggregator.Publish(new FolderSettingsChanged());
         }
 
         public ValidationErrors ValidateAddTarget(string targetPath)

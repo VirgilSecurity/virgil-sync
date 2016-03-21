@@ -176,6 +176,7 @@
     <Compile Include="Messages\DropBoxLinkChanged.cs" />
     <Compile Include="Messages\DropboxSessionExpired.cs" />
     <Compile Include="Messages\DropboxSignOut.cs" />
+    <Compile Include="Messages\FolderSettingsChanged.cs" />
     <Compile Include="Messages\Logout.cs" />
     <Compile Include="Messages\NavigateBack.cs" />
     <Compile Include="Messages\StartDropboxSignIn.cs" />
