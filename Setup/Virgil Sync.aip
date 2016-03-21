@@ -26,7 +26,7 @@
     <ROW Property="AiSkipExitDlg" Value="1"/>
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:sync.bmp" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="CTRLS" Value="2"/>
-    <ROW Property="Manufacturer" Value="Virgil Security, Inc."/>
+    <ROW Property="Manufacturer" Value="Virgil Security, Inc"/>
     <ROW Property="ProductCode" Value="1033:{7CE09BA6-EF85-405A-BB92-6AF3E3B081E2} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Virgil Sync"/>
