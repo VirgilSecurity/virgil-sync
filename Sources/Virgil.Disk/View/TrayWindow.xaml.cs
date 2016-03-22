@@ -1,5 +1,6 @@
 ﻿namespace Virgil.Disk.View
 {
+    using System;
     using System.IO;
     using System.Windows;
     using Hardcodet.Wpf.TaskbarNotification;
@@ -85,8 +86,15 @@
 
         private void UpdateOpenFolder()
         {
-            var folderPath = ((App)Application.Current).FolderSettings.FolderSettings.SourceFolder.FolderPath;
-            this.OpenFolderItem.IsEnabled = Directory.Exists(folderPath);
+            try
+            {
+                var folderPath = ((App)Application.Current).FolderSettings.FolderSettings.SourceFolder.FolderPath;
+                this.OpenFolderItem.IsEnabled = Directory.Exists(folderPath);
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("User not logged in");
+            }
         }
     }
 }

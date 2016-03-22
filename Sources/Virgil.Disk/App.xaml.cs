@@ -4,6 +4,7 @@ namespace Virgil.Disk
 {
     using System;
     using System.Diagnostics;
+    using System.IO;
     using System.Windows.Threading;
     using FolderLink.Core;
     using Infrastructure;
@@ -85,10 +86,17 @@ namespace Virgil.Disk
 
         public void ShowDecryptedDirectory()
         {
-            var targetFolderPath = this.FolderSettings.FolderSettings.SourceFolder?.FolderPath ?? "";
-            if (targetFolderPath != "")
+            try
             {
-                Process.Start(targetFolderPath);
+                var targetFolderPath = this.FolderSettings.FolderSettings.SourceFolder.FolderPath ?? "";
+                if (Directory.Exists(targetFolderPath))
+                {
+                    Process.Start(targetFolderPath);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Folder settings is null");
             }
         }
 

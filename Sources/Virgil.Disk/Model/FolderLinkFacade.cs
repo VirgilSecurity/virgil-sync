@@ -40,7 +40,7 @@ namespace Virgil.Disk.Model
                 this.eventAggregator.Publish(new DropBoxLinkChanged());
 
                 var folderSettings = this.folderSettingsStorage.FolderSettings;
-                if (folderSettings.IsEmpty())
+                if (folderSettings == null || folderSettings.IsEmpty())
                 {
                     return;
                 }
