@@ -36,10 +36,14 @@
     <ROW Property="UpgradeCode" Value="{D4212066-4490-4D95-9D17-F45146DFC678}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows Vista x64 Service Pack 2, Windows Server 2008 x64, Windows 7 x64, Windows 7 x64 Service Pack 1, Windows Server 2008 R2 x64, Windows Server 2008 R2 x64 Service Pack 1, Windows 8 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64, Windows Vista x64, Windows Server 2008 x64, Windows 7 x64, Windows Server 2008 R2 x64, Windows 8 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32 bit Operating Systems" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -63,8 +67,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AIShRegAnswer" ComponentId="{A9CABB10-3B1E-49C2-AA18-32824794FD9C}" Directory_="APPDIR" Attributes="4" KeyPath="AIShRegAnswer"/>
     <ROW Component="AI_ExePath" ComponentId="{1B2321BC-5119-409C-AB0E-8E25E206ABC9}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
-    <ROW Component="B5158184F44A6981C5919229A6AEBE" ComponentId="{DB3127DE-B2BD-44B5-9913-3923FC3D4BB7}" Directory_="APPDIR" Attributes="4" KeyPath="B5158184F44A6981C5919229A6AEBE" Options="2"/>
-    <ROW Component="D7E473DF14F3E98497864847195F2" ComponentId="{6F27B8C5-2649-43FF-A18A-D0B12E049792}" Directory_="APPDIR" Attributes="4" KeyPath="D7E473DF14F3E98497864847195F2" Options="2"/>
+    <ROW Component="B5158184F44A6981C5919229A6AEBE" ComponentId="{0C430B68-C794-405C-AB26-E0C0C3A4D895}" Directory_="APPDIR" Attributes="260" KeyPath="B5158184F44A6981C5919229A6AEBE" Options="2"/>
     <ROW Component="Dropbox.Api.dll" ComponentId="{71C2384C-631B-4A90-9561-B721CF0CC36E}" Directory_="APPDIR" Attributes="0" KeyPath="Dropbox.Api.dll"/>
     <ROW Component="Dropbox.Api.xml" ComponentId="{EBCA59E1-F838-453C-9A09-54D89984F5D8}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.Sync.exe.config" Type="0"/>
     <ROW Component="Hardcodet.Wpf.TaskbarNotification.dll" ComponentId="{A20CA86D-4241-4D96-AE0D-8FE362328D8F}" Directory_="APPDIR" Attributes="0" KeyPath="Hardcodet.Wpf.TaskbarNotification.dll"/>
@@ -107,7 +110,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="B5158184F44A6981C5919229A6AEBE" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="3" Level="1" Attributes="0" Components="B5158184F44A6981C5919229A6AEBE"/>
-    <ROW Feature="D7E473DF14F3E98497864847195F2" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="5" Level="1" Attributes="0" Components="D7E473DF14F3E98497864847195F2"/>
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer AI_ExePath Dropbox.Api.dll Dropbox.Api.xml Hardcodet.Wpf.TaskbarNotification.dll Infrastructure.dll Interop.IWshRuntimeLibrary.dll Microsoft.Threading.Tasks.Extensions.Des Microsoft.Threading.Tasks.Extensions.dll Microsoft.Threading.Tasks.dll Newtonsoft.Json.dll Ninject.Extensions.Conventions.dll Ninject.dll Ookii.Dialogs.Wpf.dll ProductInformation SHORTCUTDIR System.Net.Http.Extensions.dll System.Net.Http.Primitives.dll System.Reactive.Core.dll System.Reactive.Interfaces.dll System.Reactive.Linq.dll System.Windows.Interactivity.dll System.Windows.Interactivity.resources.d System.Windows.Interactivity.resources_1 System.Windows.Interactivity.resources_2 System.Windows.Interactivity.resources_3 System.Windows.Interactivity.resources_4 System.Windows.Interactivity.resources_5 System.Windows.Interactivity.resources_6 System.Windows.Interactivity.resources_7 System.Windows.Interactivity.resources_8 System.Windows.Interactivity.resources_9 Virgil.Crypto.dll Virgil.FolderLink.dll Virgil.LocalStorage.dll Virgil.SDK.Domain.dll Virgil.SDK.dll Virgil.Sync.exe WpfAnimatedGif.dll virgil_crypto_net.dll virgil_crypto_net.dll_1"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
@@ -151,7 +153,7 @@
     <ROW File="virgil_crypto_net.dll_1" Component_="virgil_crypto_net.dll_1" FileName="VIRGIL~1.DLL|virgil_crypto_net.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\x86\virgil_crypto_net.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_8"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="Output" PackageFileName="VirgilSync_[|ProductVersion]" Languages="en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" UseLargeSchema="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="Output" PackageFileName="VirgilSync_[|ProductVersion]" Languages="en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" UseLargeSchema="true" MsiPackageType="x64"/>
     <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
@@ -263,9 +265,6 @@
     <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_PATCH" Ordering="3" Options="2"/>
     <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_PATCH" Ordering="0" Options="2"/>
     <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_PATCH" Ordering="1" Options="2"/>
-    <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
-    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="201"/>
-    <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="InstallDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="InstallDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="2"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="1"/>
@@ -280,6 +279,9 @@
     <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL" Ordering="4" Options="2"/>
+    <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="201"/>
+    <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
@@ -319,7 +321,7 @@
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
     <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
     <ROW Action="Virgil.Sync.exe" Type="18" Source="Virgil.Sync.exe" Target="uninstall"/>
@@ -335,7 +337,6 @@
     <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
     <ROW Action="AI_DetectSoftware" Sequence="103"/>
     <ROW Action="AI_AppSearchEx" Sequence="102"/>
-    <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
     <ROW Action="AI_DELETE_SHORTCUTS" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="1401"/>
     <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6403"/>
     <ROW Action="AI_DATA_SETTER" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6402"/>
@@ -352,6 +353,7 @@
     <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER_1" Sequence="3997"/>
     <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
+    <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="WelcomeDlg" Condition="AI_INSTALL" Sequence="1230" SeqType="3" MsiKey="WelcomeDlg"/>
@@ -362,15 +364,17 @@
     <ROW Action="AI_DetectSoftware" Sequence="103"/>
     <ROW Action="AI_AppSearchEx" Sequence="102"/>
     <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
+    <ROW Action="AI_FinishActions" Condition="AI_INSTALL AND AiSkipExitDlg" Sequence="1302"/>
     <ROW Action="AI_DownloadPrereq" Sequence="1297"/>
     <ROW Action="AI_ExtractPrereq" Sequence="1298"/>
     <ROW Action="AI_InstallPrerequisite" Sequence="1299"/>
-    <ROW Action="AI_InstallPostPrerequisite" Sequence="1302"/>
-    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
-    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
-    <ROW Action="AI_FinishActions" Condition="AI_INSTALL AND AiSkipExitDlg" Sequence="1301"/>
+    <ROW Action="AI_InstallPostPrerequisite" Sequence="1301"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &gt;= 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 2)))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR ((VersionNT64 = 600) AND (MsiNTProductType = 1))) AND ((VersionNT64 &lt;&gt; 601) OR ((VersionNT64 = 601) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 601) OR (((VersionNT64 = 601) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 601) OR ((VersionNT64 = 601) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType = 1)))) AND ((VersionNT64 &lt;&gt; 601) OR (((VersionNT64 = 601) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType = 1))) AND ((VersionNT64 &lt;&gt; 602) OR ((VersionNT64 = 602) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType &lt;&gt; 1)))) ) )" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT64Display]." DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] cannot be installed on [WindowsTypeNTDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="AI_DETECTED_DOTNET_VERSION &gt;= AI_REQUIRED_DOTNET_VERSION" Description="[ProductName] cannot be installed on systems with .NET Framework version lower than [AI_REQUIRED_DOTNET_DISPLAY]." DescriptionLocId="AI.LaunchCondition.DotNET" IsPredefined="true" Builds="DefaultBuild"/>
@@ -387,7 +391,6 @@
     <ROW Registry="AIShRegAnswer" Root="-1" Key="Software\Caphyon\Advanced Installer\Installs\[ProductCode]" Name="AIShRegAnswer" Value="[AI_SHORTCUTSREG]" Component_="AIShRegAnswer"/>
     <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
     <ROW Registry="B5158184F44A6981C5919229A6AEBE" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="B5158184F44A6981C5919229A6AEBE" Value="1" Component_="B5158184F44A6981C5919229A6AEBE"/>
-    <ROW Registry="D7E473DF14F3E98497864847195F2" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="D7E473DF14F3E98497864847195F2" Value="1" Component_="D7E473DF14F3E98497864847195F2"/>
     <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
@@ -404,14 +407,12 @@
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
-    <ROW PrereqKey="B5158184F44A6981C5919229A6AEBE" DisplayName="Visual C++ Redistributable for Visual Studio 2015 x64" VersionMin="14.0" SetupFileUrl="http://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" Location="1" ExactSize="14572000" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" WinNT64Versions="Windows XP x64, Windows XP x64 Service Pack 1, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows 7 x64, Windows Server 2008 R2 x64" Operator="1" NoUiComLine="/q /norestart" Options="x" MD5="27b141aacc2777a82bb3fa9f6e5e5c1c" TargetName="Visual C++ Redistributable for Visual Studio 2015" Type="1" Feature="B5158184F44A6981C5919229A6AEBE"/>
-    <ROW PrereqKey="D7E473DF14F3E98497864847195F2" DisplayName="Visual C++ Redistributable for Visual Studio 2015 x86" VersionMin="14.0" SetupFileUrl="http://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x86.exe" Location="1" ExactSize="13767776" WinNTVersions="Windows XP x86, Windows XP x86 Service Pack 1, Windows XP x86 Service Pack 2, Windows Server 2003 x86, Windows Server 2003 x86 Service Pack 1, Windows Vista x86, Windows Vista x86 Service Pack 1, Windows 7 x86" WinNT64Versions="Windows XP/Vista/Windows 7/Windows 8 x64/Windows 8.1 x64/Windows 10 x64" Operator="1" NoUiComLine="/q /norestart" MD5="1a15e6606bac9647e7ad3caa543377cf" TargetName="Visual C++ Redistributable for Visual Studio 2015" Type="1" Feature="D7E473DF14F3E98497864847195F2"/>
+    <ROW PrereqKey="B5158184F44A6981C5919229A6AEBE" DisplayName="Visual C++ Redistributable for Visual Studio 2015 x64" VersionMin="14.0" SetupFileUrl="http://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" Location="1" ExactSize="14572000" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" WinNT64Versions="Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows 7 x64, Windows Server 2008 R2 x64" Operator="1" NoUiComLine="/q /norestart" Options="x" MD5="27b141aacc2777a82bb3fa9f6e5e5c1c" TargetName="Visual C++ Redistributable for Visual Studio 2015" Type="1" Feature="B5158184F44A6981C5919229A6AEBE"/>
     <ROW PrereqKey="DC417C6DDE44CDB0139EE138C17B2C" DisplayName=".NET Framework 4.6" SetupFileUrl="http://download.microsoft.com/download/C/3/A/C3A5200B-D33C-47E9-9D70-2F7C65DAAD94/NDP46-KB3045557-x86-x64-AllOS-ENU.exe" Location="1" ExactSize="65444688" WinNTVersions="Windows XP x86, Windows XP x86 Service Pack 1, Windows XP x86 Service Pack 2, Windows XP x86 Service Pack 3, Windows Server 2003 x86, Windows Server 2003 x86 Service Pack 1, Windows Server 2003 x86 Service Pack 2, Windows Vista x86, Windows Vista x86 Service Pack 1, Windows 7 x86, Windows 10 x86" WinNT64Versions="Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows 7 x64, Windows Server 2008 R2 x64, Windows 10 x64" Operator="1" NoUiComLine="/q /norestart" Options="x" MD5="88bc05e20114a4506f40c36911de92fa" TargetName=".NET Framework 4.6"/>
-    <ATTRIBUTE name="PrereqsOrder" value="DC417C6DDE44CDB0139EE138C17B2C B5158184F44A6981C5919229A6AEBE D7E473DF14F3E98497864847195F2"/>
+    <ATTRIBUTE name="PrereqsOrder" value="DC417C6DDE44CDB0139EE138C17B2C B5158184F44A6981C5919229A6AEBE"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
     <ROW SearchKey="B5158184F44A6981C5919229A6AEBEVersion" Prereq="B5158184F44A6981C5919229A6AEBE" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_B5158184F44A6981C5919229A6AEBE"/>
-    <ROW SearchKey="D7E473DF14F3E98497864847195F2Version" Prereq="D7E473DF14F3E98497864847195F2" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_D7E473DF14F3E98497864847195F2"/>
     <ROW SearchKey="DC417C6DDE44CDB0139EE138C17B2CRelease" Prereq="DC417C6DDE44CDB0139EE138C17B2C" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G393296" Order="1" Property="PreReqSearch_DC417C6DDE44CDB0139EE138C17B2C"/>
   </COMPONENT>
 </DOCUMENT>
