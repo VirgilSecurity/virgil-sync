@@ -35,7 +35,7 @@
                                            ConfirmationCode="{Binding Code, Mode=TwoWay}"/>-->
 
             <controls:TransparentTextBox 
-                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
+                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding Submit}"
                                      Hint="Confirmation code" Text="{Binding Code, Mode=TwoWay}" FontSize="25" Height="45"/>
         </Grid>
 

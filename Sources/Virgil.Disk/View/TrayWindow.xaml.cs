@@ -30,11 +30,6 @@
             this.UpdateOpenFolder();
         }
 
-        private void UpdateLogout()
-        {
-            this.LogoutMenuItem.IsEnabled = ((App) Application.Current).AppState.HasAccount;
-        }
-
         private void TaskbarIcon_OnTrayMouseDoubleClick(object sender, RoutedEventArgs e)
         {
             ((App)Application.Current).ShowUI();
@@ -72,16 +67,23 @@
         public void Handle(CardLoaded message)
         {
             this.UpdateLogout();
+            this.UpdateOpenFolder();
         }
 
         public void Handle(Logout message)
         {
             this.UpdateLogout();
+            this.UpdateOpenFolder();
         }
 
         public void Handle(FolderSettingsChanged message)
         {
             this.UpdateOpenFolder();
+        }
+
+        private void UpdateLogout()
+        {
+            this.LogoutMenuItem.IsEnabled = ((App)Application.Current).AppState.HasAccount;
         }
 
         private void UpdateOpenFolder()
@@ -91,9 +93,9 @@
                 var folderPath = ((App)Application.Current).FolderSettings.FolderSettings.SourceFolder.FolderPath;
                 this.OpenFolderItem.IsEnabled = Directory.Exists(folderPath);
             }
-            catch (InvalidOperationException)
+            catch (Exception)
             {
-                Console.WriteLine("User not logged in");
+                this.OpenFolderItem.IsEnabled = false;
             }
         }
     }
