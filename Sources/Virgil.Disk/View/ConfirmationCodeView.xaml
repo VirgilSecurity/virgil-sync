@@ -30,9 +30,13 @@
                  Foreground="#BEBEBE" />
 
         <Grid Grid.Row="3" Width="400" Margin="0 30">
-            <controls:ConfirmationCodeEdit FontSize="30" Height="100" x:Name="ConfirmationCodeEdit" 
+            <!--<controls:ConfirmationCodeEdit FontSize="30" Height="100" x:Name="ConfirmationCodeEdit" 
                                            controls:EnterKeyHelper.EnterKeyCommand="{Binding Submit}"
-                                           ConfirmationCode="{Binding Code, Mode=TwoWay}"/>
+                                           ConfirmationCode="{Binding Code, Mode=TwoWay}"/>-->
+
+            <controls:TransparentTextBox 
+                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
+                                     Hint="Confirmation code" Text="{Binding Code, Mode=TwoWay}" FontSize="25" Height="45"/>
         </Grid>
 
         <Button Grid.Row="4" Style="{StaticResource SignInButton}" Margin="0 10 0 0" Width="300" Command="{Binding Submit}">
