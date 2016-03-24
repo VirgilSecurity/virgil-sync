@@ -20,7 +20,11 @@
             var pathRoot = Path.GetPathRoot(path);
             if (pathRoot == Path.DirectorySeparatorChar.ToString())
             {
-                result.Value = path.Replace(pathRoot, root.Value);
+                result.Value = Path.Combine(root.Value, path.Substring(1));
+            }
+            else
+            {
+                result.Value = path;
             }
 
             return result;
