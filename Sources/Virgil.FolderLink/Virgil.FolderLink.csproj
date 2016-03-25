@@ -135,7 +135,6 @@
     <Compile Include="Core\Events\LocalFileDeletedEvent.cs" />
     <Compile Include="Local\LocalFolder.cs" />
     <Compile Include="Local\LocalFolderLink.cs" />
-    <Compile Include="Local\FolderWatcher.cs" />
     <Compile Include="Local\ILocalEventListener.cs" />
     <Compile Include="Local\LocalFile.cs" />
     <Compile Include="Local\Operations\DecryptFileOperation.cs" />
@@ -152,6 +151,8 @@
     <Compile Include="Dropbox\Server\DropboxFolderWatcher.cs" />
     <Compile Include="Dropbox\Server\ServerFile.cs" />
     <Compile Include="Dropbox\Server\ServerFolder.cs" />
+    <Compile Include="Local\RawFileSystemEvent.cs" />
+    <Compile Include="Local\StringExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

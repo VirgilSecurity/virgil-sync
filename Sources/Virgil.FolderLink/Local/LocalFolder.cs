@@ -28,8 +28,22 @@ namespace Virgil.FolderLink.Local
         {
             this.eventListener = listener;
         }
-        
-        public Task HandleChange(List<FileSystemEventArgs> changes)
+
+        private static bool IsDirectory(string fullPath)
+        {
+            bool isDirectory;
+            try
+            {
+                isDirectory = File.GetAttributes(fullPath).HasFlag(FileAttributes.Directory);
+            }
+            catch (Exception)
+            {
+                isDirectory = false;
+            }
+            return isDirectory;
+        }
+
+        public Task HandleChange(List<RawFileSystemEvent> changes)
         {
             var batch = new LocalEventsBatch();
 
@@ -37,6 +51,49 @@ namespace Virgil.FolderLink.Local
             {
                 switch (args.ChangeType)
                 {
+                    case WatcherChangeTypes.Renamed:
+                    {
+                        if (IsDirectory(args.FullPath))
+                        {
+                            var newDir = args.FullPath;
+                            var oldDir = args.OldFullPath;
+
+                            var toDelete = this.Files.Where(it => it.LocalPath.Value.StartsWith(oldDir)).ToList();
+                                toDelete.ForEach(file => this.Files.Remove(file));
+
+                            toDelete.Select(it => new LocalFileDeletedEvent(it.LocalPath, this.FolderName))
+                                    .ToList()
+                                    .ForEach(it => batch.Add(it));
+
+                            var toAdd = toDelete.Select(it =>
+                            {
+                                var path = it.LocalPath.Value.ReplaceFirst(oldDir, newDir);
+                                return new LocalPath(path,it.LocalPath.Root);
+
+                            }).ToList();
+
+                            toAdd.ForEach(it =>
+                            {
+                                this.Files.Add(new LocalFile(it));
+                                batch.Add(new LocalFileCreatedEvent(it, this.FolderName));
+                            });
+                        }
+                        else
+                        {
+                            this.Files.Add(new LocalFile(new LocalPath(args.FullPath, this.Root)));
+                            var @event1 = new LocalFileCreatedEvent(new LocalPath(args.FullPath, this.Root), this.FolderName);
+                            batch.Add(@event1);
+                            Console.WriteLine($"Created: {args.FullPath}");
+
+                            var toDelete = this.Files.FirstOrDefault(it => string.Equals(it.LocalPath.Value, args.FullPath, StringComparison.InvariantCultureIgnoreCase));
+                            this.Files.Remove(toDelete);
+                            var @event2 = new LocalFileDeletedEvent(new LocalPath(args.OldFullPath, this.Root), this.FolderName);
+                            batch.Add(@event2);
+                            Console.WriteLine($"Deleted: {args.OldFullPath}");
+                        }
+                        break;
+                    }
+
                     case WatcherChangeTypes.Created:
                         {
                             if (File.Exists(args.FullPath))
@@ -51,10 +108,22 @@ namespace Virgil.FolderLink.Local
                     case WatcherChangeTypes.Deleted:
                         {
                             var toDelete = this.Files.FirstOrDefault(it => string.Equals(it.LocalPath.Value, args.FullPath, StringComparison.InvariantCultureIgnoreCase));
-                            this.Files.Remove(toDelete);
-                            var @event = new LocalFileDeletedEvent(new LocalPath(args.FullPath, this.Root), this.FolderName);
-                            batch.Add(@event);
-                            Console.WriteLine($"Deleted: {args.FullPath}");
+
+                            if (toDelete != null)
+                            {
+                                this.Files.Remove(toDelete);
+                                var @event = new LocalFileDeletedEvent(new LocalPath(args.FullPath, this.Root),this.FolderName);
+                                batch.Add(@event);
+                                Console.WriteLine($"Deleted: {args.FullPath}");
+                            }
+
+                            var subfiles = this.Files.Where(it => it.LocalPath.Value.StartsWith(args.FullPath)).ToList();
+                            subfiles.ForEach(it => this.Files.Remove(it));
+                            foreach (var localFile in subfiles)
+                            {
+                                batch.Add(new LocalFileDeletedEvent(localFile.LocalPath, this.FolderName));
+                            }
+
                             break;
                         }
                     case WatcherChangeTypes.Changed:

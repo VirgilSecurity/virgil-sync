@@ -9,6 +9,7 @@ namespace Virgil.FolderLink.Local
     
     using Core;
     using Dropbox;
+    using SDK.Http;
 
     public class LocalFolderWatcher : IDisposable
     {
@@ -24,25 +25,28 @@ namespace Virgil.FolderLink.Local
             {
                 IncludeSubdirectories = true,
                 InternalBufferSize = 1024 * 64,
-                NotifyFilter =
-                    NotifyFilters.CreationTime |
-                    NotifyFilters.DirectoryName |
-                    NotifyFilters.FileName |
-                    NotifyFilters.LastWrite |
-                    NotifyFilters.Size |
-                    NotifyFilters.Attributes
+                NotifyFilter = NotifyFilters.FileName |
+                                NotifyFilters.DirectoryName |
+                                NotifyFilters.Attributes |
+                                NotifyFilters.Size |
+                                NotifyFilters.LastWrite |
+                                NotifyFilters.LastAccess |
+                                NotifyFilters.CreationTime
+
+
+
             };
         }
 
         public struct TimestampedEvent
         {
-            public FileSystemEventArgs Args { get;  }
+            public RawFileSystemEvent Event { get; }
             public DateTime DateTime { get; }
             public LocalPath LocalPath { get; set; }
 
             public TimestampedEvent(FileSystemEventArgs args, LocalFolderRoot root)
             {
-                this.Args = args;
+                this.Event = new RawFileSystemEvent(args);
                 this.DateTime = DateTime.UtcNow;
                 this.LocalPath = new LocalPath(args.FullPath, root);
             }
@@ -60,24 +64,37 @@ namespace Virgil.FolderLink.Local
                 .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
 
             var renames = Observable.FromEventPattern<RenamedEventArgs>(this.fileSystemWatcher, "Renamed")
-                .Select(it => new[]
-                {
-                    new FileSystemEventArgs(
-                        WatcherChangeTypes.Deleted,
-                        Path.GetDirectoryName(it.EventArgs.OldFullPath),
-                        Path.GetFileName(it.EventArgs.OldFullPath)),
+                .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
 
-                    new FileSystemEventArgs(
-                        WatcherChangeTypes.Created,
-                        Path.GetDirectoryName(it.EventArgs.FullPath),
-                        Path.GetFileName(it.EventArgs.FullPath))
-                })
-                .SelectMany(it => it)
-                .Select(it => new TimestampedEvent(it, this.folder.Root));
+                //{
+                //    it => 
+
+                //    var fullPath = it.EventArgs.FullPath;
+                //    var oldFullPath = it.EventArgs.OldFullPath;
+
+                //    var isDirectory = IsDirectory(fullPath);
+
+
+                //    return new[]
+                //    {
+                //        new FileSystemEventArgs(
+                //            WatcherChangeTypes.Deleted,
+                //            Path.GetDirectoryName(oldFullPath),
+                //            Path.GetFileName(oldFullPath)),
+                //        new FileSystemEventArgs(
+                //            WatcherChangeTypes.Created,
+                //            Path.GetDirectoryName(fullPath),
+                //            Path.GetFileName(fullPath)),
+                //        it.EventArgs
+                //    };
+                    
+                //})
+                //.SelectMany(it => it)
+                //.Select(it => new TimestampedEvent(it, this.folder.Root));
 
 
             var poll = created.Merge(changed).Merge(renames).Merge(deleted)
-                .Where(it => FileNameRules.FileNameValid(it.Args.FullPath))
+                .Where(it => FileNameRules.FileNameValid(it.Event.FullPath))
                 .Collect(
                     () => new List<TimestampedEvent>(),
                     (list, x) =>
@@ -92,7 +109,7 @@ namespace Virgil.FolderLink.Local
 
             this.fileSystemWatcher.EnableRaisingEvents = true;
 
-            Task.Run(() => Poll(poll));
+            Task.Run(() => this.Poll(poll));
         }
 
         private async Task Poll(IEnumerable<List<TimestampedEvent>> observable)
@@ -107,7 +124,7 @@ namespace Virgil.FolderLink.Local
                         var aggregated = AggregateEvents(enumerator.Current);
                         if (aggregated.Any())
                         {
-                            await Handle(aggregated);
+                            await this.Handle(aggregated);
                         }
                         else
                         {
@@ -130,16 +147,16 @@ namespace Virgil.FolderLink.Local
             this.folder.Init(paths);
         }
 
-        public static List<FileSystemEventArgs> AggregateEvents(IList<TimestampedEvent> eventPatterns)
+        public static List<RawFileSystemEvent> AggregateEvents(IList<TimestampedEvent> eventPatterns)
         {
-            var processedFiles = OperationExecutionContext.Instance.PathsBeingProcessed();
+            //var processedFiles = OperationExecutionContext.Instance.PathsBeingProcessed();
 
             var result = eventPatterns
-                .Where(it => !processedFiles.Contains(it.LocalPath))
-                .GroupBy(x => x.Args.FullPath.ToLowerInvariant())
+                //.Where(it => !processedFiles.Contains(it.LocalPath))
+                .GroupBy(x => x.Event.FullPath.ToLowerInvariant())
                 .Select(x =>
                 {
-                    var events = x.OrderBy(it => it.DateTime).Select(it => it.Args).ToArray();
+                    var events = x.OrderBy(it => it.DateTime).Select(it => it.Event).ToArray();
 
                     if (events.Length == 1)
                         return events[0];
@@ -166,7 +183,7 @@ namespace Virgil.FolderLink.Local
             return result;
         }
 
-        private async Task Handle(List<FileSystemEventArgs> input)
+        private async Task Handle(List<RawFileSystemEvent> input)
         {
             try
             {

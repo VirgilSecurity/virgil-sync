@@ -157,8 +157,8 @@ namespace Virgil.FolderLink.Dropbox
                                 await dest.FlushAsync(token);
                             }
 
-                            File.Delete(localPath.Value);
-                            File.Move(tempLocalName, localPath.Value);
+                            //File.Delete(localPath.Value);
+                            File.Copy(tempLocalName, localPath.Value, true);
                             File.SetLastWriteTimeUtc(localPath.Value, download.Response.ClientModified);
                         }
                         finally
