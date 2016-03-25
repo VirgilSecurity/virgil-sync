@@ -62,7 +62,7 @@ namespace Virgil.Disk.ViewModels
             {
                 message = "File is encrypted with another account";
             }
-            else if (error.Message.StartsWith("Encrypted file does not contain embeded content info"))
+            else if (error.Message.StartsWith("Encrypted file does not contain embedded content info"))
             {
                 message = "File is not encrypted or malformed";
             }
