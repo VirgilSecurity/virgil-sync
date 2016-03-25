@@ -42,23 +42,36 @@ namespace Virgil.Disk.ViewModels
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                if (error.Message.StartsWith("path_lookup/not_found/"))
-                {
-                    this.ErrorMessage = "File is not found in Dropbox";
-                }
-                else if (error.Message.StartsWith("VirgilCipherBase: Recipient with given id") && error.Message.EndsWith("is not found."))
-                {
-                    this.ErrorMessage = "File is encrypted with another account";
-                }
-                else if (error.Message.StartsWith("Encrypted file does not contain embeded content info"))
-                {
-                    this.ErrorMessage = "File is not encrypted or malformed";
-                }
-                else
-                {
-                    this.ErrorMessage = error.Message;
-                }
+                this.ErrorMessage = GetErrorMessage(error);
             });
+        }
+
+        private static string GetErrorMessage(Exception error)
+        {
+            string message;
+
+            if (error.Message.StartsWith("path_lookup/not_found/"))
+            {
+                message = "File is not found in Dropbox";
+            }
+            else if (error.Message.StartsWith("path/insufficient_space/"))
+            {
+                message = "Not enough space in Dropbox account";
+            }
+            else if (error.Message.StartsWith("VirgilCipherBase: Recipient with given id") && error.Message.EndsWith("is not found."))
+            {
+                message = "File is encrypted with another account";
+            }
+            else if (error.Message.StartsWith("Encrypted file does not contain embeded content info"))
+            {
+                message = "File is not encrypted or malformed";
+            }
+            else
+            {
+                message = error.Message;
+            }
+
+            return message;
         }
     }
 }
