@@ -107,12 +107,14 @@ namespace Virgil.Disk.Model
 
                 this.links.Add(folderLink);
             }
-                
-            this.dropBoxLink = new DropBoxLink(
-                folderSettings.DropboxCredentials.AccessToken,
-                folderSettings.SourceFolder.FolderPath,
-                this.applicationState.CurrentCard,
+
+            var dropBoxLinkParams = new DropBoxLinkParams(
+                folderSettings.DropboxCredentials.AccessToken, 
+                folderSettings.SourceFolder.FolderPath, 
+                this.applicationState.CurrentCard, 
                 this.applicationState.PrivateKeyPassword);
+
+            this.dropBoxLink = new DropBoxLink(dropBoxLinkParams, this.eventAggregator);
 
             foreach (var folderLink in this.links)
             {

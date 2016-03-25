@@ -208,6 +208,7 @@
     <Compile Include="ViewModels\FolderSettingsViewModel.cs" />
     <Compile Include="Model\FolderSettingsStorage.cs" />
     <Compile Include="View\Converters\BooleanOrConverter.cs" />
+    <Compile Include="View\Converters\BoolToDropboxStatusColorConverter.cs" />
     <Compile Include="View\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="View\Converters\EmptyStringToVisibilityConverter.cs" />
     <Compile Include="View\Converters\HeightToNegativeMargin.cs" />
@@ -384,8 +385,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
+      <Project>{a32d8707-67f6-447c-9329-73ddb97fd70f}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}</Project>
+      <Project>{7c04c9ea-37aa-4f31-92b2-fadd0a205ab2}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Virgil.FolderLink\Virgil.FolderLink.csproj">

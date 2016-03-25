@@ -4,6 +4,6 @@ namespace Virgil.FolderLink.Core.Operations
 
     public interface IOperationObserver : IProgress<double>
     {
-        void NotifyError(string error);
+        void NotifyError(Exception error);
     }
 }

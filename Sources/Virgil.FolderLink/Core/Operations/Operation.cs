@@ -33,7 +33,7 @@ namespace Virgil.FolderLink.Core.Operations
             catch (Exception e)
             {
                 this.CompletionSource.TrySetException(e);
-                this.observer?.NotifyError(e.Message);
+                this.observer?.NotifyError(e);
                 throw;
             }
             finally

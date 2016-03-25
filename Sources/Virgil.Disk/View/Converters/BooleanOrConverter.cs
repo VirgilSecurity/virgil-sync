@@ -32,6 +32,4 @@ namespace Virgil.Disk.View.Converters
             throw new NotImplementedException();
         }
     }
-
-    
 }

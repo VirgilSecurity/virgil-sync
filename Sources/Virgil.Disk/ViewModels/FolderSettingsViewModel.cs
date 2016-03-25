@@ -8,20 +8,22 @@ namespace Virgil.Disk.ViewModels
     using System.Threading.Tasks;
     using System.Windows.Input;
     using FolderLink.Dropbox;
+    using FolderLink.Dropbox.Messages;
     using Infrastructure;
     using Infrastructure.Messaging;
     using Infrastructure.Mvvm;
     using Messages;
     using Model;
 
-    public class FolderSettingsViewModel : ViewModel, IHandle<DropboxSignInSuccessfull>, IHandle<DropBoxLinkChanged>
+    public class FolderSettingsViewModel : ViewModel, 
+        IHandle<DropBoxBatchCompleted>,
+        IHandle<DropboxSignInSuccessfull>, 
+        IHandle<DropBoxLinkChanged>
     {
         private readonly FolderLinkFacade folderLinkFacade;
         private readonly FolderSettingsStorage folderSettingsStorage;
         private readonly IEventAggregator eventAggregator;
         private FolderViewModel newTargetFolder;
-
-        
 
         private FolderViewModel sourceFolder;
         private ObservableCollection<FolderViewModel> targetFolders;
@@ -31,6 +33,7 @@ namespace Virgil.Disk.ViewModels
         private long totalSpace;
         private long usedSpace;
         private string usedSpaceString;
+        private bool lowDropBoxSpace;
 
         public FolderSettingsViewModel(FolderLinkFacade folderLinkFacade, 
             FolderSettingsStorage folderSettingsStorage, IEventAggregator eventAggregator)
@@ -55,8 +58,6 @@ namespace Virgil.Disk.ViewModels
             });
 
             eventAggregator.Subscribe(this);
-
-            
         }
 
         public string DropboxUserName
@@ -90,7 +91,6 @@ namespace Virgil.Disk.ViewModels
                 if (value == this.usedSpace) return;
                 this.usedSpace = value;
                 this.RaisePropertyChanged();
-                
             }
         }
 
@@ -139,6 +139,17 @@ namespace Virgil.Disk.ViewModels
                 this.RaisePropertyChanged();
                 this.ConnectDropboxCommand.TriggerCanExecute();
                 this.DisconnectDropboxCommand.TriggerCanExecute();
+            }
+        }
+
+        public bool LowDropBoxSpace
+        {
+            get { return this.lowDropBoxSpace; }
+            set
+            {
+                if (value == this.lowDropBoxSpace) return;
+                this.lowDropBoxSpace = value;
+                this.RaisePropertyChanged();
             }
         }
 
@@ -246,6 +257,9 @@ namespace Virgil.Disk.ViewModels
                 this.TotalSpace = (long)(spaceAllocation.AsIndividual?.Value.Allocated ?? spaceAllocation.AsTeam?.Value.Allocated ?? 0);
                 this.UsedSpace = (long)spaceUsageTask.Result.Used;
                 this.UpdateUsedSapceString();
+                
+                const double lowSpacePercent = 0.95;
+                this.LowDropBoxSpace = 1.0 * this.UsedSpace / (this.TotalSpace != 0 ? this.TotalSpace : 1) >= lowSpacePercent;
             }
             catch (Exception e)
             {
@@ -345,6 +359,11 @@ namespace Virgil.Disk.ViewModels
         }
 
         public void Handle(DropBoxLinkChanged message)
+        {
+            this.UpdateViewState();
+        }
+
+        public void Handle(DropBoxBatchCompleted message)
         {
             this.UpdateViewState();
         }

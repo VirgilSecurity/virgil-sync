@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{
 		..\Setup\Virgil Sync.aip = ..\Setup\Virgil Sync.aip
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Messaging", "Infrastructure.Messaging\Infrastructure.Messaging.csproj", "{A32D8707-67F6-447C-9329-73DDB97FD70F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A32D8707-67F6-447C-9329-73DDB97FD70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32D8707-67F6-447C-9329-73DDB97FD70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32D8707-67F6-447C-9329-73DDB97FD70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32D8707-67F6-447C-9329-73DDB97FD70F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E} = {460D7389-57A4-4600-948D-55EF933868E4}
 		{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2} = {460D7389-57A4-4600-948D-55EF933868E4}
 		{6B11B3B0-5E37-4677-A54D-99BA370DB6BA} = {460D7389-57A4-4600-948D-55EF933868E4}
+		{A32D8707-67F6-447C-9329-73DDB97FD70F} = {460D7389-57A4-4600-948D-55EF933868E4}
 	EndGlobalSection
 EndGlobal

@@ -109,9 +109,11 @@
     <Compile Include="Core\ServerPath.cs" />
     <Compile Include="Core\OperationsBatch.cs" />
     <Compile Include="Core\Time.cs" />
+    <Compile Include="Dropbox\Handler\DropBoxLinkParams.cs" />
     <Compile Include="Dropbox\Handler\FileDiff.cs" />
     <Compile Include="Dropbox\Handler\FileMapping.cs" />
     <Compile Include="Dropbox\Handler\OperationsFactory.cs" />
+    <Compile Include="Dropbox\Messages\DropBoxBatchCompleted.cs" />
     <Compile Include="Dropbox\OperationExecutionContext.cs" />
     <Compile Include="Dropbox\Operations\DeleteFileOnServerOperation.cs" />
     <Compile Include="Dropbox\Operations\DownloadFileFromServer.cs" />
@@ -155,6 +157,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
+      <Project>{a32d8707-67f6-447c-9329-73ddb97fd70f}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

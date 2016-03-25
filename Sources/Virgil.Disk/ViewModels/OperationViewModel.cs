@@ -1,5 +1,6 @@
 namespace Virgil.Disk.ViewModels
 {
+    using System;
     using FolderLink.Core.Operations;
 
     public class OperationViewModel : ViewModel, IOperationObserver
@@ -37,11 +38,26 @@ namespace Virgil.Disk.ViewModels
             });
         }
 
-        public void NotifyError(string error)
+        public void NotifyError(Exception error)
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                this.ErrorMessage = error;
+                if (error.Message.StartsWith("path_lookup/not_found/"))
+                {
+                    this.ErrorMessage = "File is not found in Dropbox";
+                }
+                else if (error.Message.StartsWith("VirgilCipherBase: Recipient with given id") && error.Message.EndsWith("is not found."))
+                {
+                    this.ErrorMessage = "File is encrypted with another account";
+                }
+                else if (error.Message.StartsWith("Encrypted file does not contain embeded content info"))
+                {
+                    this.ErrorMessage = "File is not encrypted or malformed";
+                }
+                else
+                {
+                    this.ErrorMessage = error.Message;
+                }
             });
         }
     }

@@ -25,6 +25,8 @@
             {
                 this.ClearErrors();
 
+                this.Code = this.Code?.Trim().ToUpperInvariant() ?? "";
+
                 if (string.IsNullOrWhiteSpace(this.Code) ||
                     this.Code.Length != 6 || !this.regex.IsMatch(this.Code))
                 {
@@ -65,6 +67,8 @@
             {
                 this.operation.NavigateBack();
             });
+
+            this.Code = "";
         }
 
         public override void CleanupState()

@@ -9,13 +9,15 @@ namespace Virgil.FolderLink.Dropbox.Handler
     using Core;
     using Core.Operations;
     using Core.Events;
+    using Infrastructure.Messaging;
     using Local;
+    using Messages;
     using Operations;
-    using SDK.Domain;
     using Server;
 
     public class DropBoxLink : IServerEventListener, ILocalEventListener, IDisposable
     {
+        private readonly IEventAggregator aggregator;
         private readonly ICloudStorage cloudStorage;
         private readonly LocalFolder localFolder;
         private readonly ServerFolder serverFolder;
@@ -28,13 +30,14 @@ namespace Virgil.FolderLink.Dropbox.Handler
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
 
         public ObservableCollection<Operation> OperationsView = new ObservableCollection<Operation>();
-
-        public DropBoxLink(string accessToken, string localFolderPath, PersonalCard card, string privateKeyPassword)
+        
+        public DropBoxLink(DropBoxLinkParams dropBoxLinkParams, IEventAggregator aggregator)
         {
-            var client = new DropboxClientFactory(accessToken).GetInstance();
-            var localFolderRoot = new LocalFolderRoot(localFolderPath);
+            this.aggregator = aggregator;
+            var client = new DropboxClientFactory(dropBoxLinkParams.AccessToken).GetInstance();
+            var localFolderRoot = new LocalFolderRoot(dropBoxLinkParams.LocalFolderPath);
 
-            this.cloudStorage = new DropBoxCloudStorage(client, card, privateKeyPassword);
+            this.cloudStorage = new DropBoxCloudStorage(client, dropBoxLinkParams.Card, dropBoxLinkParams.PrivateKeyPassword);
             this.localFolder = new LocalFolder(localFolderRoot, "Source");
             this.localFolderWatcher = new LocalFolderWatcher(this.localFolder);
             this.serverFolder = new ServerFolder();
@@ -110,6 +113,10 @@ namespace Virgil.FolderLink.Dropbox.Handler
             }
 
             await Task.WhenAll(commands.Select(it => it.CompletionSource.Task).ToArray());
+
+            // notify batch completed
+
+            this.aggregator.Publish(new DropBoxBatchCompleted());
         }
 
         public async Task Handle(LocalEventsBatch batch)
@@ -122,6 +129,10 @@ namespace Virgil.FolderLink.Dropbox.Handler
             }
 
             await Task.WhenAll(commands.Select(it => it.CompletionSource.Task).ToArray());
+
+            // notify batch completed
+
+            this.aggregator.Publish(new DropBoxBatchCompleted());
         }
 
         private bool disposed = false;

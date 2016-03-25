@@ -27,10 +27,10 @@
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:sync.bmp" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Virgil Security, Inc"/>
-    <ROW Property="ProductCode" Value="1033:{7CE09BA6-EF85-405A-BB92-6AF3E3B081E2} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{41350972-3A0A-4C52-AB41-E8146E52C24C} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Virgil Sync"/>
-    <ROW Property="ProductVersion" Value="1.1.41.0" Type="32" TargetFile="Virgil.Sync.exe"/>
+    <ROW Property="ProductVersion" Value="1.1.45.0" Type="32" TargetFile="Virgil.Sync.exe"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{D4212066-4490-4D95-9D17-F45146DFC678}"/>
@@ -72,6 +72,7 @@
     <ROW Component="Dropbox.Api.dll" ComponentId="{71C2384C-631B-4A90-9561-B721CF0CC36E}" Directory_="APPDIR" Attributes="0" KeyPath="Dropbox.Api.dll"/>
     <ROW Component="Dropbox.Api.xml" ComponentId="{EBCA59E1-F838-453C-9A09-54D89984F5D8}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.Sync.exe.config" Type="0"/>
     <ROW Component="Hardcodet.Wpf.TaskbarNotification.dll" ComponentId="{A20CA86D-4241-4D96-AE0D-8FE362328D8F}" Directory_="APPDIR" Attributes="0" KeyPath="Hardcodet.Wpf.TaskbarNotification.dll"/>
+    <ROW Component="Infrastructure.Messaging.dll" ComponentId="{60A9926D-9DA4-453A-B8EF-4F6A9B961C45}" Directory_="APPDIR" Attributes="0" KeyPath="Infrastructure.Messaging.dll"/>
     <ROW Component="Infrastructure.dll" ComponentId="{9CC0AFF6-BBD7-4392-9EBA-1C0C11D783A0}" Directory_="APPDIR" Attributes="0" KeyPath="Infrastructure.dll"/>
     <ROW Component="Interop.IWshRuntimeLibrary.dll" ComponentId="{7D9EC6AC-54A8-4F1D-848D-CE6B950AF957}" Directory_="APPDIR" Attributes="0" KeyPath="Interop.IWshRuntimeLibrary.dll"/>
     <ROW Component="Microsoft.Threading.Tasks.Extensions.Des" ComponentId="{41158019-756F-443D-B986-BE6EE3AEBB64}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Threading.Tasks.Extensions.Desktop.dll"/>
@@ -112,12 +113,13 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="B5158184F44A6981C5919229A6AEBE" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="3" Level="1" Attributes="0" Components="AI_ExePath B5158184F44A6981C5919229A6AEBE"/>
     <ROW Feature="D7E473DF14F3E98497864847195F2" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="5" Level="1" Attributes="0" Components="AI_ExePath D7E473DF14F3E98497864847195F2"/>
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer AI_ExePath Dropbox.Api.dll Dropbox.Api.xml Hardcodet.Wpf.TaskbarNotification.dll Infrastructure.dll Interop.IWshRuntimeLibrary.dll Microsoft.Threading.Tasks.Extensions.Des Microsoft.Threading.Tasks.Extensions.dll Microsoft.Threading.Tasks.dll Newtonsoft.Json.dll Ninject.Extensions.Conventions.dll Ninject.dll Ookii.Dialogs.Wpf.dll ProductInformation SHORTCUTDIR System.Net.Http.Extensions.dll System.Net.Http.Primitives.dll System.Reactive.Core.dll System.Reactive.Interfaces.dll System.Reactive.Linq.dll System.Windows.Interactivity.dll System.Windows.Interactivity.resources.d System.Windows.Interactivity.resources_1 System.Windows.Interactivity.resources_2 System.Windows.Interactivity.resources_3 System.Windows.Interactivity.resources_4 System.Windows.Interactivity.resources_5 System.Windows.Interactivity.resources_6 System.Windows.Interactivity.resources_7 System.Windows.Interactivity.resources_8 System.Windows.Interactivity.resources_9 Virgil.Crypto.dll Virgil.FolderLink.dll Virgil.LocalStorage.dll Virgil.SDK.Domain.dll Virgil.SDK.dll Virgil.Sync.exe WpfAnimatedGif.dll virgil_crypto_net.dll virgil_crypto_net.dll_1"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer AI_ExePath Dropbox.Api.dll Dropbox.Api.xml Hardcodet.Wpf.TaskbarNotification.dll Infrastructure.Messaging.dll Infrastructure.dll Interop.IWshRuntimeLibrary.dll Microsoft.Threading.Tasks.Extensions.Des Microsoft.Threading.Tasks.Extensions.dll Microsoft.Threading.Tasks.dll Newtonsoft.Json.dll Ninject.Extensions.Conventions.dll Ninject.dll Ookii.Dialogs.Wpf.dll ProductInformation SHORTCUTDIR System.Net.Http.Extensions.dll System.Net.Http.Primitives.dll System.Reactive.Core.dll System.Reactive.Interfaces.dll System.Reactive.Linq.dll System.Windows.Interactivity.dll System.Windows.Interactivity.resources.d System.Windows.Interactivity.resources_1 System.Windows.Interactivity.resources_2 System.Windows.Interactivity.resources_3 System.Windows.Interactivity.resources_4 System.Windows.Interactivity.resources_5 System.Windows.Interactivity.resources_6 System.Windows.Interactivity.resources_7 System.Windows.Interactivity.resources_8 System.Windows.Interactivity.resources_9 Virgil.Crypto.dll Virgil.FolderLink.dll Virgil.LocalStorage.dll Virgil.SDK.Domain.dll Virgil.SDK.dll Virgil.Sync.exe WpfAnimatedGif.dll virgil_crypto_net.dll virgil_crypto_net.dll_1"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="Dropbox.Api.dll" Component_="Dropbox.Api.dll" FileName="DROPBO~1.DLL|Dropbox.Api.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Dropbox.Api.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_1"/>
     <ROW File="Hardcodet.Wpf.TaskbarNotification.dll" Component_="Hardcodet.Wpf.TaskbarNotification.dll" FileName="HARDCO~1.DLL|Hardcodet.Wpf.TaskbarNotification.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll" SelfReg="false" NextFile="Infrastructure.dll"/>
+    <ROW File="Infrastructure.Messaging.dll" Component_="Infrastructure.Messaging.dll" FileName="INFRAS~2.DLL|Infrastructure.Messaging.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Infrastructure.Messaging.dll" SelfReg="false"/>
     <ROW File="Infrastructure.dll" Component_="Infrastructure.dll" FileName="INFRAS~1.DLL|Infrastructure.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Infrastructure.dll" SelfReg="false" NextFile="Interop.IWshRuntimeLibrary.dll"/>
     <ROW File="Interop.IWshRuntimeLibrary.dll" Component_="Interop.IWshRuntimeLibrary.dll" FileName="INTERO~1.DLL|Interop.IWshRuntimeLibrary.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Interop.IWshRuntimeLibrary.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_4"/>
     <ROW File="Microsoft.Threading.Tasks.Extensions.Desktop.dll" Component_="Microsoft.Threading.Tasks.Extensions.Des" FileName="MICROS~2.DLL|Microsoft.Threading.Tasks.Extensions.Desktop.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.Extensions.dll"/>
@@ -142,7 +144,7 @@
     <ROW File="System.Windows.Interactivity.resources.dll_6" Component_="System.Windows.Interactivity.resources_6" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ko\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.dll"/>
     <ROW File="System.Windows.Interactivity.resources.dll_7" Component_="System.Windows.Interactivity.resources_7" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ru\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Net.Http.Extensions.dll"/>
     <ROW File="System.Windows.Interactivity.resources.dll_8" Component_="System.Windows.Interactivity.resources_8" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hans\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_9"/>
-    <ROW File="System.Windows.Interactivity.resources.dll_9" Component_="System.Windows.Interactivity.resources_9" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hant\System.Windows.Interactivity.resources.dll" SelfReg="false"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_9" Component_="System.Windows.Interactivity.resources_9" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hant\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Infrastructure.Messaging.dll"/>
     <ROW File="Virgil.Crypto.dll" Component_="Virgil.Crypto.dll" FileName="VIRGIL~1.DLL|Virgil.Crypto.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Crypto.dll" SelfReg="false" NextFile="Virgil.FolderLink.dll"/>
     <ROW File="Virgil.FolderLink.dll" Component_="Virgil.FolderLink.dll" FileName="VIRGIL~2.DLL|Virgil.FolderLink.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.FolderLink.dll" SelfReg="false" NextFile="Virgil.LocalStorage.dll"/>
     <ROW File="Virgil.LocalStorage.dll" Component_="Virgil.LocalStorage.dll" FileName="VIRGIL~3.DLL|Virgil.LocalStorage.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.LocalStorage.dll" SelfReg="false" NextFile="Virgil.SDK.dll"/>
@@ -338,7 +340,7 @@
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="54"/>
     <ROW Action="AI_DetectSoftware" Sequence="103"/>
     <ROW Action="AI_AppSearchEx" Sequence="102"/>
     <ROW Action="AI_DELETE_SHORTCUTS" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="1401"/>
@@ -358,7 +360,7 @@
     <ROW Action="AI_DATA_SETTER_1" Sequence="3997"/>
     <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
     <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
-    <ROW Action="StopProcess" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) )" Sequence="52"/>
+    <ROW Action="StopProcess" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) )" Sequence="53"/>
     <ROW Action="AI_DATA_SETTER_2" Condition="( Installed AND ( REMOVE = &quot;ALL&quot; OR AI_INSTALL_MODE = &quot;Remove&quot; ) )" Sequence="51"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
@@ -420,7 +422,7 @@
     <ATTRIBUTE name="PrereqsOrder" value="DC417C6DDE44CDB0139EE138C17B2C B5158184F44A6981C5919229A6AEBE D7E473DF14F3E98497864847195F2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
-    <ROW SearchKey="B5158184F44A6981C5919229A6AEBEVersion" Prereq="B5158184F44A6981C5919229A6AEBE" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_B5158184F44A6981C5919229A6AEBE" Platform="1"/>
+    <ROW SearchKey="B5158184F44A6981C5919229A6AEBEVersion" Prereq="B5158184F44A6981C5919229A6AEBE" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_B5158184F44A6981C5919229A6AEBE"/>
     <ROW SearchKey="D7E473DF14F3E98497864847195F2Version" Prereq="D7E473DF14F3E98497864847195F2" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.0.23026" Order="1" Property="PreReqSearch_D7E473DF14F3E98497864847195F2"/>
     <ROW SearchKey="DC417C6DDE44CDB0139EE138C17B2CRelease" Prereq="DC417C6DDE44CDB0139EE138C17B2C" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G393296" Order="1" Property="PreReqSearch_DC417C6DDE44CDB0139EE138C17B2C"/>
   </COMPONENT>

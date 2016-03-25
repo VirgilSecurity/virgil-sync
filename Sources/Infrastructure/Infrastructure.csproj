@@ -55,10 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ValidationErrors.cs" />
-    <Compile Include="Messaging\EventAggregator.cs" />
-    <Compile Include="Messaging\ExtensionMethods.cs" />
-    <Compile Include="Messaging\NotificationMessage.cs" />
-    <Compile Include="Messaging\OperationSuccessfullMessage.cs" />
     <Compile Include="Mvvm\Common\IViewModel.cs" />
     <Compile Include="Mvvm\RelayCommand.cs" />
     <Compile Include="Mvvm\Common\ViewModelBase.cs" />
