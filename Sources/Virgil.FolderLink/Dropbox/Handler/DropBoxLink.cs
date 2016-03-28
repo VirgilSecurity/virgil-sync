@@ -19,7 +19,7 @@ namespace Virgil.FolderLink.Dropbox.Handler
     {
         private readonly IEventAggregator aggregator;
         private readonly ICloudStorage cloudStorage;
-        private readonly LocalFolder localFolder;
+        private readonly LocalRootFolder localRootFolder;
         private readonly ServerFolder serverFolder;
 
         private readonly OperationsFactory operationsFactory;
@@ -35,17 +35,17 @@ namespace Virgil.FolderLink.Dropbox.Handler
         {
             this.aggregator = aggregator;
             var client = new DropboxClientFactory(dropBoxLinkParams.AccessToken).GetInstance();
-            var localFolderRoot = new LocalFolderRoot(dropBoxLinkParams.LocalFolderPath);
+            var localFolderRoot = new LocalRoot(dropBoxLinkParams.LocalFolderPath);
 
             this.cloudStorage = new DropBoxCloudStorage(client, dropBoxLinkParams.Card, dropBoxLinkParams.PrivateKeyPassword);
-            this.localFolder = new LocalFolder(localFolderRoot, "Source");
-            this.localFolderWatcher = new LocalFolderWatcher(this.localFolder);
+            this.localRootFolder = new LocalRootFolder(localFolderRoot, "Source");
+            this.localFolderWatcher = new LocalFolderWatcher(this.localRootFolder);
             this.serverFolder = new ServerFolder();
             this.serverFolderWatcher = new DropboxFolderWatcher(client, this.serverFolder);
-            this.operationsFactory = new OperationsFactory(this.cloudStorage, this.localFolder);
+            this.operationsFactory = new OperationsFactory(this.cloudStorage, this.localRootFolder);
 
             this.serverFolder.Subscribe(this);
-            this.localFolder.Subscribe(this);
+            this.localRootFolder.Subscribe(this);
         }
 
         public async Task Launch()
@@ -53,7 +53,7 @@ namespace Virgil.FolderLink.Dropbox.Handler
             this.localFolderWatcher.Start();
             await this.serverFolderWatcher.Start();
 
-            var localFiles = this.localFolder.Files.ToList();
+            var localFiles = this.localRootFolder.Files.ToList();
             var serverFiles = this.serverFolder.Files.ToList();
 
             var diffResult = FileDiff.Calculate(localFiles, serverFiles);
@@ -65,7 +65,7 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
             foreach (var serverFile in diffResult.Download)
             {
-                this.EnqueOperation(new DownloadFileFromServer(new DropBoxEvent(serverFile.Path, ""), this.cloudStorage, this.localFolder.Root));
+                this.EnqueOperation(new DownloadFileFromServer(new DropBoxEvent(serverFile.Path, ""), this.cloudStorage, this.localRootFolder.Root));
             }
 
             this.IsStopped = false;

@@ -15,8 +15,8 @@ namespace Virgil.FolderLink.Local
     {
         private readonly PersonalCard personalCard;
         private readonly string privateKeyPassword;
-        private readonly LocalFolder encryptedFolder;
-        private readonly LocalFolder decryptedFolder;
+        private readonly LocalRootFolder encryptedRootFolder;
+        private readonly LocalRootFolder decryptedRootFolder;
         private readonly LocalFolderWatcher encryptedFolderWatcher;
         private readonly LocalFolderWatcher decryptedFolderWatcher;
 
@@ -28,22 +28,22 @@ namespace Virgil.FolderLink.Local
         {
             this.personalCard = personalCard;
             this.privateKeyPassword = privateKeyPassword;
-            this.encryptedFolder = new LocalFolder(new LocalFolderRoot(encryptedFolder), "Encrypted");
-            this.decryptedFolder = new LocalFolder(new LocalFolderRoot(decryptedFolder), "Decrypted");
+            this.encryptedRootFolder = new LocalRootFolder(new LocalRoot(encryptedFolder), "Encrypted");
+            this.decryptedRootFolder = new LocalRootFolder(new LocalRoot(decryptedFolder), "Decrypted");
 
-            this.encryptedFolder.Subscribe(this);
-            this.decryptedFolder.Subscribe(this);
+            this.encryptedRootFolder.Subscribe(this);
+            this.decryptedRootFolder.Subscribe(this);
 
-            this.encryptedFolderWatcher = new LocalFolderWatcher(this.encryptedFolder);
-            this.decryptedFolderWatcher = new LocalFolderWatcher(this.decryptedFolder);
+            this.encryptedFolderWatcher = new LocalFolderWatcher(this.encryptedRootFolder);
+            this.decryptedFolderWatcher = new LocalFolderWatcher(this.decryptedRootFolder);
 
             this.cancellationTokenSource = new CancellationTokenSource();
         }
 
         public void Launch()
         {
-            var encrypted = this.encryptedFolder.Files.ToList();
-            var decrypted = this.decryptedFolder.Files.ToList();
+            var encrypted = this.encryptedRootFolder.Files.ToList();
+            var decrypted = this.decryptedRootFolder.Files.ToList();
 
             var comparer = new ByPathComparer();
             var common = encrypted.Intersect(decrypted, comparer).ToList();
@@ -69,7 +69,7 @@ namespace Virgil.FolderLink.Local
             {
                 this.operations.Enqueue(new EncryptFileOperation(
                     localFile.LocalPath,
-                    localFile.LocalPath.ReplaceRoot(this.encryptedFolder.Root),
+                    localFile.LocalPath.ReplaceRoot(this.encryptedRootFolder.Root),
                     this.personalCard));
             }
 
@@ -79,7 +79,7 @@ namespace Virgil.FolderLink.Local
             {
                 this.operations.Enqueue(new DecryptFileOperation(
                     localFile.LocalPath,
-                    localFile.LocalPath.ReplaceRoot(this.decryptedFolder.Root),
+                    localFile.LocalPath.ReplaceRoot(this.decryptedRootFolder.Root),
                     this.personalCard, this.privateKeyPassword));
             }
             
@@ -91,13 +91,13 @@ namespace Virgil.FolderLink.Local
 
         public void On(LocalFileDeletedEvent localEvent)
         {
-            if (localEvent.Sender == this.encryptedFolder.FolderName)
+            if (localEvent.Sender == this.encryptedRootFolder.FolderName)
             {
-                this.operations.Enqueue(new DeleteFileOperation(localEvent.Path.ReplaceRoot(this.decryptedFolder.Root)));
+                this.operations.Enqueue(new DeleteFileOperation(localEvent.Path.ReplaceRoot(this.decryptedRootFolder.Root)));
             }
             else
             {
-                this.operations.Enqueue(new DeleteFileOperation(localEvent.Path.ReplaceRoot(this.encryptedFolder.Root)));
+                this.operations.Enqueue(new DeleteFileOperation(localEvent.Path.ReplaceRoot(this.encryptedRootFolder.Root)));
             }
         }
 
@@ -119,17 +119,17 @@ namespace Virgil.FolderLink.Local
 
         private void HandleChangeOrCreate(string sender, LocalPath localPath)
         {
-            if (sender == this.encryptedFolder.FolderName)
+            if (sender == this.encryptedRootFolder.FolderName)
             {
                 var source = localPath;
-                var target = source.ReplaceRoot(this.decryptedFolder.Root);
+                var target = source.ReplaceRoot(this.decryptedRootFolder.Root);
 
                 this.operations.Enqueue(new DecryptFileOperation(source, target, this.personalCard, this.privateKeyPassword));
             }
             else
             {
                 var source = localPath;
-                var target = source.ReplaceRoot(this.encryptedFolder.Root);
+                var target = source.ReplaceRoot(this.encryptedRootFolder.Root);
 
                 this.operations.Enqueue(new EncryptFileOperation(source, target, this.personalCard));
             }

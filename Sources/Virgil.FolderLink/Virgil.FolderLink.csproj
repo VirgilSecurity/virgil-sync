@@ -103,7 +103,7 @@
     <Compile Include="Core\Events\DropboxFileDeletedEvent.cs" />
     <Compile Include="Core\ExceptionNotifier.cs" />
     <Compile Include="Core\ILocalFileSystem.cs" />
-    <Compile Include="Core\LocalFolderRoot.cs" />
+    <Compile Include="Core\LocalRoot.cs" />
     <Compile Include="Core\LocalPath.cs" />
     <Compile Include="Core\Operations\IOperationObserver.cs" />
     <Compile Include="Core\ServerPath.cs" />
@@ -125,6 +125,7 @@
     <Compile Include="Encryption\StreamHelpers.cs" />
     <Compile Include="Encryption\VirgilException.cs" />
     <Compile Include="Local\FileNameRules.cs" />
+    <Compile Include="Local\IFileSystemEntry.cs" />
     <Compile Include="Local\LocalEventsBatch.cs" />
     <Compile Include="Local\LocalFolderWatcher.cs" />
     <Compile Include="Local\ByPathComparer.cs" />
@@ -133,7 +134,7 @@
     <Compile Include="Core\Events\LocalFileChangedEvent.cs" />
     <Compile Include="Core\Events\LocalFileCreatedEvent.cs" />
     <Compile Include="Core\Events\LocalFileDeletedEvent.cs" />
-    <Compile Include="Local\LocalFolder.cs" />
+    <Compile Include="Local\LocalRootFolder.cs" />
     <Compile Include="Local\LocalFolderLink.cs" />
     <Compile Include="Local\ILocalEventListener.cs" />
     <Compile Include="Local\LocalFile.cs" />

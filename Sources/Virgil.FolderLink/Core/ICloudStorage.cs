@@ -9,7 +9,7 @@ namespace Virgil.FolderLink.Core
     {
         Task<FileMetadata> GetFileMetadata(ServerPath serverPath, CancellationToken token);
         Task UploadFile(LocalPath localPath, CancellationToken token, IProgress<double> progress = null);
-        Task DownloadFile(ServerPath serverFileName, LocalFolderRoot localFolderRoot, CancellationToken token, IProgress<double> progress = null);
+        Task DownloadFile(ServerPath serverFileName, LocalRoot localRoot, CancellationToken token, IProgress<double> progress = null);
         Task DeleteFile(ServerPath serverFileName, CancellationToken token);
     }
 }

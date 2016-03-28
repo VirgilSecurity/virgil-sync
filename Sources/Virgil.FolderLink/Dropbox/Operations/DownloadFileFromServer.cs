@@ -10,10 +10,10 @@ namespace Virgil.FolderLink.Dropbox.Operations
     public class DownloadFileFromServer : Operation
     {
         private readonly ICloudStorage cloudStorage;
-        private readonly LocalFolderRoot root;
+        private readonly LocalRoot root;
         private readonly ServerPath serverPath;
         
-        public DownloadFileFromServer(DropBoxEvent @event, ICloudStorage cloudStorage, LocalFolderRoot root)
+        public DownloadFileFromServer(DropBoxEvent @event, ICloudStorage cloudStorage, LocalRoot root)
         {
             this.serverPath = @event.ServerPath;
             this.Title = "Download : " + this.serverPath.Value;

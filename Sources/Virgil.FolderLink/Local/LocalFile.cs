@@ -4,11 +4,10 @@ namespace Virgil.FolderLink.Local
     using System.IO;
     using Core;
 
-    public class LocalFile
+    public class LocalFile : IFileSystemEntry
     {
         public LocalFile(LocalPath localPath)
         {
-            this.RelativePath = localPath.AsRelativeToRoot();
             this.LocalPath = localPath;
             this.Bytes = 0;
 
@@ -18,7 +17,7 @@ namespace Virgil.FolderLink.Local
                 this.Bytes = fileInfo.Length;
                 this.Modified = fileInfo.LastWriteTimeUtc;
                 this.Created = fileInfo.CreationTimeUtc;
-                this.ServerPath = localPath.ToServerPath();
+                this.ServerPath = new Lazy<ServerPath>(() => this.LocalPath.ToServerPath());
             }
             catch (Exception exception)
             {
@@ -26,11 +25,9 @@ namespace Virgil.FolderLink.Local
             }
         }
 
-        public ServerPath ServerPath { get;  }
+        public LocalPath LocalPath { get; protected set; }
 
-        public LocalPath LocalPath { get; }
-
-        public string RelativePath { get; }
+        public Lazy<ServerPath> ServerPath { get; protected set; }
 
         public long Bytes { get; }
 

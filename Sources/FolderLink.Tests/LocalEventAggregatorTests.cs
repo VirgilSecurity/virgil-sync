@@ -69,7 +69,7 @@ namespace FolderLink.Tests
 
         private static LocalFolderWatcher.TimestampedEvent Item(WatcherChangeTypes change, string dir, string file)
         {
-            return new LocalFolderWatcher.TimestampedEvent(new FileSystemEventArgs(change, dir, file), new LocalFolderRoot(dir));
+            return new LocalFolderWatcher.TimestampedEvent(new FileSystemEventArgs(change, dir, file), new LocalRoot(dir));
         }
     }
 }

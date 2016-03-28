@@ -5,7 +5,7 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
     public struct FileMapping
     {
-        public FileMapping(LocalFile lf, ServerFile serverFile) : this()
+        public FileMapping(LocalFile lf, ServerFile serverFile) 
         {
             this.LocalFile = lf;
             this.ServerFile = serverFile;
@@ -23,7 +23,7 @@ namespace Virgil.FolderLink.Dropbox.Handler
             this.LocalFile = null;
         }
 
-        public LocalFile LocalFile { get; set; }
-        public ServerFile ServerFile { get; set; }
+        public LocalFile LocalFile { get; }
+        public ServerFile ServerFile { get; }
     }
 }

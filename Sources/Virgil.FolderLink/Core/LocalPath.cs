@@ -6,15 +6,15 @@
     public struct LocalPath
     {
         public string Value { get; private set; }
-        public LocalFolderRoot Root { get; private set; }
+        public LocalRoot Root { get; private set; }
         
-        public LocalPath(string path, LocalFolderRoot root)
+        public LocalPath(string path, LocalRoot root)
         {
             this.Root = root;
             this.Value = path;
         }
 
-        public static LocalPath CreateFromRelative(string path, LocalFolderRoot root)
+        public static LocalPath CreateFromRelative(string path, LocalRoot root)
         {
             var result = new LocalPath {Root = root};
             var pathRoot = Path.GetPathRoot(path);
@@ -41,7 +41,7 @@
             return this.Value.Replace(this.Root.Value, Path.DirectorySeparatorChar.ToString());
         }
 
-        public LocalPath ReplaceRoot(LocalFolderRoot newParent)
+        public LocalPath ReplaceRoot(LocalRoot newParent)
         {
             return new LocalPath(this.Value.Replace(this.Root.Value, newParent.Value), newParent);
         }

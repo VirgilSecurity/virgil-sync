@@ -107,7 +107,7 @@ namespace Virgil.FolderLink.Dropbox
             }
         }
 
-        public async Task DownloadFile(ServerPath serverFileName, LocalFolderRoot root, 
+        public async Task DownloadFile(ServerPath serverFileName, LocalRoot root, 
             CancellationToken token, IProgress<double> progress = null)
         {
             token.ThrowIfCancellationRequested();

@@ -16,7 +16,7 @@ namespace FolderLink.Tests
         private string personalCardPassword;
         private DropBoxCloudStorage dropBoxCloudStorage;
 
-        private readonly LocalFolderRoot root = new LocalFolderRoot(@"E:\Games\BlackDesert\live\bin64");
+        private readonly LocalRoot root = new LocalRoot(@"E:\Games\BlackDesert\live\bin64");
 
 
         [SetUp]

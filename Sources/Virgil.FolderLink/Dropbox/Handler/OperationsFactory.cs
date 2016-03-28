@@ -13,29 +13,31 @@ namespace Virgil.FolderLink.Dropbox.Handler
     public class OperationsFactory
     {
         private readonly ICloudStorage cloudStorage;
-        private readonly LocalFolderRoot localFolderRoot;
-        private readonly LocalFolder localFolder;
+        private readonly LocalRoot localRoot;
+        private readonly LocalRootFolder localRootFolder;
 
-        public OperationsFactory(ICloudStorage cloudStorage, LocalFolder localFolder)
+        public OperationsFactory(ICloudStorage cloudStorage, LocalRootFolder localRootFolder)
         {
             this.cloudStorage = cloudStorage;
-            this.localFolderRoot = localFolder.Root;
-            this.localFolder = localFolder;
+            this.localRoot = localRootFolder.Root;
+            this.localRootFolder = localRootFolder;
         }
 
         public Operation CreateOperation(DropBoxFileAddedEvent @event)
         {
-            return new DownloadFileFromServer(@event, this.cloudStorage, this.localFolderRoot);
+            return new DownloadFileFromServer(@event, this.cloudStorage, this.localRoot);
         }
 
         public Operation CreateOperation(DropBoxFileChangedEvent @event)
         {
-            return new DownloadFileFromServer(@event, this.cloudStorage, this.localFolderRoot);
+            return new DownloadFileFromServer(@event, this.cloudStorage, this.localRoot);
         }
 
         public Operation CreateOperation(DropBoxFileDeletedEvent @event)
         {
-            var toDelete = this.localFolder.Files.FirstOrDefault(it => it.ServerPath == @event.ServerPath);
+            //TODO: Optimization
+
+            var toDelete = this.localRootFolder.Files.FirstOrDefault(it => it.ServerPath.Value == @event.ServerPath);
 
             if (toDelete != null)
             {
