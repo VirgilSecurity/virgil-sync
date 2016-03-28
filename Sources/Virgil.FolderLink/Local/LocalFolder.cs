@@ -58,7 +58,7 @@ namespace Virgil.FolderLink.Local
                             var newDir = args.FullPath;
                             var oldDir = args.OldFullPath;
 
-                            var toDelete = this.Files.Where(it => it.LocalPath.Value.StartsWith(oldDir)).ToList();
+                            var toDelete = this.Files.Where(it => it.LocalPath.Value.StartsWith(oldDir + Path.DirectorySeparatorChar)).ToList();
                                 toDelete.ForEach(file => this.Files.Remove(file));
 
                             toDelete.Select(it => new LocalFileDeletedEvent(it.LocalPath, this.FolderName))
@@ -117,7 +117,7 @@ namespace Virgil.FolderLink.Local
                                 Console.WriteLine($"Deleted: {args.FullPath}");
                             }
 
-                            var subfiles = this.Files.Where(it => it.LocalPath.Value.StartsWith(args.FullPath)).ToList();
+                            var subfiles = this.Files.Where(it => it.LocalPath.Value.StartsWith(args.FullPath + Path.DirectorySeparatorChar)).ToList();
                             subfiles.ForEach(it => this.Files.Remove(it));
                             foreach (var localFile in subfiles)
                             {
