@@ -4,12 +4,13 @@ namespace Virgil.FolderLink.Local
     using System.IO;
     using Core;
 
-    public class LocalFile : IFileSystemEntry
+    public class LocalFile 
     {
         public LocalFile(LocalPath localPath)
         {
             this.LocalPath = localPath;
             this.Bytes = 0;
+            this.Name = Path.GetFileName(localPath.Value);
 
             try
             {
@@ -27,6 +28,8 @@ namespace Virgil.FolderLink.Local
 
         public LocalPath LocalPath { get; protected set; }
 
+        public string Name { get; }
+
         public Lazy<ServerPath> ServerPath { get; protected set; }
 
         public long Bytes { get; }
@@ -37,7 +40,7 @@ namespace Virgil.FolderLink.Local
 
         public override string ToString()
         {
-            return $"{this.LocalPath} [{this.Bytes}] ({this.Modified.ToShortTimeString()})";
+            return $"{this.Name} [{this.Bytes}] ({this.Modified.ToShortTimeString()})";
         }
     }
 }

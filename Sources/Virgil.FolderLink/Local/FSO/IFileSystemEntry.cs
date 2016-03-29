@@ -5,6 +5,8 @@ namespace Virgil.FolderLink.Local
 
     public interface IFileSystemEntry
     {
-        LocalPath LocalPath { get; }
+        LocalFolder Parent { get; }
+        string Name { get; }
+        string GetPath();
     }
 }

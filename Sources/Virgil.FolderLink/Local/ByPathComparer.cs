@@ -6,12 +6,12 @@ namespace Virgil.FolderLink.Local
     {
         public bool Equals(LocalFile x, LocalFile y)
         {
-            return string.Equals(x.RelativePath, y.RelativePath);
+            return string.Equals(x.LocalPath.AsRelativeToRoot(), y.LocalPath.AsRelativeToRoot());
         }
 
         public int GetHashCode(LocalFile obj)
         {
-            return obj.RelativePath.GetHashCode();
+            return obj.LocalPath.AsRelativeToRoot().GetHashCode();
         }
     }
 }

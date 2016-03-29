@@ -1,5 +1,6 @@
 namespace Virgil.FolderLink.Dropbox.Handler
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Core;
@@ -37,14 +38,17 @@ namespace Virgil.FolderLink.Dropbox.Handler
         {
             //TODO: Optimization
 
-            var toDelete = this.localRootFolder.Files.FirstOrDefault(it => it.ServerPath.Value == @event.ServerPath);
+            throw new NotImplementedException();
 
-            if (toDelete != null)
-            {
-                return new DeleteFileOperation(toDelete.LocalPath);
-            }
 
-            return null;
+            //var toDelete = this.localRootFolder.Files.FirstOrDefault(it => it.ServerPath.Value == @event.ServerPath);
+
+            //if (toDelete != null)
+            //{
+            //    return new DeleteFileOperation(toDelete.LocalPath);
+            //}
+
+            //return null;
         }
 
         public Operation CreateOperation(LocalFileCreatedEvent localEvent)

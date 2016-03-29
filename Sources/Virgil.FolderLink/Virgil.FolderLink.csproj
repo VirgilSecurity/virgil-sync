@@ -125,8 +125,11 @@
     <Compile Include="Encryption\StreamHelpers.cs" />
     <Compile Include="Encryption\VirgilException.cs" />
     <Compile Include="Local\FileNameRules.cs" />
-    <Compile Include="Local\IFileSystemEntry.cs" />
+    <Compile Include="Local\FSO\Extensions.cs" />
+    <Compile Include="Local\FSO\FolderFile.cs" />
+    <Compile Include="Local\FSO\IFileSystemEntry.cs" />
     <Compile Include="Local\LocalEventsBatch.cs" />
+    <Compile Include="Local\FSO\LocalFolder.cs" />
     <Compile Include="Local\LocalFolderWatcher.cs" />
     <Compile Include="Local\ByPathComparer.cs" />
     <Compile Include="Local\Consts.cs" />

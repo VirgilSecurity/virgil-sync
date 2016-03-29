@@ -50,27 +50,29 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
         public async Task Launch()
         {
-            this.localFolderWatcher.Start();
-            await this.serverFolderWatcher.Start();
+            throw new NotImplementedException();
 
-            var localFiles = this.localRootFolder.Files.ToList();
-            var serverFiles = this.serverFolder.Files.ToList();
+            //this.localFolderWatcher.Start();
+            //await this.serverFolderWatcher.Start();
 
-            var diffResult = FileDiff.Calculate(localFiles, serverFiles);
+            //var localFiles = this.localRootFolder.Files.ToList();
+            //var serverFiles = this.serverFolder.Files.ToList();
 
-            foreach (var localFile in diffResult.Upload)
-            {
-                this.EnqueOperation(new UploadFileToServerOperation(new LocalFileSystemEvent(localFile.LocalPath, ""), this.cloudStorage));
-            }
+            //var diffResult = FileDiff.Calculate(localFiles, serverFiles);
 
-            foreach (var serverFile in diffResult.Download)
-            {
-                this.EnqueOperation(new DownloadFileFromServer(new DropBoxEvent(serverFile.Path, ""), this.cloudStorage, this.localRootFolder.Root));
-            }
+            //foreach (var localFile in diffResult.Upload)
+            //{
+            //    this.EnqueOperation(new UploadFileToServerOperation(new LocalFileSystemEvent(localFile.LocalPath, ""), this.cloudStorage));
+            //}
 
-            this.IsStopped = false;
+            //foreach (var serverFile in diffResult.Download)
+            //{
+            //    this.EnqueOperation(new DownloadFileFromServer(new DropBoxEvent(serverFile.Path, ""), this.cloudStorage, this.localRootFolder.Root));
+            //}
 
-            Task.Run(this.Consumer);
+            //this.IsStopped = false;
+
+            //Task.Run(this.Consumer);
         }
 
         private async Task Consumer()

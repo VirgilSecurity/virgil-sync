@@ -42,51 +42,53 @@ namespace Virgil.FolderLink.Local
 
         public void Launch()
         {
-            var encrypted = this.encryptedRootFolder.Files.ToList();
-            var decrypted = this.decryptedRootFolder.Files.ToList();
+            throw new NotImplementedException();
 
-            var comparer = new ByPathComparer();
-            var common = encrypted.Intersect(decrypted, comparer).ToList();
+            //var encrypted = this.encryptedRootFolder.Files.ToList();
+            //var decrypted = this.decryptedRootFolder.Files.ToList();
 
-            foreach (var localFile in common)
-            {
-                var enc = encrypted.First(it => it.RelativePath == localFile.RelativePath);
-                var dec = decrypted.First(it => it.RelativePath == localFile.RelativePath);
+            //var comparer = new ByPathComparer();
+            //var common = encrypted.Intersect(decrypted, comparer).ToList();
 
-                if (enc.Modified > dec.Modified)
-                {
-                    this.operations.Enqueue(new DecryptFileOperation(enc.LocalPath, dec.LocalPath, this.personalCard, this.privateKeyPassword));
-                }
-                else if (enc.Modified < dec.Modified)
-                {
-                    this.operations.Enqueue(new EncryptFileOperation(dec.LocalPath, enc.LocalPath, this.personalCard));
-                }
-            }
+            //foreach (var localFile in common)
+            //{
+            //    var enc = encrypted.First(it => it.RelativePath == localFile.RelativePath);
+            //    var dec = decrypted.First(it => it.RelativePath == localFile.RelativePath);
 
-            var toEncrypt = decrypted.Except(common, comparer).ToList();
+            //    if (enc.Modified > dec.Modified)
+            //    {
+            //        this.operations.Enqueue(new DecryptFileOperation(enc.LocalPath, dec.LocalPath, this.personalCard, this.privateKeyPassword));
+            //    }
+            //    else if (enc.Modified < dec.Modified)
+            //    {
+            //        this.operations.Enqueue(new EncryptFileOperation(dec.LocalPath, enc.LocalPath, this.personalCard));
+            //    }
+            //}
 
-            foreach (var localFile in toEncrypt)
-            {
-                this.operations.Enqueue(new EncryptFileOperation(
-                    localFile.LocalPath,
-                    localFile.LocalPath.ReplaceRoot(this.encryptedRootFolder.Root),
-                    this.personalCard));
-            }
+            //var toEncrypt = decrypted.Except(common, comparer).ToList();
 
-            var toDecrypt = encrypted.Except(common, comparer).ToList();
+            //foreach (var localFile in toEncrypt)
+            //{
+            //    this.operations.Enqueue(new EncryptFileOperation(
+            //        localFile.LocalPath,
+            //        localFile.LocalPath.ReplaceRoot(this.encryptedRootFolder.Root),
+            //        this.personalCard));
+            //}
 
-            foreach (var localFile in toDecrypt)
-            {
-                this.operations.Enqueue(new DecryptFileOperation(
-                    localFile.LocalPath,
-                    localFile.LocalPath.ReplaceRoot(this.decryptedRootFolder.Root),
-                    this.personalCard, this.privateKeyPassword));
-            }
+            //var toDecrypt = encrypted.Except(common, comparer).ToList();
+
+            //foreach (var localFile in toDecrypt)
+            //{
+            //    this.operations.Enqueue(new DecryptFileOperation(
+            //        localFile.LocalPath,
+            //        localFile.LocalPath.ReplaceRoot(this.decryptedRootFolder.Root),
+            //        this.personalCard, this.privateKeyPassword));
+            //}
             
-            Task.Factory.StartNew(this.Consumer);
+            //Task.Factory.StartNew(this.Consumer);
 
-            this.encryptedFolderWatcher.Start();
-            this.decryptedFolderWatcher.Start();
+            //this.encryptedFolderWatcher.Start();
+            //this.decryptedFolderWatcher.Start();
         }
 
         public void On(LocalFileDeletedEvent localEvent)
