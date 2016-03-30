@@ -1,7 +1,6 @@
-﻿namespace Virgil.Disk.ViewModels.Operations
+﻿namespace Virgil.Sync.ViewModels.Operations
 {
     using System.Threading.Tasks;
-    using SDK.Domain.Exceptions;
     using SDK.Exceptions;
 
     public interface IConfirmationRequiredOperation

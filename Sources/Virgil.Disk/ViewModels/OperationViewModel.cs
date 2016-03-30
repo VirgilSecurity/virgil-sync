@@ -1,4 +1,4 @@
-namespace Virgil.Disk.ViewModels
+namespace Virgil.Sync.ViewModels
 {
     using System;
     using FolderLink.Core.Operations;

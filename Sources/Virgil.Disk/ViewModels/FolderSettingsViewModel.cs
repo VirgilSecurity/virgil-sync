@@ -1,4 +1,4 @@
-namespace Virgil.Disk.ViewModels
+namespace Virgil.Sync.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -10,10 +10,10 @@ namespace Virgil.Disk.ViewModels
     using FolderLink.Dropbox;
     using FolderLink.Dropbox.Messages;
     using Infrastructure;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Infrastructure.Mvvm;
-    using Messages;
-    using Model;
+    using Infrastructure.Model;
+    using Mvvm;
 
     public class FolderSettingsViewModel : ViewModel, 
         IHandle<DropBoxBatchCompleted>,

@@ -1,9 +1,9 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
     using System.Windows.Input;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Infrastructure.Mvvm;
-    using Messages;
+    using Mvvm;
 
     public class ErrorMessageViewModel : ViewModel
     {

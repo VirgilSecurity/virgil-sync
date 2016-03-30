@@ -1,11 +1,11 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
     using System;
     using System.Collections;
     using System.ComponentModel;
     using System.Linq;
     using Infrastructure;
-    using Infrastructure.Mvvm.Common;
+    using Mvvm.Common;
 
     public abstract class ViewModel : ViewModelBase, IViewModel, INotifyDataErrorInfo
     {

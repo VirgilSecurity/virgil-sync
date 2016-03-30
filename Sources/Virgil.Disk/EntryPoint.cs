@@ -1,10 +1,10 @@
-namespace Virgil.Disk
+namespace Virgil.Sync
 {
     using System;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Threading;
-    using Model;
+    using Infrastructure.Model;
     using Ninject;
 
     public class EntryPoint

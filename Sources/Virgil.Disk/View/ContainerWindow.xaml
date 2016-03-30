@@ -1,14 +1,14 @@
-﻿<Window x:Class="Virgil.Disk.View.ContainerWindow"
+﻿<Window x:Class="Virgil.Sync.View.ContainerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:local="clr-namespace:Virgil.Disk.View"
-        xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
-        
-        xmlns:converters="clr-namespace:Virgil.Disk.View.Converters"
+
         xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
+        xmlns:viewModels="clr-namespace:Virgil.Sync.ViewModels"
+        xmlns:view="clr-namespace:Virgil.Sync.View"
+        xmlns:converters="clr-namespace:Virgil.Sync.View.Converters"
         SnapsToDevicePixels="True"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -57,7 +57,7 @@
         <Grid>
             <Grid.Resources>
                 <DataTemplate DataType="{x:Type viewModels:ErrorMessageViewModel}">
-                    <local:ErrorMessageView>
+                    <view:ErrorMessageView>
                         <i:Interaction.Behaviors>
                             <converters:EntranceTransitionBehavior
                                 Duration="00:00:00.50"
@@ -65,15 +65,15 @@
                                 IsStaggeringEnabled="True"
                                 StaggerdOverlapRatio="0.5" />
                         </i:Interaction.Behaviors>
-                    </local:ErrorMessageView>
+                    </view:ErrorMessageView>
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type viewModels:DropBoxSignInViewModel}">
-                    <local:DropBoxSignInView />
+                    <view:DropBoxSignInView />
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type viewModels:SignInViewModel}">
-                    <local:SignInView>
+                    <view:SignInView>
                         <i:Interaction.Behaviors>
                             <converters:EntranceTransitionBehavior
                                 Duration="00:00:00.50"
@@ -81,11 +81,11 @@
                                 IsStaggeringEnabled="True"
                                 StaggerdOverlapRatio="0.5" />
                         </i:Interaction.Behaviors>
-                    </local:SignInView>
+                    </view:SignInView>
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type viewModels:FolderSettingsViewModel}">
-                    <local:FolderSettingsDropBoxView >
+                    <view:FolderSettingsDropBoxView >
                         <i:Interaction.Behaviors>
                             <converters:EntranceTransitionBehavior
                                 Duration="00:00:00.50"
@@ -93,11 +93,11 @@
                                 IsStaggeringEnabled="True"
                                 StaggerdOverlapRatio="0.5" />
                         </i:Interaction.Behaviors>
-                    </local:FolderSettingsDropBoxView>
+                    </view:FolderSettingsDropBoxView>
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type viewModels:CreateAccountViewModel}">
-                    <local:CreateAccountView>
+                    <view:CreateAccountView>
                         <i:Interaction.Behaviors>
                             <converters:EntranceTransitionBehavior
                                 Duration="00:00:00.50"
@@ -105,11 +105,11 @@
                                 IsStaggeringEnabled="True"
                                 StaggerdOverlapRatio="0.5" />
                         </i:Interaction.Behaviors>
-                    </local:CreateAccountView>
+                    </view:CreateAccountView>
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type viewModels:ConfirmationCodeViewModel}">
-                    <local:ConfirmationCodeView>
+                    <view:ConfirmationCodeView>
                         <i:Interaction.Behaviors>
                             <converters:EntranceTransitionBehavior
                                 Duration="00:00:00.50"
@@ -117,7 +117,7 @@
                                 IsStaggeringEnabled="True"
                                 StaggerdOverlapRatio="0.5" />
                         </i:Interaction.Behaviors>
-                    </local:ConfirmationCodeView>
+                    </view:ConfirmationCodeView>
                 </DataTemplate>
             </Grid.Resources>
 

@@ -1,11 +1,10 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
-namespace Virgil.Disk.View.Controls
+﻿namespace Virgil.Sync.View.Controls
 {
     using System.Diagnostics;
     using System.IO;
-    using Infrastructure.Mvvm;
+    using System.Windows;
+    using System.Windows.Controls;
+    using Mvvm;
     using Ookii.Dialogs.Wpf;
 
     /// <summary>
@@ -23,8 +22,8 @@ namespace Virgil.Disk.View.Controls
 
         public string SelectedPath
         {
-            get { return (string) GetValue(SelectedPathProperty); }
-            set { SetValue(SelectedPathProperty, value); }
+            get { return (string) this.GetValue(SelectedPathProperty); }
+            set { this.SetValue(SelectedPathProperty, value); }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,8 +41,8 @@ namespace Virgil.Disk.View.Controls
 
         public RelayCommand<string> OnFolderChangedCommand
         {
-            get { return (RelayCommand<string>) GetValue(OnFolderChangedCommandProperty); }
-            set { SetValue(OnFolderChangedCommandProperty, value); }
+            get { return (RelayCommand<string>) this.GetValue(OnFolderChangedCommandProperty); }
+            set { this.SetValue(OnFolderChangedCommandProperty, value); }
         }
 
         private void OpenFolderInExplorer(object sender, RoutedEventArgs e)

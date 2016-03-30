@@ -83,13 +83,11 @@ namespace Virgil.FolderLink.Local
                             this.Files.Add(new LocalFile(new LocalPath(args.FullPath, this.Root)));
                             var @event1 = new LocalFileCreatedEvent(new LocalPath(args.FullPath, this.Root), this.FolderName);
                             batch.Add(@event1);
-                            Console.WriteLine($"Created: {args.FullPath}");
 
                             var toDelete = this.Files.FirstOrDefault(it => string.Equals(it.LocalPath.Value, args.FullPath, StringComparison.InvariantCultureIgnoreCase));
                             this.Files.Remove(toDelete);
                             var @event2 = new LocalFileDeletedEvent(new LocalPath(args.OldFullPath, this.Root), this.FolderName);
                             batch.Add(@event2);
-                            Console.WriteLine($"Deleted: {args.OldFullPath}");
                         }
                         break;
                     }

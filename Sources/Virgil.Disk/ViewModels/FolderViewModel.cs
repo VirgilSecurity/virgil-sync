@@ -1,10 +1,10 @@
-namespace Virgil.Disk.ViewModels
+namespace Virgil.Sync.ViewModels
 {
     using System.Collections.Generic;
     using System.IO;
     using System.Windows.Input;
-    using Infrastructure.Mvvm;
-    using Model;
+    using Infrastructure.Model;
+    using Mvvm;
 
     public class FolderViewModel : ViewModel
     {

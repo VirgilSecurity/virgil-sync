@@ -1,9 +1,9 @@
-namespace Virgil.Disk.ViewModels.Operations
+namespace Virgil.Sync.ViewModels.Operations
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Messages;
     using SDK.Domain;
     using SDK.Exceptions;
 

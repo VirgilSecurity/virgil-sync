@@ -1,4 +1,4 @@
-﻿namespace Virgil.Disk
+﻿namespace Virgil.Sync
 {
     using System;
     using System.IO;
@@ -8,7 +8,6 @@
     using System.Windows;
     using IWshRuntimeLibrary;
     using File = System.IO.File;
-    using Point = System.Drawing.Point;
 
     /// <summary>
     /// Represents the different types of scaling.

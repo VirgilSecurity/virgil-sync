@@ -1,4 +1,4 @@
-namespace Virgil.Disk.Messages
+namespace Virgil.Sync.Messages
 {
     using ViewModels.Operations;
 

@@ -1,13 +1,11 @@
-namespace Virgil.Disk.ViewModels
+namespace Virgil.Sync.ViewModels
 {
     using System;
-    using System.Configuration;
     using System.Windows.Input;
     using Dropbox.Api;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Infrastructure.Mvvm;
-    using Messages;
-    using Sync;
+    using Mvvm;
 
     public class HandleNavigation
     {

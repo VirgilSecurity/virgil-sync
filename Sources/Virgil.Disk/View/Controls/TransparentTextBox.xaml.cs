@@ -1,4 +1,4 @@
-﻿namespace Virgil.Disk.View.Controls
+﻿namespace Virgil.Sync.View.Controls
 {
     using System.Windows;
     using System.Windows.Controls;

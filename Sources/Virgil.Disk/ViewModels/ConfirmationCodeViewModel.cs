@@ -1,11 +1,11 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
     using System;
     using System.Text.RegularExpressions;
     using System.Windows.Input;
     using Infrastructure.Messaging;
-    using Infrastructure.Mvvm;
     using Messages;
+    using Mvvm;
     using Operations;
     using SDK.Domain.Exceptions;
     using SDK.Exceptions;

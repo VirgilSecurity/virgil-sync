@@ -137,6 +137,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -175,20 +176,11 @@
     </Page>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="Messages\DropBoxLinkChanged.cs" />
-    <Compile Include="Messages\DropboxSessionExpired.cs" />
-    <Compile Include="Messages\DropboxSignOut.cs" />
-    <Compile Include="Messages\FolderSettingsChanged.cs" />
-    <Compile Include="Messages\Logout.cs" />
-    <Compile Include="Messages\NavigateBack.cs" />
-    <Compile Include="Messages\StartDropboxSignIn.cs" />
-    <Compile Include="Model\FolderLinkFacade.cs" />
+    <Compile Include="Messages\ConfirmationSuccessfull.cs" />
     <Compile Include="Messages\ConfirmOperation.cs" />
-    <Compile Include="Messages\ErrorMessage.cs" />
-    <Compile Include="Messages\NavigateTo.cs" />
-    <Compile Include="Model\Folder.cs" />
-    <Compile Include="Messages\DisplaySignInError.cs" />
-    <Compile Include="Messages\DropboxSignInSuccessfull.cs" />
+    <Compile Include="Mvvm\Common\IViewModel.cs" />
+    <Compile Include="Mvvm\Common\ViewModelBase.cs" />
+    <Compile Include="Mvvm\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ApiConfig.cs" />
     <Compile Include="ViewModels\DropBoxSignInViewModel.cs" />
@@ -206,7 +198,6 @@
     <Compile Include="Updater.cs" />
     <Compile Include="ViewModels\FolderViewModel.cs" />
     <Compile Include="ViewModels\FolderSettingsViewModel.cs" />
-    <Compile Include="Model\FolderSettingsStorage.cs" />
     <Compile Include="View\Converters\BooleanOrConverter.cs" />
     <Compile Include="View\Converters\BoolToDropboxStatusColorConverter.cs" />
     <Compile Include="View\Converters\BoolToVisibilityConverter.cs" />
@@ -226,6 +217,7 @@
     <Compile Include="View\OperationStatusView.xaml.cs">
       <DependentUpon>OperationStatusView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WidnowsPerUserEncryptor.cs" />
     <Compile Include="Windows.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -235,10 +227,7 @@
     <Compile Include="View\TrayWindow.xaml.cs">
       <DependentUpon>TrayWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ApplicationState.cs" />
-    <Compile Include="Messages\CardLoaded.cs" />
     <Compile Include="ViewModels\ConfirmationCodeViewModel.cs" />
-    <Compile Include="Messages\ConfirmationSuccessfull.cs" />
     <Compile Include="ViewModels\ContainerViewModel.cs" />
     <Compile Include="ViewModels\Operations\CreateAccountOperation.cs" />
     <Compile Include="ViewModels\CreateAccountViewModel.cs" />
@@ -282,7 +271,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\FolderSettings.cs" />
     <Page Include="View\Controls\ThumbContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

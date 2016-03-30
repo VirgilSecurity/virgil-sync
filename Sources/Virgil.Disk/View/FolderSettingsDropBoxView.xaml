@@ -1,12 +1,11 @@
 ﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
-             xmlns:converters="clr-namespace:Virgil.Disk.View.Converters"
+             xmlns:converters="clr-namespace:Virgil.Sync.View.Converters"
+             xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
              mc:Ignorable="d"
-             x:Class="Virgil.Disk.View.FolderSettingsDropBoxView"
+             x:Class="Virgil.Sync.View.FolderSettingsDropBoxView"
              Style="{StaticResource AppPage}" 
              d:DataContext="{d:DesignInstance viewModels:FolderSettingsViewModel}">
 

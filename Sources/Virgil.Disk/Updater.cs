@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Virgil.Disk
+﻿namespace Virgil.Sync
 {
+    using System;
     using System.Diagnostics;
     using System.IO;
     using System.Net;

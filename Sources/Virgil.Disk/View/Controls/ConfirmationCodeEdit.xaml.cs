@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-
-namespace Virgil.Disk.View.Controls
+﻿namespace Virgil.Sync.View.Controls
 {
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
     /// <summary>
     /// Interaction logic for ConfirmationCode.xaml
     /// </summary>
@@ -164,11 +164,11 @@ namespace Virgil.Disk.View.Controls
         {
             get
             {
-                return (string) GetValue(ConfirmationCodeProperty);
+                return (string) this.GetValue(ConfirmationCodeProperty);
             }
             set
             {
-                SetValue(ConfirmationCodeProperty, value);
+                this.SetValue(ConfirmationCodeProperty, value);
             }
         }
 
@@ -177,8 +177,8 @@ namespace Virgil.Disk.View.Controls
 
         public bool IsTextBoxFocused
         {
-            get { return (bool) GetValue(IsTextBoxFocusedProperty); }
-            set { SetValue(IsTextBoxFocusedProperty, value); }
+            get { return (bool) this.GetValue(IsTextBoxFocusedProperty); }
+            set { this.SetValue(IsTextBoxFocusedProperty, value); }
         }
     }
 }

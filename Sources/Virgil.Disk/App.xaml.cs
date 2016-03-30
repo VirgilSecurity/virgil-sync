@@ -1,18 +1,16 @@
-﻿using System.Windows;
-
-namespace Virgil.Disk
+﻿namespace Virgil.Sync
 {
     using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Windows;
     using System.Windows.Threading;
     using FolderLink.Core;
     using Infrastructure;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Messages;
-    using Model;
+    using Infrastructure.Model;
     using Ninject;
-    using Sync;
     using View;
     using ViewModels;
 

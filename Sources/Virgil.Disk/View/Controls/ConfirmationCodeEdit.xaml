@@ -1,8 +1,7 @@
-﻿<UserControl x:Class="Virgil.Disk.View.Controls.ConfirmationCodeEdit"
+﻿<UserControl x:Class="Virgil.Sync.View.Controls.ConfirmationCodeEdit"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:view="clr-namespace:Virgil.Disk.View"
-             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
+             xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
              Validation.ErrorTemplate="{DynamicResource ErrorTemplate}">
     <UserControl.Resources>
 

@@ -1,18 +1,15 @@
-﻿namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
     using System;
     using System.ComponentModel;
     using System.Globalization;
-    using System.Reflection;
     using System.Windows;
-    using ViewModels;
     using System.Windows.Controls;
-    using System.Windows.Data;
     using System.Windows.Navigation;
     using Infrastructure;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Messages;
-
+    using ViewModels;
 
     public static class WebBrowserUtility
     {

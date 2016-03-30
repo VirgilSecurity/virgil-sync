@@ -1,10 +1,10 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
     using Infrastructure;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
+    using Infrastructure.Model;
     using Messages;
-    using Model;
-    using Operations;
 
     public class ContainerViewModel : ViewModel, IHandle<NavigateTo>, IHandle<ConfirmOperation>,
         IHandle<ConfirmationSuccessfull>, IHandle<Logout>, IHandle<DisplaySignInError>, IHandle<StartDropboxSignIn>,

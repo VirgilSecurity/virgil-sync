@@ -1,12 +1,12 @@
-﻿namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
     using System;
     using System.IO;
     using System.Windows;
     using Hardcodet.Wpf.TaskbarNotification;
     using Infrastructure;
+    using Infrastructure.Messages;
     using Infrastructure.Messaging;
-    using Messages;
 
     /// <summary>
     /// Interaction logic for TrayWindow.xaml

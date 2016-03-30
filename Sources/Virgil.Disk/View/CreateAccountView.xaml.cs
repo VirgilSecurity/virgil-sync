@@ -1,9 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
-namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
     using System.Diagnostics;
+    using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Documents;
 
     /// <summary>
