@@ -1,0 +1,9 @@
+namespace Virgil.Sync.Gtk
+{
+    public class ApiConfig
+    {
+        public const string DropboxClientId = "d4x24xt4v1s4xfr";
+        public const string VirgilToken = "eyJpZCI6ImZkYzU5NmI0LTM2MTgtNDc5OC05NGUwLWFhYzJiMDJkOGI3MSIsImFwcGxpY2F0aW9uX2NhcmRfaWQiOiIyOTRiODViMS03OTAxLTRlNjYtYjJiNS00ZDk0MmQ1NDAxZGYiLCJ0dGwiOi0xLCJjdGwiOi0xLCJwcm9sb25nIjowfQ==.MIGZMA0GCWCGSAFlAwQCAgUABIGHMIGEAkB+1C5+5CbvQCdXg0HtR381DY1dCEK+K9oELT0vRyvSplf48VfrnPdIHvDKuzYvuf7Pw7hu4WnsraNnEYtm7evkAkAgHGUhoK4ENluYFJLsmo6k1QLEoqa2lcdZ2BlMXrxB3tYhiL7IjvmFKQOGncmT4pCrY5kTuxPFx+peeJWxZ/jE";
+        public const string VirgilTokenStaging = "eyJpZCI6ImZhMTYxMGFkLTRjMGYtNGM5MS1hM2RhLTg5Yjk4NzQ2ZjE3YSIsImFwcGxpY2F0aW9uX2NhcmRfaWQiOiJjMDI0NmNhNC0wMTE0LTQ2OTQtYWIzNi1jNDdlNGMwZDAzYWIiLCJ0dGwiOi0xLCJjdGwiOi0xLCJwcm9sb25nIjowfQ==.MIGaMA0GCWCGSAFlAwQCAgUABIGIMIGFAkAKU6Wp1RsVEBiqNZeHvTbjJGRgeYYn23exVld/FIFOjSyjtCEWu+tQIBKgo1cMMUl3og/5evl1EfEjeZBN2myDAkEAl5odVSqje/XGqHwVfP0QmuChduJ7xXW2MxVgJme95AIHSNDCXwmidK9ny6IZ5LZPUO45L4Z0P5GQ4i2oDrfdkA==";
+    }
+}
