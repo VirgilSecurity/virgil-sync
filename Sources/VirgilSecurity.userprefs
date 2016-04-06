@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Virgil.Sync.Mac/Virgil.Sync.Mac.csproj">
+﻿<Properties StartupItem="Virgil.Sync.Mac/Virgil.Sync.Mac.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Virgil.Sync.Mac/ViewController.cs">
     <Files>

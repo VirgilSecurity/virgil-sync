@@ -88,13 +88,21 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="VirgilReplaceAnimator.cs" />
-    <Compile Include="VirgilReplaceAnimator.designer.cs">
-      <DependentUpon>VirgilReplaceAnimator.cs</DependentUpon>
+    <Compile Include="Infrastructure\ReplaceViewSeque.cs" />
+    <Compile Include="Animator.cs" />
+    <Compile Include="NavigatorHelper.cs" />
+    <Compile Include="Controllers.cs" />
+    <Compile Include="Controllers\ConfirmationViewController.cs" />
+    <Compile Include="Controllers\ConfirmationViewController.designer.cs">
+      <DependentUpon>ConfirmationViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="VirgilReplaceSegue.cs" />
-    <Compile Include="VirgilReplaceSegue.designer.cs">
-      <DependentUpon>VirgilReplaceSegue.cs</DependentUpon>
+    <Compile Include="Controllers\SignUpViewController.cs" />
+    <Compile Include="Controllers\SignUpViewController.designer.cs">
+      <DependentUpon>SignUpViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DecryptKeyViewController.cs" />
+    <Compile Include="Controllers\DecryptKeyViewController.designer.cs">
+      <DependentUpon>DecryptKeyViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -102,4 +110,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Import Project="..\packages\Virgil.Crypto.1.2.2.45\build\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.targets" Condition="Exists('..\packages\Virgil.Crypto.1.2.2.45\build\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.targets')" />
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
 </Project>

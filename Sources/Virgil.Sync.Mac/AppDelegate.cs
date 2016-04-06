@@ -13,6 +13,7 @@ namespace Virgil.Sync.Mac
 		public override void DidFinishLaunching (NSNotification notification)
 		{
 			// Insert code here to initialize your application
+			NavigatorHelper.History.Push (Controllers.SignIn);
 		}
 
 		public override void WillTerminate (NSNotification notification)

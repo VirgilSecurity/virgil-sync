@@ -23,23 +23,12 @@ namespace Virgil.Sync.Mac
 
 		partial void CreateAccountClick (Foundation.NSObject sender)
 		{
-			
+			this.ChangeView(Controllers.CreateAccount);
 		}
-
 
 		partial void SignInClick (Foundation.NSObject sender)
 		{
-			
-		}
-
-		public override NSObject RepresentedObject {
-			get {
-				return base.RepresentedObject;
-			}
-			set {
-				base.RepresentedObject = value;
-				// Update the view, if already loaded.
-			}
+			this.ChangeView(Controllers.Confirmation);
 		}
 	}
 }

@@ -8,6 +8,8 @@ namespace Virgil.Sync.Mac
 		{
 			NSApplication.Init ();
 			NSApplication.Main (args);
+
+
 		}
 	}
 }
