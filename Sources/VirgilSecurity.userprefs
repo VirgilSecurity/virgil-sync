@@ -1,8 +1,11 @@
-﻿<Properties StartupItem="Virgil.Sync.Gtk\Virgil.Sync.Gtk.csproj">
+﻿<Properties StartupItem="Virgil.Sync.Mac/Virgil.Sync.Mac.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Virgil.Sync.Gtk\MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Virgil.Sync.Mac/ViewController.cs">
     <Files>
-      <File FileName="Virgil.Sync.Gtk\MainWindow.cs" Line="1" Column="1" />
+      <File FileName="Virgil.Sync.Mac/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="Virgil.Sync.Mac/Main.cs" Line="1" Column="1" />
+      <File FileName="Virgil.Sync.Mac/ViewController.cs" Line="24" Column="8" />
+      <File FileName="Virgil.Sync.Mac/ViewController.designer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
