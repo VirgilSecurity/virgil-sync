@@ -6,7 +6,7 @@
     using System.Security;
     using System.Security.Permissions;
     using System.Windows;
-    using IWshRuntimeLibrary;
+
     using File = System.IO.File;
 
     /// <summary>
@@ -67,22 +67,7 @@
             return false;
         }
 
-        public static void CreateShortcut(string path)
-        {
-            try
-            {
-                var wshShell = new WshShellClass();
-                string pathLink = $"{path}{Path.DirectorySeparatorChar}VirgilDisk.lnk";
-                var shortcut = (IWshShortcut)wshShell.CreateShortcut(pathLink);
-                shortcut.TargetPath = VIRGIL_DISK_PATH;
-                shortcut.Description = "Virgil Disk Folder";
-                shortcut.Save();
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception.ToString());
-            }
-        }
+        
 
         public static void DeleteShortcut(string path)
         {
