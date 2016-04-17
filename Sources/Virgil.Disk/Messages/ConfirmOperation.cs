@@ -4,7 +4,12 @@ namespace Virgil.Disk.Messages
 
     public class ConfirmOperation
     {
-        public ConfirmOperation(IConfirmationRequiredOperation operation)
+        public ConfirmOperation(LoadAccountOperation operation)
+        {
+            this.Operation = operation;
+        }
+
+        public ConfirmOperation(CreateAccountOperation operation)
         {
             this.Operation = operation;
         }

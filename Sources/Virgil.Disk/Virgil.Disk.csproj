@@ -156,8 +156,8 @@
       <HintPath>..\packages\Virgil.SDK.3.1.0.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Virgil.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Virgil.SDK.Domain, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Virgil.SDK.Domain.1.0.2\lib\portable-net4+sl4+wp7+win8\Virgil.SDK.Domain.dll</HintPath>
+    <Reference Include="Virgil.SDK.Domain, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Virgil.SDK.Domain.1.0.4\lib\portable-net4+sl4+wp7+win8\Virgil.SDK.Domain.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -178,6 +178,7 @@
     <Compile Include="Messages\DropBoxLinkChanged.cs" />
     <Compile Include="Messages\DropboxSessionExpired.cs" />
     <Compile Include="Messages\DropboxSignOut.cs" />
+    <Compile Include="Messages\EnterAnotherPassword.cs" />
     <Compile Include="Messages\FolderSettingsChanged.cs" />
     <Compile Include="Messages\Logout.cs" />
     <Compile Include="Messages\NavigateBack.cs" />
@@ -194,7 +195,10 @@
     <Compile Include="ViewModels\DropBoxSignInViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessageViewModel.cs" />
     <Compile Include="ViewModels\OperationStatusViewModel.cs" />
+    <Compile Include="ViewModels\Operations\DecryptPasswordOperation.cs" />
     <Compile Include="ViewModels\OperationViewModel.cs" />
+    <Compile Include="ViewModels\RevokeKeyViewModel.cs" />
+    <Compile Include="ViewModels\WrongPasswordViewModel.cs" />
     <Compile Include="View\Controls\ConstantAspectRatioWindow.cs" />
     <Compile Include="View\Controls\EnterKeyHelper.cs" />
     <Compile Include="View\Controls\ThumbContent.xaml.cs">
@@ -225,6 +229,12 @@
     </Compile>
     <Compile Include="View\OperationStatusView.xaml.cs">
       <DependentUpon>OperationStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RevokeKeysView.xaml.cs">
+      <DependentUpon>RevokeKeysView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WrongPasswordView.xaml.cs">
+      <DependentUpon>WrongPasswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows.cs" />
     <Compile Include="Settings.Designer.cs">
@@ -307,6 +317,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\RevokeKeysView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TrayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -348,6 +362,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\TransparentTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WrongPasswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -35,8 +35,6 @@
                     this.AddErrorFor(nameof(this.Password), "You should provide password");
                 }
 
-                
-
                 if (this.HasErrors)
                 {
                     return;

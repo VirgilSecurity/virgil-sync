@@ -43,11 +43,11 @@
                 {
                     this.IsBusy = true;
                     await this.operation.Confirm(this.Code);
-                    this.aggregator.Publish(new ConfirmationSuccessfull(this.operation));
+                    this.aggregator.Publish(new ConfirmationSuccessfull());
                 }
-                catch (WrongPrivateKeyPasswordException e)
+                catch (WrongPrivateKeyPasswordException)
                 {
-                    this.operation.NavigateBack(e);
+                   ((LoadAccountOperation) this.operation).StartPasswordRetry();
                 }
                 catch (VirgilException e)
                 {

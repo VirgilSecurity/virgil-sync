@@ -9,6 +9,7 @@
         
         xmlns:converters="clr-namespace:Virgil.Disk.View.Converters"
         xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
+        xmlns:view="clr-namespace:Virgil.Sync.View"
         SnapsToDevicePixels="True"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -56,6 +57,18 @@
 
         <Grid>
             <Grid.Resources>
+                <DataTemplate DataType="{x:Type viewModels:WrongPasswordViewModel}">
+                    <view:WrongPasswordView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:WrongPasswordView>
+                </DataTemplate>
+                
                 <DataTemplate DataType="{x:Type viewModels:ErrorMessageViewModel}">
                     <local:ErrorMessageView>
                         <i:Interaction.Behaviors>
