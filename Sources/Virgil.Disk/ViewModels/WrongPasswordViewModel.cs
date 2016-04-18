@@ -17,9 +17,9 @@
             {
                 this.ClearErrors();
 
-                if (!operation.IsPasswordValid(this.Password))
+                if (!this.operation.IsPasswordValid(this.Password))
                 {
-                    this.AddErrorFor(nameof(Password), "Wrong password");
+                    this.AddErrorFor(nameof(this.Password), "Wrong password");
                 }
                 else
                 {
@@ -31,6 +31,11 @@
             this.ReturnToSignInCommand = new RelayCommand(() =>
             {
                 aggregator.Publish(new NavigateTo(typeof (SignInViewModel)));
+            });
+
+            this.ProblemsSigningInCommand = new RelayCommand(() =>
+            {
+                aggregator.Publish(new ProblemsSigningIn(this.operation.Email));
             });
         }
 
@@ -49,11 +54,13 @@
 
         public ICommand ReturnToSignInCommand { get; }
 
+        public ICommand ProblemsSigningInCommand { get; }
+
         public void HandleOperation(DecryptPasswordOperation operation)
         {
             this.operation = operation;
 
-            this.AddErrorFor(nameof(Password), "Wrong password");
+            this.AddErrorFor(nameof(this.Password), "Wrong password");
         }
     }
 }

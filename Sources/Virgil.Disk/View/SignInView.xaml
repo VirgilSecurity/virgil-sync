@@ -47,8 +47,10 @@
             </Label>
         </Button>
 
-        <Button Content="Problems signing in?" Style="{StaticResource LinkButton}" Grid.Row="6" HorizontalAlignment="Center"/>
+        <Button Content="Problems signing in?" Style="{StaticResource LinkButton}" 
+                Command="{Binding ProblemsSigningInCommand}"
+                Grid.Row="6" HorizontalAlignment="Center"/>
 
-        <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Stretch"/>
+        <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Stretch" />
     </Grid>
 </UserControl>

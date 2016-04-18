@@ -1,13 +1,14 @@
 namespace Virgil.Disk.ViewModels.Operations
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Infrastructure.Messaging;
     using Messages;
     using SDK.Domain;
     using SDK.Exceptions;
 
-    public class CreateAccountOperation : IConfirmationRequiredOperation
+    public class RegenerateKeyPairOperation : IConfirmationRequiredOperation
     {
         private readonly IEventAggregator eventAggregator;
 
@@ -16,7 +17,7 @@ namespace Virgil.Disk.ViewModels.Operations
 
         private IdentityTokenRequest request;
 
-        public CreateAccountOperation(IEventAggregator eventAggregator)
+        public RegenerateKeyPairOperation(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
         }
@@ -25,12 +26,6 @@ namespace Virgil.Disk.ViewModels.Operations
         {
             this.email = email.Trim().ToLowerInvariant();
             this.password = password;
-
-            var search = await Cards.Search(this.email);
-            if (search.Count != 0)
-            {
-                throw new VirgilException("The card with this e-mail was already created");
-            }
 
             this.request = await Identity.Verify(this.email);
         }
@@ -50,12 +45,12 @@ namespace Virgil.Disk.ViewModels.Operations
 
         public void NavigateBack()
         {
-            this.eventAggregator.Publish(new NavigateTo(typeof (ICreateNewAccountModel)));
+            this.eventAggregator.Publish(new NavigateTo(typeof(IRegenerateKeypairModel)));
         }
 
         public void NavigateBack(VirgilException e)
         {
-            this.eventAggregator.Publish(new NavigateTo(typeof(ICreateNewAccountModel)));
+            this.eventAggregator.Publish(new NavigateTo(typeof(IRegenerateKeypairModel)));
         }
     }
 }

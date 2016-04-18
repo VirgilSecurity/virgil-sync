@@ -2,6 +2,7 @@
 {
     using System;
     using Ninject;
+    using Ninject.Parameters;
 
     public class ServiceLocator
     {

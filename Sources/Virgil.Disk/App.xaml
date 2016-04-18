@@ -40,13 +40,14 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <TextBlock FontSize="20">
+                        <TextBlock FontSize="20" TextDecorations="Underline">
                             <ContentPresenter />
                         </TextBlock>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Setter Property="Foreground" Value="#9BA0A5" />
+            
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
                     <Setter Property="Foreground" Value="#C2C9D0" />

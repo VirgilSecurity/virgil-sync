@@ -8,16 +8,52 @@
     using Operations;
     using SDK.Exceptions;
 
-    public class CreateAccountViewModel : ViewModel
+    public interface ICreateNewAccountModel
+    {
+        
+    }
+
+    public interface IRegenerateKeypairModel
+    {
+        string Login { get; set; }
+    }
+
+    public class CreateAccountViewModel : ViewModel, ICreateNewAccountModel, IRegenerateKeypairModel
     {
         private readonly IEventAggregator aggregator;
+        private readonly State state;
         private string confirmPassword;
         private string login;
         private string password;
 
-        public CreateAccountViewModel(IEventAggregator aggregator)
+        public enum State
         {
+            CreateNewAccount,
+            RegenerateKeyPair
+        }
+
+        public CreateAccountViewModel(IEventAggregator aggregator, State state)
+        {
+            this.Title = "";
+            this.ConfirmButtonTitle = "";
+            this.ReturnToPreviousPageTitle = "";
+
+            switch (state)
+            {
+                case State.CreateNewAccount:
+                    this.Title = "Create an account";
+                    this.ConfirmButtonTitle = "CREATE MY ACCOUNT";
+                    this.ReturnToPreviousPageTitle = "HAVE AN ACCOUNT";
+                    break;
+                case State.RegenerateKeyPair:
+                    this.Title = "Regenerate keypair";
+                    this.ConfirmButtonTitle = "REGENERATE KEYPAIR";
+                    this.ReturnToPreviousPageTitle = "RETURN TO SIGN IN";
+                    break;
+            }
+
             this.aggregator = aggregator;
+            this.state = state;
 
             this.NavigateToSignInCommand = new RelayCommand(() =>
             {
@@ -54,7 +90,19 @@
                 try
                 {
                     this.IsBusy = true;
-                    var operation = new CreateAccountOperation(this.aggregator);
+                    IConfirmationRequiredOperation operation;
+                    switch (this.state)
+                    {
+                        case State.CreateNewAccount:
+                            operation = new CreateAccountOperation(this.aggregator);
+                            break;
+                        case State.RegenerateKeyPair:
+                            operation = new RegenerateKeyPairOperation(this.aggregator);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(state), state, null);
+                    }
+
                     await operation.Initiate(this.Login, this.Password);
                     this.aggregator.Publish(new ConfirmOperation(operation));
                 }
@@ -121,5 +169,9 @@
                 this.RaisePropertyChanged();
             }
         }
+
+        public string Title { get; }
+        public string ConfirmButtonTitle { get; }
+        public string ReturnToPreviousPageTitle { get; }
     }
 }

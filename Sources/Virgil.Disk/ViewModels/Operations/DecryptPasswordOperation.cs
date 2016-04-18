@@ -15,10 +15,12 @@ namespace Virgil.Disk.ViewModels.Operations
         private readonly IEventAggregator aggregator;
 
         public DecryptPasswordOperation(
+            string email,
             GrabResponse privateKeyResponse,
             RecipientCard recipientCard,
             IEventAggregator aggregator)
         {
+            this.Email = email;
             this.privateKeyResponse = privateKeyResponse;
             this.recipientCard = recipientCard;
             this.aggregator = aggregator;
@@ -42,5 +44,7 @@ namespace Virgil.Disk.ViewModels.Operations
             var card = new PersonalCard(this.recipientCard, new PrivateKey(this.privateKeyResponse.PrivateKey));
             this.aggregator.Publish(new CardLoaded(card, anotherPassword));
         }
+
+        public string Email { get; }
     }
 }

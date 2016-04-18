@@ -20,6 +20,11 @@
             this.aggregator = aggregator;
 
             aggregator.Subscribe(this);
+            
+            this.ProblemsSigningInCommand = new RelayCommand(() =>
+            {
+                aggregator.Publish(new ProblemsSigningIn(this.Login));
+            });
 
             this.SignInCommand = new RelayCommand(async () =>
             {
@@ -68,7 +73,7 @@
 
             this.NavigateToCreateAccountCommand = new RelayCommand(() =>
             {
-                aggregator.Publish(new NavigateTo(typeof (CreateAccountViewModel)));
+                aggregator.Publish(new NavigateTo(typeof (ICreateNewAccountModel)));
             });
         }
 
@@ -104,6 +109,8 @@
         public ICommand SignInCommand { get; }
 
         public ICommand NavigateToCreateAccountCommand { get; }
+
+        public ICommand ProblemsSigningInCommand { get; }
 
         public void Handle(DisplaySignInError message)
         {

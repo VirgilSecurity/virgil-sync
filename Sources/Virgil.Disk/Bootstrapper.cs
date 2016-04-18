@@ -7,6 +7,7 @@
     using LocalStorage.Encryption;
     using Model;
     using Ninject;
+    using Ninject.Parameters;
     using ViewModels;
 
     public class Bootstrapper
@@ -26,13 +27,27 @@
             this.IoC.Bind<IEncryptor>().To<WindowsPerUserEncryptor>().InSingletonScope();
 
             this.IoC.Bind<ConfirmationCodeViewModel>().ToSelf().InSingletonScope();
-            this.IoC.Bind<CreateAccountViewModel>().ToSelf().InSingletonScope();
+
+            this.IoC.Bind<IRegenerateKeypairModel>()
+                .To<CreateAccountViewModel>()
+                .InSingletonScope()
+                .WithParameter(new ConstructorArgument("state", CreateAccountViewModel.State.RegenerateKeyPair));
+
+            this.IoC.Bind<ICreateNewAccountModel>()
+                .To<CreateAccountViewModel>()
+                .InSingletonScope()
+                .WithParameter(new ConstructorArgument("state", CreateAccountViewModel.State.CreateNewAccount));
+
             this.IoC.Bind<FolderSettingsViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<SignInViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<ContainerViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<DropBoxSignInViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<OperationStatusViewModel>().ToSelf().InSingletonScope();
+
             this.IoC.Bind<ErrorMessageViewModel>().ToSelf().InSingletonScope();
+
+            this.IoC.Bind<WrongPasswordViewModel>().ToSelf().InSingletonScope();
+            this.IoC.Bind<ForgotPasswordViewModel>().ToSelf().InSingletonScope();
             
             this.IoC.Get<ApplicationState>();
 

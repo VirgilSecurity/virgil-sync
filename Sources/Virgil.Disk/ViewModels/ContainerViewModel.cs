@@ -9,7 +9,7 @@
     public class ContainerViewModel : ViewModel, IHandle<NavigateTo>, IHandle<ConfirmOperation>,
         IHandle<ConfirmationSuccessfull>, IHandle<Logout>, IHandle<DisplaySignInError>, IHandle<StartDropboxSignIn>,
         IHandle<DropboxSessionExpired>, IHandle<NavigateBack>, IHandle<DropboxSignInSuccessfull>,
-        IHandle<EnterAnotherPassword>
+        IHandle<EnterAnotherPassword>, IHandle<ProblemsSigningIn>, IHandle<RegenerateKeyPair>
     {
         private ViewModel content;
         private ViewModel previousContent;
@@ -65,7 +65,7 @@
 
         public void Handle(NavigateTo message)
         {
-            this.Content = ServiceLocator.Resolve(message.Type) as ViewModel;
+            this.Content = (ViewModel) ServiceLocator.Resolve(message.Type);
         }
 
         public void Handle(StartDropboxSignIn message)
@@ -114,6 +114,20 @@
             var wrongPasswordViewModel = ServiceLocator.Resolve<WrongPasswordViewModel>();
             wrongPasswordViewModel.HandleOperation(message.Operation);
             this.Content = wrongPasswordViewModel;
+        }
+
+        public void Handle(ProblemsSigningIn message)
+        {
+            var forgotPasswordViewModel = ServiceLocator.Resolve<ForgotPasswordViewModel>();
+            forgotPasswordViewModel.Email = message.Email;
+            this.Content = forgotPasswordViewModel;
+        }
+
+        public void Handle(RegenerateKeyPair message)
+        {
+            var regenerateKeypairModel = ServiceLocator.Resolve<IRegenerateKeypairModel>();
+            regenerateKeypairModel.Login = message.Email;
+            this.Content = (ViewModel)regenerateKeypairModel;
         }
     }
 }

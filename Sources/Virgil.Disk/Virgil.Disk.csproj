@@ -182,6 +182,7 @@
     <Compile Include="Messages\FolderSettingsChanged.cs" />
     <Compile Include="Messages\Logout.cs" />
     <Compile Include="Messages\NavigateBack.cs" />
+    <Compile Include="Messages\ProblemsSigningIn.cs" />
     <Compile Include="Messages\StartDropboxSignIn.cs" />
     <Compile Include="Model\FolderLinkFacade.cs" />
     <Compile Include="Messages\ConfirmOperation.cs" />
@@ -194,10 +195,11 @@
     <Compile Include="ApiConfig.cs" />
     <Compile Include="ViewModels\DropBoxSignInViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessageViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\OperationStatusViewModel.cs" />
     <Compile Include="ViewModels\Operations\DecryptPasswordOperation.cs" />
+    <Compile Include="ViewModels\Operations\RegenerateKeyPairOperation.cs" />
     <Compile Include="ViewModels\OperationViewModel.cs" />
-    <Compile Include="ViewModels\RevokeKeyViewModel.cs" />
     <Compile Include="ViewModels\WrongPasswordViewModel.cs" />
     <Compile Include="View\Controls\ConstantAspectRatioWindow.cs" />
     <Compile Include="View\Controls\EnterKeyHelper.cs" />
@@ -227,11 +229,11 @@
     <Compile Include="View\FolderSettingsDropBoxView.xaml.cs">
       <DependentUpon>FolderSettingsDropBoxView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ForgotPasswordView.xaml.cs">
+      <DependentUpon>ForgotPasswordView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OperationStatusView.xaml.cs">
       <DependentUpon>OperationStatusView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\RevokeKeysView.xaml.cs">
-      <DependentUpon>RevokeKeysView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WrongPasswordView.xaml.cs">
       <DependentUpon>WrongPasswordView.xaml</DependentUpon>
@@ -313,11 +315,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\OperationStatusView.xaml">
+    <Page Include="View\ForgotPasswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RevokeKeysView.xaml">
+    <Page Include="View\OperationStatusView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

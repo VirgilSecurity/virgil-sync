@@ -97,6 +97,18 @@
                     </local:SignInView>
                 </DataTemplate>
 
+                <DataTemplate DataType="{x:Type viewModels:ForgotPasswordViewModel}">
+                    <view:ForgotPasswordView >
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:ForgotPasswordView>
+                </DataTemplate>
+
                 <DataTemplate DataType="{x:Type viewModels:FolderSettingsViewModel}">
                     <local:FolderSettingsDropBoxView >
                         <i:Interaction.Behaviors>

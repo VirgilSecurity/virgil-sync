@@ -97,7 +97,7 @@ namespace Virgil.Disk.ViewModels.Operations
                 throw new InvalidOperationException("Private key download error");
             }
 
-            var op = new DecryptPasswordOperation(this.privateKeyResponse, this.recipientCard, this.aggregator);
+            var op = new DecryptPasswordOperation(this.email, this.privateKeyResponse, this.recipientCard, this.aggregator);
             this.aggregator.Publish(new EnterAnotherPassword(op));
         }
 

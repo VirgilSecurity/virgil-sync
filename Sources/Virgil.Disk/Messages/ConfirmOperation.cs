@@ -4,6 +4,11 @@ namespace Virgil.Disk.Messages
 
     public class ConfirmOperation
     {
+        public ConfirmOperation(IConfirmationRequiredOperation operation)
+        {
+            this.Operation = operation;
+        }
+
         public ConfirmOperation(LoadAccountOperation operation)
         {
             this.Operation = operation;
@@ -15,5 +20,15 @@ namespace Virgil.Disk.Messages
         }
 
         public IConfirmationRequiredOperation Operation { get; }
+    }
+
+    public class RegenerateKeyPair
+    {
+        public string Email { get; set; }
+
+        public RegenerateKeyPair(string email)
+        {
+            this.Email = email;
+        }
     }
 }
