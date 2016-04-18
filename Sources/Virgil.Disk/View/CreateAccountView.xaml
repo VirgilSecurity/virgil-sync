@@ -55,7 +55,7 @@
                         <TextBlock Text="Terms of Service" />
                     </Hyperlink>
                     &amp;
-                    <Hyperlink NavigateUri="https://virgilsecurity.com/terms-of-service" Foreground="White" Click="Hyperlink_OnClick">
+                    <Hyperlink NavigateUri="https://virgilsecurity.com/privacy-policy" Foreground="White" Click="Hyperlink_OnClick">
                         <TextBlock Text="Privacy Policy" />
                     </Hyperlink>
                      
