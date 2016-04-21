@@ -156,8 +156,8 @@
       <HintPath>..\packages\Virgil.SDK.3.1.0.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Virgil.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Virgil.SDK.Domain, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Virgil.SDK.Domain.1.0.4\lib\portable-net4+sl4+wp7+win8\Virgil.SDK.Domain.dll</HintPath>
+    <Reference Include="Virgil.SDK.Domain, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Virgil.SDK.Domain.1.0.6\lib\portable-net4+sl4+wp7+win8\Virgil.SDK.Domain.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -196,6 +196,7 @@
     <Compile Include="ViewModels\DropBoxSignInViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessageViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\KeyManagementViewModel.cs" />
     <Compile Include="ViewModels\OperationStatusViewModel.cs" />
     <Compile Include="ViewModels\Operations\DecryptPasswordOperation.cs" />
     <Compile Include="ViewModels\Operations\RegenerateKeyPairOperation.cs" />
@@ -203,6 +204,9 @@
     <Compile Include="ViewModels\WrongPasswordViewModel.cs" />
     <Compile Include="View\Controls\ConstantAspectRatioWindow.cs" />
     <Compile Include="View\Controls\EnterKeyHelper.cs" />
+    <Compile Include="View\Controls\SelectKeyTextBox.xaml.cs">
+      <DependentUpon>SelectKeyTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\ThumbContent.xaml.cs">
       <DependentUpon>ThumbContent.xaml</DependentUpon>
     </Compile>
@@ -231,6 +235,9 @@
     </Compile>
     <Compile Include="View\ForgotPasswordView.xaml.cs">
       <DependentUpon>ForgotPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LocalKeypairManagementView.xaml.cs">
+      <DependentUpon>LocalKeypairManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OperationStatusView.xaml.cs">
       <DependentUpon>OperationStatusView.xaml</DependentUpon>
@@ -295,6 +302,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\FolderSettings.cs" />
+    <Page Include="View\Controls\SelectKeyTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\ThumbContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -316,6 +327,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ForgotPasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LocalKeypairManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

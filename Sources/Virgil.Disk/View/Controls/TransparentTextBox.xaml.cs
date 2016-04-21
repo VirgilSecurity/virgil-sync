@@ -29,7 +29,15 @@
                 }
             };
         }
-      
+
+        public static readonly DependencyProperty IsReadonlyProperty = DependencyProperty.Register(
+            "IsReadonly", typeof (bool), typeof (TransparentTextBox), new PropertyMetadata(default(bool)));
+
+        public bool IsReadonly
+        {
+            get { return (bool) GetValue(IsReadonlyProperty); }
+            set { SetValue(IsReadonlyProperty, value); }
+        }
 
         public bool IsPassword { get; set; }
 

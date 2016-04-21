@@ -2,18 +2,26 @@
 {
     using System;
     using System.IO;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows;
+    using System.Windows.Forms;
     using Hardcodet.Wpf.TaskbarNotification;
     using Infrastructure;
     using Infrastructure.Messaging;
+    using LocalStorage;
     using Messages;
+    using Newtonsoft.Json;
+    using Ookii.Dialogs.Wpf;
+    using Application = System.Windows.Application;
 
     /// <summary>
     /// Interaction logic for TrayWindow.xaml
     /// </summary>
-    public partial class TrayWindow : Window, 
-        IHandle<ErrorMessage>, 
-        IHandle<CardLoaded>, 
+    public partial class TrayWindow : Window,
+        IHandle<ErrorMessage>,
+        IHandle<CardLoaded>,
         IHandle<Logout>,
         IHandle<FolderSettingsChanged>
     {
@@ -83,7 +91,9 @@
 
         private void UpdateLogout()
         {
-            this.LogoutMenuItem.IsEnabled = ((App)Application.Current).AppState.HasAccount;
+            var hasAccount = ((App)Application.Current).AppState.HasAccount;
+            this.LogoutMenuItem.IsEnabled = hasAccount;
+            this.ExportKeyItem.IsEnabled = hasAccount;
         }
 
         private void UpdateOpenFolder()
@@ -98,5 +108,30 @@
                 this.OpenFolderItem.IsEnabled = false;
             }
         }
+
+        private void OnExportClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                await Task.Delay(200);
+
+                var dialog = new VistaSaveFileDialog
+                {
+                    Title = "Export Virgil Card",
+                    CheckFileExists = false,
+                    CheckPathExists = true,
+                    DefaultExt = "*.vcard",
+                    Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
+                    FilterIndex = 2
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    ((App)Application.Current).AppState.ExportCurrentAccount(dialog.FileName);
+                }
+            });
+        }
     }
 }
+
+

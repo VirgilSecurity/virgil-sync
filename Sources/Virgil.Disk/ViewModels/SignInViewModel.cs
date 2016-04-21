@@ -26,6 +26,11 @@
                 aggregator.Publish(new ProblemsSigningIn(this.Login));
             });
 
+            this.NavigateToImportCommand = new RelayCommand(() =>
+            {
+                aggregator.Publish(new NavigateTo(typeof(KeyManagementViewModel)));
+            });
+
             this.SignInCommand = new RelayCommand(async () =>
             {
                 this.ClearErrors();
@@ -111,6 +116,8 @@
         public ICommand NavigateToCreateAccountCommand { get; }
 
         public ICommand ProblemsSigningInCommand { get; }
+
+        public ICommand NavigateToImportCommand { get; }
 
         public void Handle(DisplaySignInError message)
         {

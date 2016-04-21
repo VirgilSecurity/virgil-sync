@@ -1,10 +1,13 @@
 namespace Virgil.Disk.Model
 {
     using System;
+    using System.IO;
+    using System.Text;
     using Infrastructure.Messaging;
     using LocalStorage;
     using Messages;
     using Newtonsoft.Json;
+    using Ookii.Dialogs.Wpf;
     using SDK.Domain;
 
     public class ApplicationState : IHandle<CardLoaded>
@@ -39,7 +42,7 @@ namespace Virgil.Disk.Model
             this.PrivateKeyPassword = message.PrivateKeyPassword;
             this.HasAccount = true;
 
-            var data = new StorageDto {PrivateKeyPassword = this.PrivateKeyPassword, PersonalCard = this.CurrentCard.Export()};
+            var data = new StorageDto { PrivateKeyPassword = this.PrivateKeyPassword, PersonalCard = this.CurrentCard.Export() };
 
             var json = JsonConvert.SerializeObject(data);
 
@@ -79,6 +82,34 @@ namespace Virgil.Disk.Model
             this.storageProvider.Save(json);
 
             this.aggregator.Publish(new Logout());
+        }
+
+        public void ExportCurrentAccount(string filepath)
+        {
+            var personalCard = this.CurrentCard;
+
+            var dto = new LocalStorage.VirgilCardDto
+            {
+                private_key = personalCard.PrivateKey.Data,
+                card = new CardDto
+                {
+                    id = personalCard.Id,
+                    identity = new IdentityDto
+                    {
+                        type = personalCard.Identity.Type.ToString(),
+                        value = personalCard.Identity.Value
+                    },
+                    public_key = new PublicKeyDto
+                    {
+                        id = personalCard.PublicKey.Id,
+                        value = personalCard.PublicKey.Data
+                    }
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(new[] { dto });
+            var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(json));
+            File.WriteAllText(filepath, base64);
         }
     }
 }

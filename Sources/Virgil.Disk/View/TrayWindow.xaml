@@ -22,6 +22,7 @@
                 <ContextMenu >
                     <MenuItem Header="Open Virgil Folder in File Explorer" Click="OnOpenVirgilDiskClick" x:Name="OpenFolderItem"/>
                     <MenuItem Header="Settings" Click="OnSettingsClick"/>
+                    <MenuItem Header="Export Virgil Card" Click="OnExportClick" x:Name="ExportKeyItem"/>
                     <MenuItem Header="Logout" Click="OnLogoutClick" x:Name="LogoutMenuItem"/>
                     <MenuItem Header="Close" Click="OnMenuExitClick"/>
                 </ContextMenu>

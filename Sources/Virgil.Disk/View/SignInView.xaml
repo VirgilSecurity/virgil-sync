@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="220"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             
@@ -42,15 +42,18 @@
         </Button>
 
         <Button Grid.Row="5" Style="{StaticResource BorderedButton}" Width="300" Margin="0 0 0 20" VerticalAlignment="Bottom" Command="{Binding NavigateToCreateAccountCommand}">
-            <Label Content="CREATE AN ACCOUNT" Foreground="White" FontSize="20" FontWeight="Bold"  >
-                
-            </Label>
+            <Label Content="CREATE ACCOUNT" Foreground="White" FontSize="20" FontWeight="Bold" />
+        </Button>
+
+        <Button Grid.Row="6" Style="{StaticResource BorderedButton}" Width="300" Margin="0 0 0 20" VerticalAlignment="Bottom" Command="{Binding NavigateToImportCommand}">
+            <Label Content="IMPORT ACCOUNT" Foreground="White" FontSize="20" FontWeight="Bold" />
         </Button>
 
         <Button Content="Problems signing in?" Style="{StaticResource LinkButton}" 
                 Command="{Binding ProblemsSigningInCommand}"
-                Grid.Row="6" HorizontalAlignment="Center"/>
-
+                Grid.Row="7" HorizontalAlignment="Center"/>
+        
         <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Stretch" />
     </Grid>
 </UserControl>
+

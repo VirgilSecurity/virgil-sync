@@ -194,3 +194,4 @@ Setup/Prerequisites/
 Setup/keyring-cache/
 Setup/outlook_addin-cache/
 Setup/outlook_addin_with_keyring-cache/
+*.cab

@@ -29,7 +29,7 @@ namespace Virgil.Disk
             base.OnStartup(e);
 
             this.DispatcherUnhandledException += this.OnDispatcherUnhandledException;
-#if DEBUG
+#if false //#DEBUG
             var virgilHub = SDK.Infrastructure.VirgilConfig
                 .UseAccessToken(ApiConfig.VirgilTokenStaging)
                 .WithCustomPublicServiceUri(new Uri(@"https://keys-stg.virgilsecurity.com"))

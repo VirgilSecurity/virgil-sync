@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Virgil.Sync.View.LocalKeypairManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Virgil.Sync.View"
+             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
+             xmlns:controls1="clr-namespace:Virgil.Sync.View.Controls"
+             xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
+             Style="{StaticResource AppPage}" 
+             d:DataContext="{d:DesignInstance viewModels:KeyManagementViewModel}">
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
+        <TextBlock Text="Import Virgil Card" Style="{StaticResource LargeText}" Grid.Row="1"/>
+        <controls:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
+
+        <TextBlock Grid.Row="2" FontSize="20" Foreground="#9BA0A5" HorizontalAlignment="Center" TextAlignment="Center">
+            <Run>File:</Run>
+            <Run Text="{Binding SelectedPath}"/>
+        </TextBlock>
+        
+        <Button Grid.Row="3" Style="{StaticResource BorderedButton}"
+                Width="300" Margin="0 10 0 10" VerticalAlignment="Bottom" 
+                Command="{Binding ImportKeyCommand}">
+            <Label Content="SELECT KEY" Foreground="White" FontSize="20" FontWeight="Bold" />
+        </Button>
+
+        <controls:TransparentTextBox IsPassword="True" 
+                                     FontSize="20" Height="40"
+                                     Width="300"
+                                     Password="{Binding Password, Mode=TwoWay}"
+                                     Grid.Row="4" Hint="Password"/>
+        
+        <ListView Grid.Row="5" Width="450" Height="200"
+                  BorderBrush="Transparent"
+                  ItemsSource="{Binding Cards}"
+                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
+                  Background="Transparent">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="20" Foreground="#9BA0A5" HorizontalAlignment="Center" TextAlignment="Center">
+                        <Run Text="{Binding card.identity.value}"/>
+                        <Run Text=":"/>
+                        <Run Text="{Binding card.id}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="6" Style="{StaticResource SignInButton}" 
+                Margin="0 10 0 0" Width="300" 
+                Command="{Binding SelectKeyCommand}">
+            <Label Content="IMPORT" Foreground="Black" FontSize="20" FontWeight="Bold" />
+        </Button>
+
+        <Button Content="Return to sign in" Style="{StaticResource LinkButton}" 
+                Command="{Binding ReturnToSignInCommand}"
+                Margin="0 10"
+                VerticalAlignment="Bottom"
+                Grid.Row="7" HorizontalAlignment="Center"/>
+
+        <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="100" VerticalAlignment="Stretch" />
+    </Grid>
+</UserControl>
+

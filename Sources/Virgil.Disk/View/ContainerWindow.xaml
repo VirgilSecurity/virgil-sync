@@ -57,6 +57,19 @@
 
         <Grid>
             <Grid.Resources>
+
+                <DataTemplate DataType="{x:Type viewModels:KeyManagementViewModel}">
+                    <view:LocalKeypairManagementView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:LocalKeypairManagementView>
+                </DataTemplate>
+
                 <DataTemplate DataType="{x:Type viewModels:WrongPasswordViewModel}">
                     <view:WrongPasswordView>
                         <i:Interaction.Behaviors>

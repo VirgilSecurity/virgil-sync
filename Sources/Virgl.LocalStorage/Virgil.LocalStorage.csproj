@@ -51,6 +51,7 @@
     <Compile Include="Encryption\IEncryptor.cs" />
     <Compile Include="IsolatedStorageProvider.cs" />
     <Compile Include="IStorageProvider.cs" />
+    <Compile Include="VirgilCardDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
