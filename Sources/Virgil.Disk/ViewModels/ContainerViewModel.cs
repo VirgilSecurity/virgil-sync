@@ -32,8 +32,8 @@
                 //confirmationCodeViewModel.Handle(new CreateAccountOperation(aggregator));
                 //this.Content = confirmationCodeViewModel;
 
-                //this.Content = ServiceLocator.Resolve<SignInViewModel>();
-                this.Content = ServiceLocator.Resolve<KeyManagementViewModel>();
+                this.Content = ServiceLocator.Resolve<SignInViewModel>();
+                //this.Content = ServiceLocator.Resolve<KeyManagementViewModel>();
             }
         }
 

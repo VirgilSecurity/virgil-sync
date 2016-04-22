@@ -43,11 +43,10 @@
             this.IoC.Bind<ContainerViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<DropBoxSignInViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<OperationStatusViewModel>().ToSelf().InSingletonScope();
-
             this.IoC.Bind<ErrorMessageViewModel>().ToSelf().InSingletonScope();
-
             this.IoC.Bind<WrongPasswordViewModel>().ToSelf().InSingletonScope();
             this.IoC.Bind<ForgotPasswordViewModel>().ToSelf().InSingletonScope();
+            this.IoC.Bind<KeyManagementViewModel>().ToSelf().InSingletonScope();
             
             this.IoC.Get<ApplicationState>();
 

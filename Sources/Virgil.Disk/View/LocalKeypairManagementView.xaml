@@ -14,10 +14,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="150"/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
 
@@ -27,15 +27,17 @@
         <TextBlock Text="Import Virgil Card" Style="{StaticResource LargeText}" Grid.Row="1"/>
         <controls:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
 
-        <TextBlock Grid.Row="2" FontSize="20" Foreground="#9BA0A5" HorizontalAlignment="Center" TextAlignment="Center">
-            <Run>File:</Run>
+        <TextBlock Grid.Row="2" FontSize="20" Foreground="#9BA0A5" 
+                   Visibility="{Binding SelectedPath, Converter={StaticResource NotEmptyStringToVisibilityConverter}}"
+                   HorizontalAlignment="Center" TextAlignment="Center">
+            <Run >File:</Run>
             <Run Text="{Binding SelectedPath}"/>
         </TextBlock>
         
         <Button Grid.Row="3" Style="{StaticResource BorderedButton}"
                 Width="300" Margin="0 10 0 10" VerticalAlignment="Bottom" 
                 Command="{Binding ImportKeyCommand}">
-            <Label Content="SELECT KEY" Foreground="White" FontSize="20" FontWeight="Bold" />
+            <Label Content="SELECT KEYS FILE" Foreground="White" FontSize="20" FontWeight="Bold" />
         </Button>
 
         <controls:TransparentTextBox IsPassword="True" 
@@ -47,6 +49,7 @@
         <ListView Grid.Row="5" Width="450" Height="200"
                   BorderBrush="Transparent"
                   ItemsSource="{Binding Cards}"
+                  Visibility="{Binding IsMultipleKeys, Converter={StaticResource BoolToVisibilityConverter}}"
                   SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
                   Background="Transparent">
             
@@ -64,7 +67,7 @@
         <Button Grid.Row="6" Style="{StaticResource SignInButton}" 
                 Margin="0 10 0 0" Width="300" 
                 Command="{Binding SelectKeyCommand}">
-            <Label Content="IMPORT" Foreground="Black" FontSize="20" FontWeight="Bold" />
+            <Label Content="IMPORT CARD" Foreground="Black" FontSize="20" FontWeight="Bold" />
         </Button>
 
         <Button Content="Return to sign in" Style="{StaticResource LinkButton}" 

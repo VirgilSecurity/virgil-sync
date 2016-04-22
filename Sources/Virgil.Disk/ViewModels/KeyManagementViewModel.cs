@@ -6,7 +6,6 @@ namespace Virgil.Disk.ViewModels
     using System.Linq;
     using System.Text;
     using System.Windows.Input;
-    using Infrastructure;
     using Infrastructure.Messaging;
     using Infrastructure.Mvvm;
     using LocalStorage;
@@ -22,6 +21,7 @@ namespace Virgil.Disk.ViewModels
         private string selectedPath;
         private string password;
         private VirgilCardDto selectedCard;
+        private bool isMultipleKeys;
 
         public KeyManagementViewModel(IEventAggregator aggregator)
         {
@@ -33,104 +33,11 @@ namespace Virgil.Disk.ViewModels
                 this.aggregator.Publish(new NavigateTo(typeof(SignInViewModel)));
             });
 
-            this.ImportKeyCommand = new RelayCommand(() =>
-            {
-                try
-                {
-                    this.ClearErrors();
+            this.ImportKeyCommand = new RelayCommand(this.ImportKey);
 
-                    var dialog = new VistaOpenFileDialog
-                    {
-                        Title = "Select Virgil Card",
-                        Multiselect = false,
-                        CheckFileExists = true,
-                        CheckPathExists = true,
-                        ReadOnlyChecked = true,
-                        DefaultExt = "*.vcard",
-                        Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
-                        FilterIndex = 2
-                    };
-
-                    if (dialog.ShowDialog() == true)
-                    {
-                        var text = Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(dialog.FileName)));
-                        try
-                        {
-                            var virgilCardDtos = JsonConvert.DeserializeObject<LocalStorage.VirgilCardDto[]>(text);
-                            this.Cards.Clear();
-                            foreach (var dto in virgilCardDtos)
-                            {
-                                this.Cards.Add(dto);
-                            }
-                            this.SelectedCard = this.Cards.First();
-                        }
-                        catch (JsonException e)
-                        {
-                            var virgilCardDto = JsonConvert.DeserializeObject<LocalStorage.VirgilCardDto>(text);
-                            this.Cards.Clear();
-                            this.Cards.Add(virgilCardDto);
-                            this.SelectedCard = virgilCardDto;
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    this.RaiseErrorMessage("Malformed on unaccessible file");
-                }
-            });
-
-            this.SelectKeyCommand = new RelayCommand(async () =>
-            {
-                try
-                {
-                    this.ClearErrors();
-                    this.IsBusy = true;
-
-                    var fileDto = this.SelectedCard;
-
-                    if (this.SelectedCard == null)
-                    {
-                        this.RaiseErrorMessage("Please select card");
-                        return;
-                    }
-
-                    var cardDto = await SDK.Domain.ServiceLocator.Services.Cards.Get(fileDto.card.id);
-
-                    var recipientCard = new RecipientCard(cardDto);
-                    var personalCard = new PersonalCard(recipientCard, new PrivateKey(fileDto.private_key));
-                    if (personalCard.IsPrivateKeyEncrypted && !personalCard.CheckPrivateKeyPassword(this.Password))
-                    {
-                        throw new WrongPrivateKeyPasswordException("Wrong password");
-                    }
-
-                    try
-                    {
-                        var encrypt = personalCard.Encrypt("test");
-                        personalCard.Decrypt(encrypt, this.Password);
-                    }
-                    catch
-                    {
-                        throw new Exception("Virgil card is malformed");
-                    }
-
-                    this.aggregator.Publish(new CardLoaded(personalCard, this.Password));
-                    this.aggregator.Publish(new ConfirmationSuccessfull());
-
-                }
-                catch (WrongPrivateKeyPasswordException e)
-                {
-                    this.AddErrorFor(nameof(this.Password), e.Message);
-                }
-                catch (Exception e)
-                {
-                    this.RaiseErrorMessage(e.Message);
-                }
-                finally
-                {
-                    this.IsBusy = false;
-                }
-            });
+            this.SelectKeyCommand = new RelayCommand(arg => this.SelectedCard != null, this.SelectKey);
         }
+
 
         public ICommand SelectKeyCommand { get; }
         public ICommand ReturnToSignInCommand { get; }
@@ -168,6 +75,127 @@ namespace Virgil.Disk.ViewModels
                 if (Equals(value, this.selectedCard)) return;
                 this.selectedCard = value;
                 this.RaisePropertyChanged();
+                ((RelayCommand) this.SelectKeyCommand).TriggerCanExecute();
+            }
+        }
+        
+        public bool IsMultipleKeys
+        {
+            get { return this.isMultipleKeys; }
+            set
+            {
+                if (value == this.isMultipleKeys) return;
+                this.isMultipleKeys = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public override void CleanupState()
+        {
+            this.SelectedCard = null;
+            this.SelectedPath = "";
+            this.Password = "";
+            this.Cards.Clear();
+        }
+
+        private async void SelectKey(object arg)
+        {
+            try
+            {
+                this.ClearErrors();
+                this.IsBusy = true;
+
+                var fileDto = this.SelectedCard;
+
+                if (this.SelectedCard == null)
+                {
+                    this.RaiseErrorMessage("Please select card");
+                    return;
+                }
+
+                var cardDto = await SDK.Domain.ServiceLocator.Services.Cards.Get(fileDto.card.id);
+
+                var recipientCard = new RecipientCard(cardDto);
+                var personalCard = new PersonalCard(recipientCard, new PrivateKey(fileDto.private_key));
+                if (personalCard.IsPrivateKeyEncrypted && !personalCard.CheckPrivateKeyPassword(this.Password))
+                {
+                    throw new WrongPrivateKeyPasswordException("Wrong password");
+                }
+
+                try
+                {
+                    var encrypt = personalCard.Encrypt("test");
+                    personalCard.Decrypt(encrypt, this.Password);
+                }
+                catch
+                {
+                    throw new Exception("Virgil card is malformed");
+                }
+
+                this.aggregator.Publish(new CardLoaded(personalCard, this.Password));
+                this.aggregator.Publish(new ConfirmationSuccessfull());
+            }
+            catch (WrongPrivateKeyPasswordException e)
+            {
+                this.AddErrorFor(nameof(this.Password), e.Message);
+            }
+            catch (Exception e)
+            {
+                this.RaiseErrorMessage(e.Message);
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+        }
+
+        private void ImportKey()
+        {
+            try
+            {
+                this.ClearErrors();
+
+                var dialog = new VistaOpenFileDialog
+                {
+                    Title = "Select Virgil Card",
+                    Multiselect = false,
+                    CheckFileExists = true,
+                    CheckPathExists = true,
+                    ReadOnlyChecked = true,
+                    DefaultExt = "*.vcard",
+                    Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
+                    FilterIndex = 2
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    var text = Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(dialog.FileName)));
+                    try
+                    {
+                        var virgilCardDtos = JsonConvert.DeserializeObject<LocalStorage.VirgilCardDto[]>(text);
+                        this.Cards.Clear();
+                        foreach (var dto in virgilCardDtos)
+                        {
+                            this.Cards.Add(dto);
+                        }
+                        this.SelectedCard = this.Cards.First();
+                    }
+                    catch (JsonException)
+                    {
+                        var virgilCardDto = JsonConvert.DeserializeObject<LocalStorage.VirgilCardDto>(text);
+                        this.Cards.Clear();
+                        this.Cards.Add(virgilCardDto);
+                        this.SelectedCard = virgilCardDto;
+                    }
+
+                    this.IsMultipleKeys = this.Cards.Count > 1;
+                    this.SelectedPath = Path.GetFileName(dialog.FileName);
+                }
+            }
+            catch (Exception)
+            {
+                this.SelectedPath = "";
+                this.RaiseErrorMessage("Malformed on unaccessible file");
             }
         }
     }
