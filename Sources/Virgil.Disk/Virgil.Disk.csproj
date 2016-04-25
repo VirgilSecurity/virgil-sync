@@ -203,6 +203,9 @@
     <Compile Include="ViewModels\OperationViewModel.cs" />
     <Compile Include="ViewModels\WrongPasswordViewModel.cs" />
     <Compile Include="View\Controls\ConstantAspectRatioWindow.cs" />
+    <Compile Include="View\Controls\CustomCheckbox.xaml.cs">
+      <DependentUpon>CustomCheckbox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\EnterKeyHelper.cs" />
     <Compile Include="View\Controls\SelectKeyTextBox.xaml.cs">
       <DependentUpon>SelectKeyTextBox.xaml</DependentUpon>
@@ -302,6 +305,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\FolderSettings.cs" />
+    <Page Include="View\Controls\CustomCheckbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Controls\SelectKeyTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

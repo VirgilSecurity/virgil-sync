@@ -39,6 +39,7 @@ namespace Virgil.Disk
 #else
             var virgilHub = SDK.Infrastructure.VirgilConfig.UseAccessToken(ApiConfig.VirgilToken).Build();
 #endif
+
             Virgil.SDK.Domain.ServiceLocator.Setup(virgilHub);
 
             var updater = new Updater();
