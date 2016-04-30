@@ -175,6 +175,7 @@
     </Page>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Exceptions\PrivateKeyNotFoundException.cs" />
     <Compile Include="Messages\DropBoxLinkChanged.cs" />
     <Compile Include="Messages\DropboxSessionExpired.cs" />
     <Compile Include="Messages\DropboxSignOut.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Messages\FolderSettingsChanged.cs" />
     <Compile Include="Messages\Logout.cs" />
     <Compile Include="Messages\NavigateBack.cs" />
+    <Compile Include="Messages\PrivateKeyNotFound.cs" />
     <Compile Include="Messages\ProblemsSigningIn.cs" />
     <Compile Include="Messages\StartDropboxSignIn.cs" />
     <Compile Include="Model\FolderLinkFacade.cs" />
@@ -198,14 +200,11 @@
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\KeyManagementViewModel.cs" />
     <Compile Include="ViewModels\OperationStatusViewModel.cs" />
-    <Compile Include="ViewModels\Operations\DecryptPasswordOperation.cs" />
+    <Compile Include="ViewModels\Operations\DecryptWithAnotherPasswordOperation.cs" />
     <Compile Include="ViewModels\Operations\RegenerateKeyPairOperation.cs" />
     <Compile Include="ViewModels\OperationViewModel.cs" />
     <Compile Include="ViewModels\WrongPasswordViewModel.cs" />
     <Compile Include="View\Controls\ConstantAspectRatioWindow.cs" />
-    <Compile Include="View\Controls\CustomCheckbox.xaml.cs">
-      <DependentUpon>CustomCheckbox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Controls\EnterKeyHelper.cs" />
     <Compile Include="View\Controls\SelectKeyTextBox.xaml.cs">
       <DependentUpon>SelectKeyTextBox.xaml</DependentUpon>
@@ -305,10 +304,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\FolderSettings.cs" />
-    <Page Include="View\Controls\CustomCheckbox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Controls\SelectKeyTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

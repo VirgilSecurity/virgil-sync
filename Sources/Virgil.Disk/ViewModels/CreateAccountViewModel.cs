@@ -25,6 +25,8 @@
         private string confirmPassword;
         private string login;
         private string password;
+        private bool isUploadPrivateKey;
+        private bool isPasswordUsed;
 
         public enum State
         {
@@ -70,17 +72,20 @@
                     this.AddErrorFor(nameof(this.Login), "Login should be a valid email");
                 }
 
-                if (string.IsNullOrEmpty(this.Password))
+                if (this.IsPasswordUsed)
                 {
-                    this.AddErrorFor(nameof(this.Password), "You should provide password");
-                }
-
-                if (!string.IsNullOrEmpty(this.Password))
-                {
-                    if (this.Password != this.ConfirmPassword)
+                    if (string.IsNullOrEmpty(this.Password))
                     {
-                        this.AddErrorFor(nameof(this.Password), "Passwords should match");
-                        this.AddErrorFor(nameof(this.ConfirmPassword), "Passwords should match");
+                        this.AddErrorFor(nameof(this.Password), "You should provide password");
+                    }
+
+                    if (!string.IsNullOrEmpty(this.Password))
+                    {
+                        if (this.Password != this.ConfirmPassword)
+                        {
+                            this.AddErrorFor(nameof(this.Password), "Passwords should match");
+                            this.AddErrorFor(nameof(this.ConfirmPassword), "Passwords should match");
+                        }
                     }
                 }
 
@@ -94,10 +99,10 @@
                     switch (this.state)
                     {
                         case State.CreateNewAccount:
-                            operation = new CreateAccountOperation(this.aggregator);
+                            operation = new CreateAccountOperation(this.aggregator, this.IsPasswordUsed, IsUploadPrivateKey);
                             break;
                         case State.RegenerateKeyPair:
-                            operation = new RegenerateKeyPairOperation(this.aggregator);
+                            operation = new RegenerateKeyPairOperation(this.aggregator, this.IsPasswordUsed, IsUploadPrivateKey);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -173,5 +178,28 @@
         public string Title { get; }
         public string ConfirmButtonTitle { get; }
         public string ReturnToPreviousPageTitle { get; }
+
+        public bool IsUploadPrivateKey
+        {
+            get { return this.isUploadPrivateKey; }
+            set
+            {
+                if (value == this.isUploadPrivateKey) return;
+                this.isUploadPrivateKey = value;
+                this.RaisePropertyChanged();
+                
+            }
+        }
+
+        public bool IsPasswordUsed
+        {
+            get { return this.isPasswordUsed; }
+            set
+            {
+                if (value == this.isPasswordUsed) return;
+                this.isPasswordUsed = value;
+                this.RaisePropertyChanged();
+            }
+        }
     }
 }

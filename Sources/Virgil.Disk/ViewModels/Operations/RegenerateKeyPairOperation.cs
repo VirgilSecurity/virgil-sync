@@ -11,15 +11,19 @@ namespace Virgil.Disk.ViewModels.Operations
     public class RegenerateKeyPairOperation : IConfirmationRequiredOperation
     {
         private readonly IEventAggregator eventAggregator;
+        private readonly bool usePassword;
+        private readonly bool uploadPrivateKey;
 
         private string email;
         private string password;
 
         private IdentityTokenRequest request;
 
-        public RegenerateKeyPairOperation(IEventAggregator eventAggregator)
+        public RegenerateKeyPairOperation(IEventAggregator eventAggregator, bool usePassword, bool uploadPrivateKey)
         {
             this.eventAggregator = eventAggregator;
+            this.usePassword = usePassword;
+            this.uploadPrivateKey = uploadPrivateKey;
         }
 
         public async Task Initiate(string email, string password)
@@ -34,12 +38,16 @@ namespace Virgil.Disk.ViewModels.Operations
         {
             var token = await this.request.Confirm(code);
 
-            var card = await PersonalCard.Create(token, this.password, new Dictionary<string, string>
+            var card = await PersonalCard.Create(token, this.usePassword ? this.password : null, new Dictionary<string, string>
             {
                 ["CreatedWith"] = "Virgil.Disk"
             });
 
-            await card.UploadPrivateKey(this.password);
+            if (this.uploadPrivateKey)
+            {
+                await card.UploadPrivateKey(this.password);
+            }
+
             this.eventAggregator.Publish(new CardLoaded(card, this.password));
         }
 

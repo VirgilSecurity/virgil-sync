@@ -277,14 +277,14 @@
         </Style>
 
         <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#00000000"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF5593FF"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FFA0A5AA"/>
         <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#00000000"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FFA0A5AA"/>
         <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#00000000"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF3C77DD"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FFA0A5AA"/>
         <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FFA0A5AA"/>
 
         <Style TargetType="CheckBox" x:Key="CustomCheckbox">
@@ -292,6 +292,9 @@
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderBrush" Value="#FFA0A5AA"></Setter>
             <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="FontSize" Value="17"></Setter>
+            <Setter Property="Foreground" Value="#FFA0A5AA"></Setter>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -361,7 +364,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-            
+
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <converters:BoolToVisibilityConverter TrueValue="Collapsed" FalseValue="Visible" x:Key="NotBoolToVisibilityConverter" />
         <converters:NotEmptyStringToVisibilityConverter x:Key="NotEmptyStringToVisibilityConverter" />

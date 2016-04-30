@@ -4,11 +4,11 @@ namespace Virgil.Disk.Messages
 
     public class EnterAnotherPassword
     {
-        public EnterAnotherPassword(DecryptPasswordOperation decryptPasswordOperation)
+        public EnterAnotherPassword(DecryptWithAnotherPasswordOperation decryptWithAnotherPasswordOperation)
         {
-            this.Operation = decryptPasswordOperation;
+            this.Operation = decryptWithAnotherPasswordOperation;
         }
 
-        public DecryptPasswordOperation Operation { get; }
+        public DecryptWithAnotherPasswordOperation Operation { get; }
     }
 }

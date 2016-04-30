@@ -40,10 +40,10 @@
                     this.AddErrorFor(nameof(this.Login), "Login should be a valid email");
                 }
 
-                if (string.IsNullOrEmpty(this.Password))
-                {
-                    this.AddErrorFor(nameof(this.Password), "You should provide password");
-                }
+                //if (string.IsNullOrEmpty(this.Password))
+                //{
+                //    this.AddErrorFor(nameof(this.Password), "You should provide password");
+                //}
 
                 if (this.HasErrors)
                 {
@@ -54,7 +54,7 @@
                 {
                     this.IsBusy = true;
                     var operation = new LoadAccountOperation(this.aggregator);
-                    await operation.Initiate(this.Login, this.Password);
+                    await operation.Initiate(this.Login, "");
                     this.aggregator.Publish(new ConfirmOperation(operation));
                     
                 }

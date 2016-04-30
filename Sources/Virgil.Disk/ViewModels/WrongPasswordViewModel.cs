@@ -8,7 +8,7 @@
 
     public class WrongPasswordViewModel : ViewModel
     {
-        private DecryptPasswordOperation operation;
+        private DecryptWithAnotherPasswordOperation operation;
         private string password;
 
         public WrongPasswordViewModel(IEventAggregator aggregator)
@@ -56,11 +56,11 @@
 
         public ICommand ProblemsSigningInCommand { get; }
 
-        public void HandleOperation(DecryptPasswordOperation operation)
+        public void HandleOperation(DecryptWithAnotherPasswordOperation operation)
         {
             this.operation = operation;
 
-            this.AddErrorFor(nameof(this.Password), "Wrong password");
+            //this.AddErrorFor(nameof(this.Password), "Wrong password");
         }
     }
 }

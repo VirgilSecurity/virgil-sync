@@ -8,13 +8,13 @@ namespace Virgil.Disk.ViewModels.Operations
     using SDK.Domain.Exceptions;
     using SDK.TransferObject;
 
-    public class DecryptPasswordOperation
+    public class DecryptWithAnotherPasswordOperation
     {
         private readonly GrabResponse privateKeyResponse;
         private readonly RecipientCard recipientCard;
         private readonly IEventAggregator aggregator;
 
-        public DecryptPasswordOperation(
+        public DecryptWithAnotherPasswordOperation(
             string email,
             GrabResponse privateKeyResponse,
             RecipientCard recipientCard,
@@ -34,9 +34,13 @@ namespace Virgil.Disk.ViewModels.Operations
 
         public void DecryptWithAnotherPassword(string anotherPassword)
         {
-            if (!VirgilKeyPair.CheckPrivateKeyPassword(
-                this.privateKeyResponse.PrivateKey,
-                Encoding.UTF8.GetBytes(anotherPassword)))
+            if (VirgilKeyPair.IsPrivateKeyEncrypted(this.privateKeyResponse.PrivateKey) &&
+
+                !VirgilKeyPair.CheckPrivateKeyPassword(
+                    this.privateKeyResponse.PrivateKey,
+                    Encoding.UTF8.GetBytes(anotherPassword))
+
+                    )
             {
                 throw new WrongPrivateKeyPasswordException("Wrong password");
             }

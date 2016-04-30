@@ -22,6 +22,7 @@ namespace Virgil.Disk.ViewModels
         private string password;
         private VirgilCardDto selectedCard;
         private bool isMultipleKeys;
+        private bool isShowKeyNotFoundMessage;
 
         public KeyManagementViewModel(IEventAggregator aggregator)
         {
@@ -65,6 +66,17 @@ namespace Virgil.Disk.ViewModels
             }
         }
 
+        public bool IsShowKeyNotFoundMessage
+        {
+            get { return this.isShowKeyNotFoundMessage; }
+            set
+            {
+                if (Equals(value, this.isShowKeyNotFoundMessage)) return;
+                this.isShowKeyNotFoundMessage = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
         public ObservableCollection<LocalStorage.VirgilCardDto> Cards { get; set; } = new ObservableCollection<VirgilCardDto>();
 
         public LocalStorage.VirgilCardDto SelectedCard
@@ -96,6 +108,7 @@ namespace Virgil.Disk.ViewModels
             this.SelectedPath = "";
             this.Password = "";
             this.Cards.Clear();
+            this.IsShowKeyNotFoundMessage = false;
         }
 
         private async void SelectKey(object arg)
@@ -197,6 +210,11 @@ namespace Virgil.Disk.ViewModels
                 this.SelectedPath = "";
                 this.RaiseErrorMessage("Malformed on unaccessible file");
             }
+        }
+
+        public void ShowKeyNotFoundOnServerError()
+        {
+            this.IsShowKeyNotFoundMessage = true;
         }
     }
 }

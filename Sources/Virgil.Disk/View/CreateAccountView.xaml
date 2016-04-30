@@ -9,15 +9,15 @@
              mc:Ignorable="d" 
              Style="{StaticResource AppPage}" 
              d:DataContext="{d:DesignInstance Type=viewModels:CreateAccountViewModel}">
-    
+
     <Grid VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="160"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -31,12 +31,41 @@
         <controls:TransparentTextBox Grid.Row="2" 
                                      controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
                                      Hint="Email" Text="{Binding Login, Mode=TwoWay}" FontSize="20" Height="40"/>
-        <controls:TransparentTextBox Grid.Row="3" 
+
+        <Grid Grid.RowSpan="2" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <CheckBox 
+                Margin="50 10 0 0"
+                Grid.Row="0"
+                IsChecked="{Binding IsUploadPrivateKey, Mode=TwoWay}"
+                Style="{StaticResource CustomCheckbox}" 
+                      Content="Upload private key to the Virgil cloud"/>
+
+            <CheckBox 
+                Margin="50 10 0 10"
+                IsChecked="{Binding IsPasswordUsed, Mode=TwoWay}"
+                Style="{StaticResource CustomCheckbox}"
+                      Grid.Row="1"
+                      Content="Use private key password"/>
+
+            <controls:TransparentTextBox Grid.Row="2" 
+                                     Visibility="{Binding IsPasswordUsed, Converter={StaticResource BoolToVisibilityConverter}}"
                                      controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
-                                     Hint="Password" Password="{Binding Password, Mode=TwoWay}" IsPassword="True" FontSize="20" Height="40"/>
-        <controls:TransparentTextBox Grid.Row="4" 
+                                     Hint="Password" Password="{Binding Password, Mode=TwoWay}" 
+                                         IsPassword="True" FontSize="20" Height="40"/>
+
+            <controls:TransparentTextBox Grid.Row="3"
+                                     Visibility="{Binding IsPasswordUsed, Converter={StaticResource BoolToVisibilityConverter}}"
                                      controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
-                                     Hint="Confirm Password" Password="{Binding ConfirmPassword, Mode=TwoWay}" IsPassword="True" FontSize="20" Height="40"/>
+                                     Hint="Confirm Password" Password="{Binding ConfirmPassword, Mode=TwoWay}"
+                                         IsPassword="True" FontSize="20" Height="40"/>
+        </Grid>
 
         <Button Grid.Row="5" Style="{StaticResource SignInButton}" Margin="0 10 0 0" Width="300" Command="{Binding CreateAccountCommand}">
             <TextBlock Text="{Binding ConfirmButtonTitle}" Foreground="Black" FontSize="20" FontWeight="Bold" />
@@ -58,7 +87,7 @@
                     <Hyperlink NavigateUri="https://virgilsecurity.com/privacy-policy" Foreground="White" Click="Hyperlink_OnClick">
                         <TextBlock Text="Privacy Policy" />
                     </Hyperlink>
-                     
+
                 </Span>
             </TextBlock.Inlines>
         </TextBlock>
@@ -67,12 +96,11 @@
                 Width="300" Margin="0 0 0 20" 
                 VerticalAlignment="Bottom" 
                 Command="{Binding NavigateToSignInCommand}">
-            <TextBlock Text="{Binding ReturnToPreviousPageTitle}" Foreground="White" FontSize="20" FontWeight="Bold">
-                
-            </TextBlock>
+            <TextBlock Text="{Binding ReturnToPreviousPageTitle}" Foreground="White" FontSize="20" FontWeight="Bold" />
         </Button>
 
         <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Stretch" />
-        
+
     </Grid>
 </UserControl>
+

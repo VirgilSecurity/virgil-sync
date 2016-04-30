@@ -9,7 +9,7 @@
     public class ContainerViewModel : ViewModel, IHandle<NavigateTo>, IHandle<ConfirmOperation>,
         IHandle<ConfirmationSuccessfull>, IHandle<Logout>, IHandle<DisplaySignInError>, IHandle<StartDropboxSignIn>,
         IHandle<DropboxSessionExpired>, IHandle<NavigateBack>, IHandle<DropboxSignInSuccessfull>,
-        IHandle<EnterAnotherPassword>, IHandle<ProblemsSigningIn>, IHandle<RegenerateKeyPair>
+        IHandle<EnterAnotherPassword>, IHandle<ProblemsSigningIn>, IHandle<RegenerateKeyPair>, IHandle<PrivateKeyNotFound>
     {
         private ViewModel content;
         private ViewModel previousContent;
@@ -129,6 +129,13 @@
             var regenerateKeypairModel = ServiceLocator.Resolve<IRegenerateKeypairModel>();
             regenerateKeypairModel.Login = message.Email;
             this.Content = (ViewModel)regenerateKeypairModel;
+        }
+
+        public void Handle(PrivateKeyNotFound message)
+        {
+            var model = ServiceLocator.Resolve<KeyManagementViewModel>();
+            model.ShowKeyNotFoundOnServerError();
+            this.Content = (ViewModel)model;
         }
     }
 }

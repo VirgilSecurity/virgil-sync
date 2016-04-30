@@ -11,6 +11,7 @@ namespace Virgil.Disk.ViewModels.Operations
     using SDK.Domain.Exceptions;
     using SDK.Exceptions;
     using SDK.TransferObject;
+    using Sync.Exceptions;
 
     public class LoadAccountOperation : IConfirmationRequiredOperation
     {
@@ -63,13 +64,24 @@ namespace Virgil.Disk.ViewModels.Operations
 
             this.state = States.Confirmed;
 
-            this.privateKeyResponse = await DownloadPrivateKey(token);
+            try
+            {
+                this.privateKeyResponse = await DownloadPrivateKey(token);
+            }
+            catch (VirgilPrivateServicesException e) when (e.ErrorCode == 40020)
+            {
+                throw new PrivateKeyNotFoundException();
+            }
 
             this.state = States.PrivateKeyDownloaded;
 
-            if (!VirgilKeyPair.CheckPrivateKeyPassword(
+            if (VirgilKeyPair.IsPrivateKeyEncrypted(this.privateKeyResponse.PrivateKey) && 
+                
+                !VirgilKeyPair.CheckPrivateKeyPassword(
                     this.privateKeyResponse.PrivateKey,
-                    Encoding.UTF8.GetBytes(this.password)))
+                    Encoding.UTF8.GetBytes(this.password))
+                    
+                    )
             {
                 throw new WrongPrivateKeyPasswordException("Wrong password");
             }
@@ -97,7 +109,7 @@ namespace Virgil.Disk.ViewModels.Operations
                 throw new InvalidOperationException("Private key download error");
             }
 
-            var op = new DecryptPasswordOperation(this.email, this.privateKeyResponse, this.recipientCard, this.aggregator);
+            var op = new DecryptWithAnotherPasswordOperation(this.email, this.privateKeyResponse, this.recipientCard, this.aggregator);
             this.aggregator.Publish(new EnterAnotherPassword(op));
         }
 

@@ -9,6 +9,7 @@
     using Operations;
     using SDK.Domain.Exceptions;
     using SDK.Exceptions;
+    using Sync.Exceptions;
 
     public class ConfirmationCodeViewModel : ViewModel
     {
@@ -44,6 +45,10 @@
                     this.IsBusy = true;
                     await this.operation.Confirm(this.Code);
                     this.aggregator.Publish(new ConfirmationSuccessfull());
+                }
+                catch (PrivateKeyNotFoundException)
+                {
+                    aggregator.Publish(new PrivateKeyNotFound());
                 }
                 catch (WrongPrivateKeyPasswordException)
                 {
