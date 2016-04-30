@@ -59,7 +59,8 @@ namespace Virgil.FolderLink.Encryption
             Array.Copy(contentInfoHeader,contentInfo,contentInfoHeaderSize);
             
             this.virgilCipher.SetContentInfo(contentInfo);
-            if (password != null)
+
+            if (!string.IsNullOrEmpty(password))
             {
                 this.chunkSize = (int)this.virgilCipher.StartDecryptionWithKey(
                     recipientId, privateKey,
