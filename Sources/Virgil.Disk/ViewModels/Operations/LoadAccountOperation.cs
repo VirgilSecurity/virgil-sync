@@ -10,7 +10,9 @@ namespace Virgil.Disk.ViewModels.Operations
     using SDK.Domain;
     using SDK.Domain.Exceptions;
     using SDK.Exceptions;
-    using SDK.TransferObject;
+    using SDK.Identities;
+    using SDK.Models;
+    
     using Sync.Exceptions;
 
     public class LoadAccountOperation : IConfirmationRequiredOperation
@@ -19,7 +21,7 @@ namespace Virgil.Disk.ViewModels.Operations
         private string email;
         private string password;
         private IdentityTokenRequest request;
-        private GrabResponse privateKeyResponse;
+        private PrivateKeyModel privateKeyResponse;
         private RecipientCard recipientCard;
 
         private enum States
@@ -113,9 +115,9 @@ namespace Virgil.Disk.ViewModels.Operations
             this.aggregator.Publish(new EnterAnotherPassword(op));
         }
 
-        private async Task<GrabResponse> DownloadPrivateKey(IdentityTokenDto token)
+        private async Task<PrivateKeyModel> DownloadPrivateKey(IdentityInfo token)
         {
-            var grabResponse = await ServiceLocator.Services.PrivateKeys.Get(this.recipientCard.Id, token)
+            PrivateKeyModel grabResponse = await ServiceLocator.Services.PrivateKeys.Get(this.recipientCard.Id, token)
                 .ConfigureAwait(false);
 
             return grabResponse;

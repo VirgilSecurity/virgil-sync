@@ -6,17 +6,18 @@ namespace Virgil.Disk.ViewModels.Operations
     using Messages;
     using SDK.Domain;
     using SDK.Domain.Exceptions;
-    using SDK.TransferObject;
+    using SDK.Models;
+    
 
     public class DecryptWithAnotherPasswordOperation
     {
-        private readonly GrabResponse privateKeyResponse;
+        private readonly PrivateKeyModel privateKeyResponse;
         private readonly RecipientCard recipientCard;
         private readonly IEventAggregator aggregator;
 
         public DecryptWithAnotherPasswordOperation(
             string email,
-            GrabResponse privateKeyResponse,
+            PrivateKeyModel privateKeyResponse,
             RecipientCard recipientCard,
             IEventAggregator aggregator)
         {

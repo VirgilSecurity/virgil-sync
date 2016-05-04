@@ -73,7 +73,7 @@ namespace Virgil.FolderLink.Dropbox
                             this.credentials.PublicKey,
                             BufferSize);
 
-                        var result = await this.client.Files.UploadSessionStartAsync(new MemoryStream(contentInfo));
+                        var result = await this.client.Files.UploadSessionStartAsync(false, new MemoryStream(contentInfo));
                         var sessionId = result.SessionId;
                         ulong written = (ulong)contentInfo.Length;
 

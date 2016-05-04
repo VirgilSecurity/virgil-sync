@@ -12,6 +12,7 @@ namespace Virgil.Disk
     using Messages;
     using Model;
     using Ninject;
+    using SDK;
     using Sync;
     using View;
     using ViewModels;
@@ -30,14 +31,13 @@ namespace Virgil.Disk
 
             this.DispatcherUnhandledException += this.OnDispatcherUnhandledException;
 #if DEBUG
-            var virgilHub = SDK.Infrastructure.VirgilConfig
+            var virgilHub =  ServiceHub.Create( SDK.ServiceHubConfig
                 .UseAccessToken(ApiConfig.VirgilTokenStaging)
-                .WithCustomPublicServiceUri(new Uri(@"https://keys-stg.virgilsecurity.com"))
-                .WithCustomIdentityServiceUri(new Uri(@"https://identity-stg.virgilsecurity.com"))
-                .WithCustomPrivateServiceUri(new Uri(@"https://keys-private-stg.virgilsecurity.com"))
-                .Build();
+                .WithPublicServicesAddress("https://keys-stg.virgilsecurity.com")
+                .WithIdentityServiceAddress("https://identity-stg.virgilsecurity.com")
+                .WithPrivateServicesAddress("https://keys-private-stg.virgilsecurity.com"));
 #else
-            var virgilHub = SDK.Infrastructure.VirgilConfig.UseAccessToken(ApiConfig.VirgilToken).Build();
+            var virgilHub = ServiceHub.Create(ServiceHubConfig.UseAccessToken(ApiConfig.VirgilToken));
 #endif
 
             Virgil.SDK.Domain.ServiceLocator.Setup(virgilHub);
