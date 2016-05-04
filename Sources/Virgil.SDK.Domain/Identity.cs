@@ -13,18 +13,11 @@ namespace Virgil.SDK.Domain
         {
         }
 
-        internal Identity(IdentityModel identityModel)
+        public Identity(IdentityModel identityModel)
         {
             this.Id = identityModel.Id;
             this.Value = identityModel.Value;
-
-            VerifiableIdentityType verifiableIdentityType;
-            if (!Enum.TryParse(identityModel.Type, out verifiableIdentityType))
-            {
-                throw new InvalidOperationException("Cant verify this identity type");
-            }
-
-            this.Type = verifiableIdentityType;
+            this.Type = identityModel.Type.ToIdentityType();
             this.CreatedAt = identityModel.CreatedAt;
         }
 

@@ -39,6 +39,7 @@
     <Compile Include="BytesExtensions.cs" />
     <Compile Include="Cards.cs" />
     <Compile Include="ConfirmOptions.cs" />
+    <Compile Include="EnumParseExtensions.cs" />
     <Compile Include="Exceptions\CardNotFoundException.cs" />
     <Compile Include="Exceptions\WrongPrivateKeyPasswordException.cs" />
     <Compile Include="Identity.cs" />

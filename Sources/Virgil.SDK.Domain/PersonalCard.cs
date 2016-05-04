@@ -186,23 +186,6 @@
             return new PersonalCard(cardDto, personalCard.PrivateKey);
         }
 
-        //public static async Task<PersonalCard> Create(
-        //    PersonalCard personalCard,
-        //    string identity,
-        //    Dictionary<string, string> customData = null)
-        //{
-        //    var services = ServiceLocator.Services;
-
-        //    var cardDto = await services.Cards.Create(
-        //        identity,
-        //        IdentityType.Email,
-        //        personalCard.PublicKey.Id,
-        //        personalCard.PrivateKey,
-        //        customData: customData).ConfigureAwait(false);
-
-        //    return new PersonalCard(cardDto, personalCard.PrivateKey);
-        //}
-
         public async Task UploadPrivateKey(string privateKeyPassword = null)
         {
             var services = ServiceLocator.Services;

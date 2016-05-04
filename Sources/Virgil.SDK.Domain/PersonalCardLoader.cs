@@ -41,13 +41,7 @@ namespace Virgil.SDK.Domain
 
         public async Task<IdentityTokenRequest> Verify()
         {
-            VerifiableIdentityType result;
-            if (!Enum.TryParse(this.type, out result))
-            {
-                throw new InvalidOperationException("Cant verify this identity type");
-            }
-
-            return await Identity.Verify(this.identity, result);
+            return await Identity.Verify(this.identity, this.identity.ToIdentityType());
         }
 
         public async Task<IEnumerable<PersonalCard>> Finish(IdentityTokenRequest request, string confirmationCode)
