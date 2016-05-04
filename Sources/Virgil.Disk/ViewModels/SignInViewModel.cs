@@ -13,7 +13,7 @@
     {
         private readonly IEventAggregator aggregator;
         private string login;
-        private string password;
+
 
         public SignInViewModel(IEventAggregator aggregator)
         {
@@ -40,11 +40,7 @@
                     this.AddErrorFor(nameof(this.Login), "Login should be a valid email");
                 }
 
-                //if (string.IsNullOrEmpty(this.Password))
-                //{
-                //    this.AddErrorFor(nameof(this.Password), "You should provide password");
-                //}
-
+              
                 if (this.HasErrors)
                 {
                     return;
@@ -85,7 +81,6 @@
         public override void CleanupState()
         {
             this.Login = "";
-            this.Password = "";
             this.ClearErrors();
         }
 
@@ -99,18 +94,6 @@
                 this.RaisePropertyChanged();
             }
         }
-
-        public string Password
-        {
-            get { return this.password; }
-            set
-            {
-                if (value == this.password) return;
-                this.password = value;
-                this.RaisePropertyChanged();
-            }
-        }
-
         public ICommand SignInCommand { get; }
 
         public ICommand NavigateToCreateAccountCommand { get; }
@@ -121,12 +104,6 @@
 
         public void Handle(DisplaySignInError message)
         {
-            if (message.Exception is WrongPrivateKeyPasswordException)
-            {
-                this.CleanupState();
-                this.Login = message.Email;
-                this.AddErrorFor(nameof(this.Password), "Wrong password");
-            }
         }
     }
 }

@@ -85,10 +85,9 @@
         {
             var services = ServiceLocator.Services;
 
-            var virgilCardDtos = await services.Cards.Search(
-                options.IdentityValue,
-                options.IdentityType,
-                options.IncludeUnconfirmed).ConfigureAwait(false);
+            var virgilCardDtos = await services.Cards.Search(options.IdentityValue,  IdentityType.Email)
+
+                .ConfigureAwait(false);
 
             return new Cards(virgilCardDtos.Select(it => new RecipientCard(it)));
         }
@@ -102,13 +101,13 @@
         /// <param name="includeUnconfirmed">Indicates wherever unconfirmed cards should be included to search.</param>
         /// <returns>The collection of found cards.</returns>
         public static async Task<Cards> Search(string value,
-            string type = null,
+            IdentityType? type = null,
             bool? includeUnconfirmed = null)
         {
             var services = ServiceLocator.Services;
 
             var cards = await services.Cards
-                .Search(value,type,includeUnconfirmed)
+                .Search(value, type ?? IdentityType.Email)
                 .ConfigureAwait(false);
 
             return new Cards(cards.Select(it => new RecipientCard(it)));

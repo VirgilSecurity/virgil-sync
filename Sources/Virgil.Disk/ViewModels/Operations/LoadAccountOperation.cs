@@ -48,7 +48,7 @@ namespace Virgil.Disk.ViewModels.Operations
             var search = await Cards.Search(this.email);
             if (search.Count == 0)
             {
-                throw new VirgilException("Cant find such card");
+                throw new VirgilException("Can't find such card");
             }
             
             this.recipientCard = search

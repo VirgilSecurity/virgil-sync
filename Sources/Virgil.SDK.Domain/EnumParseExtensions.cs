@@ -13,7 +13,7 @@
                     return VerifiableIdentityType.Email;
             }
            
-            throw new InvalidOperationException("Cant verify this identity type");
+            throw new InvalidOperationException("Can't verify this identity type");
         }
     }
 }
