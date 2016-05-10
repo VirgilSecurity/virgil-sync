@@ -5,6 +5,7 @@
     using Messages;
     using Model;
     using Operations;
+    using Sync.Messages;
 
     public class ContainerViewModel : ViewModel, IHandle<NavigateTo>, IHandle<ConfirmOperation>,
         IHandle<ConfirmationSuccessfull>, IHandle<Logout>, IHandle<DisplaySignInError>, IHandle<StartDropboxSignIn>,

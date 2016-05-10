@@ -14,6 +14,7 @@ namespace Virgil.Disk.ViewModels.Operations
     using SDK.Models;
     
     using Sync.Exceptions;
+    using Sync.Messages;
 
     public class LoadAccountOperation : IConfirmationRequiredOperation
     {

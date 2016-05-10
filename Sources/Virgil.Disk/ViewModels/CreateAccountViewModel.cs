@@ -7,6 +7,7 @@
     using Messages;
     using Operations;
     using SDK.Exceptions;
+    using Sync.Messages;
 
     public interface ICreateNewAccountModel
     {

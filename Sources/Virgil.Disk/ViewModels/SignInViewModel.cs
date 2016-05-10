@@ -8,6 +8,7 @@
     using Operations;
     using SDK.Domain.Exceptions;
     using SDK.Exceptions;
+    using Sync.Messages;
 
     public class SignInViewModel : ViewModel, IHandle<DisplaySignInError>
     {

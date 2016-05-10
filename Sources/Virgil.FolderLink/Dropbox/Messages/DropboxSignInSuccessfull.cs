@@ -2,7 +2,6 @@ namespace Virgil.Disk.Messages
 {
     using Dropbox.Api;
     using Model;
-    using ViewModels;
 
     public class DropboxSignInSuccessfull
     {

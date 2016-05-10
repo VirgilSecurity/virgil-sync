@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCBABCFE-AFDC-4AED-AB6C-FFFD4D8F3423}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Virgil.Sync.Gtk</RootNamespace>
+    <AssemblyName>VirgilSyncGtk</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Virgil.Crypto, Version=1.2.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Virgil.Crypto.1.2.2.45\lib\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Virgil.SDK, Version=3.0.7.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Virgil.SDK.3.0.7.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Virgil.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Virgil.SDK.Domain, Version=1.0.0.2, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Virgil.SDK.Domain.1.0.2\lib\portable-net4+sl4+wp7+win8\Virgil.SDK.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiConfig.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="MainClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnixEncryptor.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
+      <Project>{A32D8707-67F6-447C-9329-73DDB97FD70F}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.FolderLink\Virgil.FolderLink.csproj">
+      <Project>{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}</Project>
+      <Name>Virgil.FolderLink</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgl.LocalStorage\Virgil.LocalStorage.csproj">
+      <Project>{09AD9C7C-D857-493C-8E03-81D5B552F73D}</Project>
+      <Name>Virgil.LocalStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\packages\Virgil.Crypto.1.2.2.45\build\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.targets" Condition="Exists('..\packages\Virgil.Crypto.1.2.2.45\build\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Virgil.Crypto.1.2.2.45\build\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Virgil.Crypto.1.2.2.45\build\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.targets'))" />
+  </Target>
+</Project>

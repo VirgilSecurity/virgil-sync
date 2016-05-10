@@ -110,6 +110,11 @@
     <Compile Include="Dropbox\Handler\FileMapping.cs" />
     <Compile Include="Dropbox\Handler\OperationsFactory.cs" />
     <Compile Include="Dropbox\Messages\DropBoxBatchCompleted.cs" />
+    <Compile Include="Dropbox\Messages\DropBoxLinkChanged.cs" />
+    <Compile Include="Dropbox\Messages\DropboxSessionExpired.cs" />
+    <Compile Include="Dropbox\Messages\DropboxSignInSuccessfull.cs" />
+    <Compile Include="Dropbox\Messages\DropboxSignOut.cs" />
+    <Compile Include="Dropbox\Messages\StartDropboxSignIn.cs" />
     <Compile Include="Dropbox\OperationExecutionContext.cs" />
     <Compile Include="Dropbox\Operations\DeleteFileOnServerOperation.cs" />
     <Compile Include="Dropbox\Operations\DownloadFileFromServer.cs" />
@@ -120,6 +125,14 @@
     <Compile Include="Encryption\Hashes.cs" />
     <Compile Include="Encryption\StreamHelpers.cs" />
     <Compile Include="Encryption\VirgilException.cs" />
+    <Compile Include="Facade\ApplicationState.cs" />
+    <Compile Include="Facade\DropboxCredentials.cs" />
+    <Compile Include="Facade\Folder.cs" />
+    <Compile Include="Facade\FolderLinkFacade.cs" />
+    <Compile Include="Facade\FolderSettings.cs" />
+    <Compile Include="Facade\FolderSettingsStorage.cs" />
+    <Compile Include="Facade\PerUserFolderSettings.cs" />
+    <Compile Include="Facade\VirgilCardDto.cs" />
     <Compile Include="Local\FileNameRules.cs" />
     <Compile Include="Local\LocalEventsBatch.cs" />
     <Compile Include="Local\LocalFolderWatcher.cs" />
@@ -159,6 +172,10 @@
     <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
       <Project>{a32d8707-67f6-447c-9329-73ddb97fd70f}</Project>
       <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{7c04c9ea-37aa-4f31-92b2-fadd0a205ab2}</Project>
+      <Name>Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Virgil.SDK.Domain\Virgil.SDK.Domain.csproj">
       <Project>{5a1ce0b6-d6fe-4620-bac5-9a319e461913}</Project>

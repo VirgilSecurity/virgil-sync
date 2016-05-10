@@ -172,23 +172,8 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Exceptions\PrivateKeyNotFoundException.cs" />
-    <Compile Include="Messages\DropBoxLinkChanged.cs" />
-    <Compile Include="Messages\DropboxSessionExpired.cs" />
-    <Compile Include="Messages\DropboxSignOut.cs" />
-    <Compile Include="Messages\EnterAnotherPassword.cs" />
-    <Compile Include="Messages\FolderSettingsChanged.cs" />
-    <Compile Include="Messages\Logout.cs" />
-    <Compile Include="Messages\NavigateBack.cs" />
-    <Compile Include="Messages\PrivateKeyNotFound.cs" />
-    <Compile Include="Messages\ProblemsSigningIn.cs" />
-    <Compile Include="Messages\StartDropboxSignIn.cs" />
-    <Compile Include="Model\FolderLinkFacade.cs" />
     <Compile Include="Messages\ConfirmOperation.cs" />
-    <Compile Include="Messages\ErrorMessage.cs" />
-    <Compile Include="Messages\NavigateTo.cs" />
-    <Compile Include="Model\Folder.cs" />
-    <Compile Include="Messages\DisplaySignInError.cs" />
-    <Compile Include="Messages\DropboxSignInSuccessfull.cs" />
+    <Compile Include="Messages\EnterAnotherPassword.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ApiConfig.cs" />
     <Compile Include="ViewModels\DropBoxSignInViewModel.cs" />
@@ -214,7 +199,6 @@
     <Compile Include="Updater.cs" />
     <Compile Include="ViewModels\FolderViewModel.cs" />
     <Compile Include="ViewModels\FolderSettingsViewModel.cs" />
-    <Compile Include="Model\FolderSettingsStorage.cs" />
     <Compile Include="View\Converters\BooleanOrConverter.cs" />
     <Compile Include="View\Converters\BoolToDropboxStatusColorConverter.cs" />
     <Compile Include="View\Converters\BoolToVisibilityConverter.cs" />
@@ -240,6 +224,7 @@
     <Compile Include="View\OperationStatusView.xaml.cs">
       <DependentUpon>OperationStatusView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WebBrowserUtility.cs" />
     <Compile Include="View\WrongPasswordView.xaml.cs">
       <DependentUpon>WrongPasswordView.xaml</DependentUpon>
     </Compile>
@@ -252,10 +237,7 @@
     <Compile Include="View\TrayWindow.xaml.cs">
       <DependentUpon>TrayWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ApplicationState.cs" />
-    <Compile Include="Messages\CardLoaded.cs" />
     <Compile Include="ViewModels\ConfirmationCodeViewModel.cs" />
-    <Compile Include="Messages\ConfirmationSuccessfull.cs" />
     <Compile Include="ViewModels\ContainerViewModel.cs" />
     <Compile Include="ViewModels\Operations\CreateAccountOperation.cs" />
     <Compile Include="ViewModels\CreateAccountViewModel.cs" />
@@ -299,7 +281,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\FolderSettings.cs" />
     <Page Include="View\Controls\SelectKeyTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

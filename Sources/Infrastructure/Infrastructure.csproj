@@ -54,6 +54,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEncryptor.cs" />
+    <Compile Include="IStorageProvider.cs" />
     <Compile Include="ValidationErrors.cs" />
     <Compile Include="Mvvm\Common\IViewModel.cs" />
     <Compile Include="Mvvm\RelayCommand.cs" />
@@ -64,12 +66,6 @@
     <Compile Include="Utils\ApplicationInfo.cs" />
     <Compile Include="Utils\Validator.cs" />
     <Compile Include="WidnowsPerUserEncryptor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Virgl.LocalStorage\Virgil.LocalStorage.csproj">
-      <Project>{09AD9C7C-D857-493C-8E03-81D5B552F73D}</Project>
-      <Name>Virgil.LocalStorage</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

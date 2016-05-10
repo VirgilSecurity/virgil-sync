@@ -1,6 +1,7 @@
-namespace Virgil.Disk.Messages
+﻿namespace Virgil.Sync.Messages
 {
-    using ViewModels.Operations;
+    using Disk.ViewModels.Operations;
+    
 
     public class ConfirmOperation
     {
@@ -20,15 +21,5 @@ namespace Virgil.Disk.Messages
         }
 
         public IConfirmationRequiredOperation Operation { get; }
-    }
-
-    public class RegenerateKeyPair
-    {
-        public string Email { get; set; }
-
-        public RegenerateKeyPair(string email)
-        {
-            this.Email = email;
-        }
     }
 }
