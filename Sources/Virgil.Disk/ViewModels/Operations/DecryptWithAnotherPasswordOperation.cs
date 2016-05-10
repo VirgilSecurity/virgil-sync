@@ -1,13 +1,12 @@
-namespace Virgil.Disk.ViewModels.Operations
+namespace Virgil.Sync.ViewModels.Operations
 {
     using System.Text;
     using Crypto;
     using Infrastructure.Messaging;
-    using Messages;
+    using Infrastructure.Messaging.Application;
     using SDK.Domain;
     using SDK.Domain.Exceptions;
     using SDK.Models;
-    
 
     public class DecryptWithAnotherPasswordOperation
     {

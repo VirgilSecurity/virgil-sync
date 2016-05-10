@@ -1,4 +1,4 @@
-﻿namespace Virgil.Disk.View.Converters
+﻿namespace Virgil.Sync.View.Converters
 {
     using System;
     using System.Collections.Generic;
@@ -17,8 +17,8 @@
 
         public double Width
         {
-            get { return (double) GetValue(WidthProperty); }
-            set { SetValue(WidthProperty, value); }
+            get { return (double) this.GetValue(WidthProperty); }
+            set { this.SetValue(WidthProperty, value); }
         }
 
         public static readonly DependencyProperty HeightProperty = DependencyProperty.Register(
@@ -26,8 +26,8 @@
 
         public double Height
         {
-            get { return (double) GetValue(HeightProperty); }
-            set { SetValue(HeightProperty, value); }
+            get { return (double) this.GetValue(HeightProperty); }
+            set { this.SetValue(HeightProperty, value); }
         }
 
         private static DependencyObject GetParent(DependencyObject obj)

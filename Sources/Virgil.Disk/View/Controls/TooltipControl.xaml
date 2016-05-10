@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Virgil.Disk.View.Controls.TooltipControl"
+﻿<UserControl x:Class="Virgil.Sync.View.Controls.TooltipControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>

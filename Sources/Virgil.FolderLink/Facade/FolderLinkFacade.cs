@@ -1,14 +1,15 @@
-namespace Virgil.Disk.Model
+namespace Virgil.FolderLink.Facade
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+    using Dropbox.Messages;
     using FolderLink.Dropbox.Handler;
     using FolderLink.Local;
     using Infrastructure.Messaging;
-    using Messages;
+    using Infrastructure.Messaging.Application;
 
     public class FolderLinkFacade : IHandle<Logout>, IHandle<DropboxSessionExpired>, IHandle<BeforeLogout>
     {

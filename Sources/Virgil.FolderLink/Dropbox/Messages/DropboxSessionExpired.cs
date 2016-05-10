@@ -1,4 +1,4 @@
-namespace Virgil.Disk.Messages
+namespace Virgil.FolderLink.Dropbox.Messages
 {
     public class DropboxSessionExpired
     {

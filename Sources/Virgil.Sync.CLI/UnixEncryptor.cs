@@ -1,6 +1,6 @@
 namespace Virgil.Sync.CLI
 {
-    using LocalStorage.Encryption;
+    using Infrastructure;
 
     public class UnixEncryptor : IEncryptor
     {

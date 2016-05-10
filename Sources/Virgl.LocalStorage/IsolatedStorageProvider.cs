@@ -4,7 +4,7 @@
     using System.IO;
     using System.IO.IsolatedStorage;
     using System.Text;
-    using Encryption;
+    using Infrastructure;
 
     public class IsolatedStorageProvider : IStorageProvider
     {

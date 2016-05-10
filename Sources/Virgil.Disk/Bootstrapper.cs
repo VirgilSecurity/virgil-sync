@@ -1,11 +1,9 @@
-﻿namespace Virgil.Disk
+﻿namespace Virgil.Sync
 {
-    using FolderLink.Dropbox;
+    using FolderLink.Facade;
     using Infrastructure;
     using Infrastructure.Messaging;
     using LocalStorage;
-    using LocalStorage.Encryption;
-    using Model;
     using Ninject;
     using Ninject.Parameters;
     using ViewModels;

@@ -1,4 +1,4 @@
-﻿namespace Virgil.LocalStorage
+﻿namespace Infrastructure
 {
     public interface IStorageProvider
     {

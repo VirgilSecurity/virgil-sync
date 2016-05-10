@@ -2,7 +2,7 @@ namespace Infrastructure.Mvvm.Common
 {
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-    using Annotations;
+    using Properties;
 
     public class ViewModelBase : INotifyPropertyChanged
     {

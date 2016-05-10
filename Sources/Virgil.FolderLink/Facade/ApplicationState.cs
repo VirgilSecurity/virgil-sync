@@ -1,13 +1,12 @@
-namespace Virgil.Disk.Model
+namespace Virgil.FolderLink.Facade
 {
     using System;
     using System.IO;
     using System.Text;
+    using Infrastructure;
     using Infrastructure.Messaging;
-    using LocalStorage;
-    using Messages;
+    using Infrastructure.Messaging.Application;
     using Newtonsoft.Json;
-    
     using SDK.Domain;
 
     public class ApplicationState : IHandle<CardLoaded>
@@ -88,7 +87,7 @@ namespace Virgil.Disk.Model
         {
             var personalCard = this.CurrentCard;
 
-            var dto = new LocalStorage.VirgilCardDto
+            var dto = new VirgilCardDto
             {
                 private_key = personalCard.PrivateKey.Data,
                 card = new CardDto

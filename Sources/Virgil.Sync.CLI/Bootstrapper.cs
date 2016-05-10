@@ -1,10 +1,10 @@
 namespace Virgil.Sync.CLI
 {
     using Autofac;
-    using Disk.Model;
+    using FolderLink.Facade;
+    using Infrastructure;
     using Infrastructure.Messaging;
     using LocalStorage;
-    using LocalStorage.Encryption;
 
     public class Bootstrapper
     {

@@ -1,4 +1,4 @@
-﻿namespace Virgil.LocalStorage.Encryption
+﻿namespace Infrastructure
 {
     public interface IEncryptor
     {

@@ -1,4 +1,4 @@
-namespace Virgil.Disk.ViewModels
+namespace Virgil.Sync.ViewModels
 {
     public enum SettingsStage
     {

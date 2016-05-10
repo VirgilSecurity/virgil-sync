@@ -1,4 +1,4 @@
-namespace Virgil.Disk.Model
+namespace Virgil.FolderLink.Facade
 {
     using System.Collections.Generic;
 

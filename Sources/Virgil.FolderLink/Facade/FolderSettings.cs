@@ -1,6 +1,5 @@
-﻿namespace Virgil.Disk.Model
+﻿namespace Virgil.FolderLink.Facade
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Infrastructure;
@@ -34,7 +33,7 @@
             {
                 validationErrors.AddErrorsFor(target.UUID, target.Validate());
 
-                if (target.IntersectsWith(SourceFolder))
+                if (target.IntersectsWith(this.SourceFolder))
                 {
                     validationErrors.AddErrorFor(target.UUID, "Selected folder intersects with source folder");
                 }

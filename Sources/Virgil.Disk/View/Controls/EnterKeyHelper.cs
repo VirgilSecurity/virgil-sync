@@ -1,8 +1,7 @@
-﻿namespace Virgil.Disk.View.Controls
+﻿namespace Virgil.Sync.View.Controls
 {
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Data;
     using System.Windows.Input;
 
     public static class EnterKeyHelper

@@ -1,10 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
-    using System;
-    using System.Threading.Tasks;
     using System.Windows;
+    using System.Windows.Controls;
     using ViewModels;
 
     /// <summary>
@@ -44,8 +41,8 @@ namespace Virgil.Disk.View
 
         public SettingsStage SettingsStage
         {
-            get { return (SettingsStage) GetValue(SettingsStageProperty); }
-            set { SetValue(SettingsStageProperty, value); }
+            get { return (SettingsStage) this.GetValue(SettingsStageProperty); }
+            set { this.SetValue(SettingsStageProperty, value); }
         }
 
         public static readonly DependencyProperty UseAnimationProperty = DependencyProperty.Register(
@@ -77,8 +74,8 @@ namespace Virgil.Disk.View
 
         public bool UseAnimation
         {
-            get { return (bool) GetValue(UseAnimationProperty); }
-            set { SetValue(UseAnimationProperty, value); }
+            get { return (bool) this.GetValue(UseAnimationProperty); }
+            set { this.SetValue(UseAnimationProperty, value); }
         }
     }
 }

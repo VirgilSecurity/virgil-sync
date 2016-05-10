@@ -1,4 +1,4 @@
-﻿namespace Virgil.Disk.View.Controls
+﻿namespace Virgil.Sync.View.Controls
 {
     using System.Windows;
     using System.Windows.Controls;
@@ -35,8 +35,8 @@
 
         public bool IsReadonly
         {
-            get { return (bool) GetValue(IsReadonlyProperty); }
-            set { SetValue(IsReadonlyProperty, value); }
+            get { return (bool) this.GetValue(IsReadonlyProperty); }
+            set { this.SetValue(IsReadonlyProperty, value); }
         }
 
         public bool IsPassword { get; set; }

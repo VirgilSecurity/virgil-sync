@@ -1,6 +1,6 @@
 ﻿namespace Virgil.Sync.Messages
 {
-    using Disk.ViewModels.Operations;
+    using ViewModels.Operations;
 
     public class EnterAnotherPassword
     {

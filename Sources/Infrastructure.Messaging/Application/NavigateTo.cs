@@ -1,4 +1,4 @@
-﻿namespace Virgil.Disk.Messages
+﻿namespace Infrastructure.Messaging.Application
 {
     using System;
 

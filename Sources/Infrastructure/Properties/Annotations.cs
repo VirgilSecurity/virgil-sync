@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 #pragma warning disable 1591
 // ReSharper disable UnusedMember.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -8,9 +7,11 @@
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace Infrastructure.Annotations
+namespace Infrastructure.Properties
 {
-  /// <summary>
+    using System;
+
+    /// <summary>
   /// Indicates that the value of the marked element could be <c>null</c> sometimes,
   /// so the check for <c>null</c> is necessary before its usage.
   /// </summary>
@@ -83,7 +84,7 @@ namespace Infrastructure.Annotations
     /// </param>
     public StringFormatMethodAttribute(string formatParameterName)
     {
-      FormatParameterName = formatParameterName;
+      this.FormatParameterName = formatParameterName;
     }
 
     public string FormatParameterName { get; private set; }
@@ -98,7 +99,7 @@ namespace Infrastructure.Annotations
   {
     public ValueProviderAttribute(string name)
     {
-      Name = name;
+      this.Name = name;
     }
 
     [NotNull] public string Name { get; private set; }
@@ -162,7 +163,7 @@ namespace Infrastructure.Annotations
     public NotifyPropertyChangedInvocatorAttribute() { }
     public NotifyPropertyChangedInvocatorAttribute(string parameterName)
     {
-      ParameterName = parameterName;
+      this.ParameterName = parameterName;
     }
 
     public string ParameterName { get; private set; }
@@ -219,8 +220,8 @@ namespace Infrastructure.Annotations
 
     public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
     {
-      Contract = contract;
-      ForceFullStates = forceFullStates;
+      this.Contract = contract;
+      this.ForceFullStates = forceFullStates;
     }
 
     public string Contract { get; private set; }
@@ -242,7 +243,7 @@ namespace Infrastructure.Annotations
     public LocalizationRequiredAttribute() : this(true) { }
     public LocalizationRequiredAttribute(bool required)
     {
-      Required = required;
+      this.Required = required;
     }
 
     public bool Required { get; private set; }
@@ -288,7 +289,7 @@ namespace Infrastructure.Annotations
   {
     public BaseTypeRequiredAttribute([NotNull] Type baseType)
     {
-      BaseType = baseType;
+      this.BaseType = baseType;
     }
 
     [NotNull] public Type BaseType { get; private set; }
@@ -312,8 +313,8 @@ namespace Infrastructure.Annotations
 
     public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
     {
-      UseKindFlags = useKindFlags;
-      TargetFlags = targetFlags;
+      this.UseKindFlags = useKindFlags;
+      this.TargetFlags = targetFlags;
     }
 
     public ImplicitUseKindFlags UseKindFlags { get; private set; }
@@ -338,8 +339,8 @@ namespace Infrastructure.Annotations
 
     public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
     {
-      UseKindFlags = useKindFlags;
-      TargetFlags = targetFlags;
+      this.UseKindFlags = useKindFlags;
+      this.TargetFlags = targetFlags;
     }
 
     [UsedImplicitly] public ImplicitUseKindFlags UseKindFlags { get; private set; }
@@ -388,7 +389,7 @@ namespace Infrastructure.Annotations
     public PublicAPIAttribute() { }
     public PublicAPIAttribute([NotNull] string comment)
     {
-      Comment = comment;
+      this.Comment = comment;
     }
 
     public string Comment { get; private set; }
@@ -425,7 +426,7 @@ namespace Infrastructure.Annotations
     public MustUseReturnValueAttribute() { }
     public MustUseReturnValueAttribute([NotNull] string justification)
     {
-      Justification = justification;
+      this.Justification = justification;
     }
 
     public string Justification { get; private set; }
@@ -461,7 +462,7 @@ namespace Infrastructure.Annotations
     public PathReferenceAttribute() { }
     public PathReferenceAttribute([PathReference] string basePath)
     {
-      BasePath = basePath;
+      this.BasePath = basePath;
     }
 
     public string BasePath { get; private set; }
@@ -552,7 +553,7 @@ namespace Infrastructure.Annotations
   {
     public AspMvcAreaMasterLocationFormatAttribute(string format)
     {
-      Format = format;
+      this.Format = format;
     }
 
     public string Format { get; private set; }
@@ -563,7 +564,7 @@ namespace Infrastructure.Annotations
   {
     public AspMvcAreaPartialViewLocationFormatAttribute(string format)
     {
-      Format = format;
+      this.Format = format;
     }
 
     public string Format { get; private set; }
@@ -574,7 +575,7 @@ namespace Infrastructure.Annotations
   {
     public AspMvcAreaViewLocationFormatAttribute(string format)
     {
-      Format = format;
+      this.Format = format;
     }
 
     public string Format { get; private set; }
@@ -585,7 +586,7 @@ namespace Infrastructure.Annotations
   {
     public AspMvcMasterLocationFormatAttribute(string format)
     {
-      Format = format;
+      this.Format = format;
     }
 
     public string Format { get; private set; }
@@ -596,7 +597,7 @@ namespace Infrastructure.Annotations
   {
     public AspMvcPartialViewLocationFormatAttribute(string format)
     {
-      Format = format;
+      this.Format = format;
     }
 
     public string Format { get; private set; }
@@ -607,7 +608,7 @@ namespace Infrastructure.Annotations
   {
     public AspMvcViewLocationFormatAttribute(string format)
     {
-      Format = format;
+      this.Format = format;
     }
 
     public string Format { get; private set; }
@@ -625,7 +626,7 @@ namespace Infrastructure.Annotations
     public AspMvcActionAttribute() { }
     public AspMvcActionAttribute(string anonymousProperty)
     {
-      AnonymousProperty = anonymousProperty;
+      this.AnonymousProperty = anonymousProperty;
     }
 
     public string AnonymousProperty { get; private set; }
@@ -642,7 +643,7 @@ namespace Infrastructure.Annotations
     public AspMvcAreaAttribute() { }
     public AspMvcAreaAttribute(string anonymousProperty)
     {
-      AnonymousProperty = anonymousProperty;
+      this.AnonymousProperty = anonymousProperty;
     }
 
     public string AnonymousProperty { get; private set; }
@@ -660,7 +661,7 @@ namespace Infrastructure.Annotations
     public AspMvcControllerAttribute() { }
     public AspMvcControllerAttribute(string anonymousProperty)
     {
-      AnonymousProperty = anonymousProperty;
+      this.AnonymousProperty = anonymousProperty;
     }
 
     public string AnonymousProperty { get; private set; }
@@ -762,7 +763,7 @@ namespace Infrastructure.Annotations
     public HtmlElementAttributesAttribute() { }
     public HtmlElementAttributesAttribute(string name)
     {
-      Name = name;
+      this.Name = name;
     }
 
     public string Name { get; private set; }
@@ -773,7 +774,7 @@ namespace Infrastructure.Annotations
   {
     public HtmlAttributeValueAttribute([NotNull] string name)
     {
-      Name = name;
+      this.Name = name;
     }
 
     [NotNull] public string Name { get; private set; }
@@ -796,7 +797,7 @@ namespace Infrastructure.Annotations
   {
     public CollectionAccessAttribute(CollectionAccessType collectionAccessType)
     {
-      CollectionAccessType = collectionAccessType;
+      this.CollectionAccessType = collectionAccessType;
     }
 
     public CollectionAccessType CollectionAccessType { get; private set; }
@@ -833,7 +834,7 @@ namespace Infrastructure.Annotations
   {
     public AssertionConditionAttribute(AssertionConditionType conditionType)
     {
-      ConditionType = conditionType;
+      this.ConditionType = conditionType;
     }
 
     public AssertionConditionType ConditionType { get; private set; }
@@ -907,8 +908,8 @@ namespace Infrastructure.Annotations
   {
     public AspChildControlTypeAttribute(string tagName, Type controlType)
     {
-      TagName = tagName;
-      ControlType = controlType;
+      this.TagName = tagName;
+      this.ControlType = controlType;
     }
 
     public string TagName { get; private set; }
@@ -929,7 +930,7 @@ namespace Infrastructure.Annotations
   {
     public AspRequiredAttributeAttribute([NotNull] string attribute)
     {
-      Attribute = attribute;
+      this.Attribute = attribute;
     }
 
     public string Attribute { get; private set; }
@@ -942,7 +943,7 @@ namespace Infrastructure.Annotations
 
     public AspTypePropertyAttribute(bool createConstructorReferences)
     {
-      CreateConstructorReferences = createConstructorReferences;
+      this.CreateConstructorReferences = createConstructorReferences;
     }
   }
 
@@ -951,7 +952,7 @@ namespace Infrastructure.Annotations
   {
     public RazorImportNamespaceAttribute(string name)
     {
-      Name = name;
+      this.Name = name;
     }
 
     public string Name { get; private set; }
@@ -962,8 +963,8 @@ namespace Infrastructure.Annotations
   {
     public RazorInjectionAttribute(string type, string fieldName)
     {
-      Type = type;
-      FieldName = fieldName;
+      this.Type = type;
+      this.FieldName = fieldName;
     }
 
     public string Type { get; private set; }

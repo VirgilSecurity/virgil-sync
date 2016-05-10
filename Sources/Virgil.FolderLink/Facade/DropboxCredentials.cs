@@ -1,6 +1,6 @@
-﻿namespace Virgil.Disk.Model
+﻿namespace Virgil.FolderLink.Facade
 {
-    using Dropbox.Api;
+    using global::Dropbox.Api;
     using Newtonsoft.Json;
 
     public class DropboxCredentials

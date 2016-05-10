@@ -1,4 +1,4 @@
-namespace Virgil.Disk.ViewModels.Operations
+namespace Virgil.Sync.ViewModels.Operations
 {
     using System;
     using System.Linq;
@@ -6,13 +6,12 @@ namespace Virgil.Disk.ViewModels.Operations
     using System.Threading.Tasks;
     using Crypto;
     using Infrastructure.Messaging;
-    using Messages;
+    using Infrastructure.Messaging.Application;
     using SDK.Domain;
     using SDK.Domain.Exceptions;
     using SDK.Exceptions;
     using SDK.Identities;
     using SDK.Models;
-    
     using Sync.Exceptions;
     using Sync.Messages;
 
@@ -69,7 +68,7 @@ namespace Virgil.Disk.ViewModels.Operations
 
             try
             {
-                this.privateKeyResponse = await DownloadPrivateKey(token);
+                this.privateKeyResponse = await this.DownloadPrivateKey(token);
             }
             catch (VirgilPrivateServicesException e) when (e.ErrorCode == 40020)
             {

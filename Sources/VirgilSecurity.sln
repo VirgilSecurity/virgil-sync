@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{460D7389
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.FolderLink", "Virgil.FolderLink\Virgil.FolderLink.csproj", "{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.Disk", "Virgil.Disk\Virgil.Disk.csproj", "{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.Sync", "Virgil.Disk\Virgil.Sync.csproj", "{C1C81C57-DAD1-4E5B-9C5E-BC8F77D0C97E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}"
 EndProject

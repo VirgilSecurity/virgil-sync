@@ -1,7 +1,7 @@
-namespace Virgil.Disk.Messages
+namespace Virgil.FolderLink.Dropbox.Messages
 {
-    using Dropbox.Api;
-    using Model;
+    using Facade;
+    using global::Dropbox.Api;
 
     public class DropboxSignInSuccessfull
     {

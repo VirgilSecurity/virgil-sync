@@ -1,12 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Input;
-
-namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
     using System;
+    using System.Windows;
     using System.Windows.Controls.Primitives;
-    using System.Windows.Media;
-    using Controls;
+    using System.Windows.Input;
 
     /// <summary>
     /// Interaction logic for Container.xaml

@@ -4,9 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Virgil.Sync.View"
-             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
              xmlns:controls1="clr-namespace:Virgil.Sync.View.Controls"
-             xmlns:viewModels="clr-namespace:Virgil.Disk.ViewModels"
+             xmlns:viewModels="clr-namespace:Virgil.Sync.ViewModels"
              mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
              Style="{StaticResource AppPage}" 
              d:DataContext="{d:DesignInstance viewModels:KeyManagementViewModel}">
@@ -27,7 +26,7 @@
         <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
         <TextBlock Text="Import Virgil Card" Style="{StaticResource LargeText}" Grid.Row="1"/>
 
-        <controls:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
+        <controls1:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
 
         <TextBlock Grid.Row="2" FontSize="20" Foreground="#B1A0A5" 
                    Visibility="{Binding IsShowKeyNotFoundMessage, Converter={StaticResource BoolToVisibilityConverter}}"
@@ -51,7 +50,7 @@
             <Label Content="SELECT KEYS FILE" Foreground="White" FontSize="20" FontWeight="Bold" />
         </Button>
 
-        <controls:TransparentTextBox IsPassword="True" 
+        <controls1:TransparentTextBox IsPassword="True" 
                                      FontSize="20" Height="40"
                                      Width="300"
                                      Password="{Binding Password, Mode=TwoWay}"
@@ -87,7 +86,7 @@
                 VerticalAlignment="Bottom"
                 Grid.Row="8" HorizontalAlignment="Center"/>
 
-        <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="100" VerticalAlignment="Stretch" />
+        <controls1:BusyIndicator Grid.Row="0" Grid.RowSpan="100" VerticalAlignment="Stretch" />
     </Grid>
 </UserControl>
 

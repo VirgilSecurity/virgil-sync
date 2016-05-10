@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Virgil.Sync.View.Controls"
-             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
     <UserControl.Resources>
@@ -99,7 +98,7 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <controls:TransparentTextBox 
+        <local:TransparentTextBox 
             Grid.Column="0" Margin="5"
             IsReadonly="True"
             Text="{Binding ElementName=UserControl, Path=SelectedFile, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

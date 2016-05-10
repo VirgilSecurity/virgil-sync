@@ -1,6 +1,6 @@
-namespace Virgil.Disk.Messages
+namespace Infrastructure.Messaging.Application
 {
-    using SDK.Exceptions;
+    using Virgil.SDK.Exceptions;
 
     public class DisplaySignInError
     {

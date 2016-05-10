@@ -1,4 +1,4 @@
-namespace Virgil.Disk.ViewModels
+namespace Virgil.Sync.ViewModels
 {
     using System;
     using System.Collections.ObjectModel;
@@ -6,10 +6,10 @@ namespace Virgil.Disk.ViewModels
     using System.Linq;
     using System.Text;
     using System.Windows.Input;
+    using FolderLink.Facade;
     using Infrastructure.Messaging;
+    using Infrastructure.Messaging.Application;
     using Infrastructure.Mvvm;
-    using LocalStorage;
-    using Messages;
     using Newtonsoft.Json;
     using Ookii.Dialogs.Wpf;
     using SDK.Domain;
@@ -77,9 +77,9 @@ namespace Virgil.Disk.ViewModels
             }
         }
 
-        public ObservableCollection<LocalStorage.VirgilCardDto> Cards { get; set; } = new ObservableCollection<VirgilCardDto>();
+        public ObservableCollection<VirgilCardDto> Cards { get; set; } = new ObservableCollection<VirgilCardDto>();
 
-        public LocalStorage.VirgilCardDto SelectedCard
+        public VirgilCardDto SelectedCard
         {
             get { return this.selectedCard; }
             set
@@ -185,7 +185,7 @@ namespace Virgil.Disk.ViewModels
                     var text = Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(dialog.FileName)));
                     try
                     {
-                        var virgilCardDtos = JsonConvert.DeserializeObject<LocalStorage.VirgilCardDto[]>(text);
+                        var virgilCardDtos = JsonConvert.DeserializeObject<VirgilCardDto[]>(text);
                         this.Cards.Clear();
                         foreach (var dto in virgilCardDtos)
                         {
@@ -195,7 +195,7 @@ namespace Virgil.Disk.ViewModels
                     }
                     catch (JsonException)
                     {
-                        var virgilCardDto = JsonConvert.DeserializeObject<LocalStorage.VirgilCardDto>(text);
+                        var virgilCardDto = JsonConvert.DeserializeObject<VirgilCardDto>(text);
                         this.Cards.Clear();
                         this.Cards.Add(virgilCardDto);
                         this.SelectedCard = virgilCardDto;

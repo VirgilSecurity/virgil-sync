@@ -1,6 +1,6 @@
-namespace Virgil.Disk.Messages
+namespace Infrastructure.Messaging.Application
 {
-    using SDK.Domain;
+    using Virgil.SDK.Domain;
 
     public class CardLoaded
     {

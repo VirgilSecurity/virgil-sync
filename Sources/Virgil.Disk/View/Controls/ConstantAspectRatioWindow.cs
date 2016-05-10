@@ -1,4 +1,4 @@
-﻿namespace Virgil.Disk.View.Controls
+﻿namespace Virgil.Sync.View.Controls
 {
     using System;
     using System.Runtime.InteropServices;
@@ -22,7 +22,7 @@
 
         public ConstantAspectRatioWindow()
         {
-            this.SourceInitialized += Window_SourceInitialized;
+            this.SourceInitialized += this.Window_SourceInitialized;
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -59,9 +59,9 @@
         private void Window_SourceInitialized(object sender, EventArgs ea)
         {
             HwndSource hwndSource = (HwndSource)HwndSource.FromVisual((Window)sender);
-            hwndSource.AddHook(DragHook);
+            hwndSource.AddHook(this.DragHook);
 
-            _aspectRatio = this.Width / this.Height;
+            this._aspectRatio = this.Width / this.Height;
         }
 
         private IntPtr DragHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -81,27 +81,27 @@
 
                         // determine what dimension is changed by detecting the mouse position relative to the 
                         // window bounds. if gripped in the corner, either will work.
-                        if (!_adjustingHeight.HasValue)
+                        if (!this._adjustingHeight.HasValue)
                         {
                             Point p = GetMousePosition();
 
                             double diffWidth = Math.Min(Math.Abs(p.X - pos.x), Math.Abs(p.X - pos.x - pos.cx));
                             double diffHeight = Math.Min(Math.Abs(p.Y - pos.y), Math.Abs(p.Y - pos.y - pos.cy));
 
-                            _adjustingHeight = diffHeight > diffWidth;
+                            this._adjustingHeight = diffHeight > diffWidth;
                         }
 
-                        if (_adjustingHeight.Value)
-                            pos.cy = (int)(pos.cx / _aspectRatio); // adjusting height to width change
+                        if (this._adjustingHeight.Value)
+                            pos.cy = (int)(pos.cx / this._aspectRatio); // adjusting height to width change
                         else
-                            pos.cx = (int)(pos.cy * _aspectRatio); // adjusting width to heigth change
+                            pos.cx = (int)(pos.cy * this._aspectRatio); // adjusting width to heigth change
 
                         Marshal.StructureToPtr(pos, lParam, true);
                         handled = true;
                     }
                     break;
                 case WM.EXITSIZEMOVE:
-                    _adjustingHeight = null; // reset adjustment dimension and detect again next time window is resized
+                    this._adjustingHeight = null; // reset adjustment dimension and detect again next time window is resized
                     break;
             }
 

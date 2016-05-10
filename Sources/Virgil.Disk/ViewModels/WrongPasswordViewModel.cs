@@ -1,9 +1,9 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
     using System.Windows.Input;
     using Infrastructure.Messaging;
+    using Infrastructure.Messaging.Application;
     using Infrastructure.Mvvm;
-    using Messages;
     using Operations;
 
     public class WrongPasswordViewModel : ViewModel

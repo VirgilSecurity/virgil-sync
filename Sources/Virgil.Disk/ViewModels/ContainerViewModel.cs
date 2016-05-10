@@ -1,10 +1,10 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
+    using FolderLink.Dropbox.Messages;
+    using FolderLink.Facade;
     using Infrastructure;
     using Infrastructure.Messaging;
-    using Messages;
-    using Model;
-    using Operations;
+    using Infrastructure.Messaging.Application;
     using Sync.Messages;
 
     public class ContainerViewModel : ViewModel, IHandle<NavigateTo>, IHandle<ConfirmOperation>,

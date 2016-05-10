@@ -1,4 +1,4 @@
-namespace Virgil.Disk.View
+namespace Virgil.Sync.View
 {
     using System;
     using System.Globalization;

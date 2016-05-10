@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for SignInView.xaml
     /// </summary>

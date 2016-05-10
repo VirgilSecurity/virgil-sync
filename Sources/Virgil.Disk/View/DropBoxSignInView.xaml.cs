@@ -1,17 +1,14 @@
-﻿namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
     using System;
     using System.ComponentModel;
-    using System.Reflection;
     using System.Windows;
-    using ViewModels;
     using System.Windows.Controls;
-    using System.Windows.Data;
     using System.Windows.Navigation;
+    using FolderLink.Dropbox.Messages;
     using Infrastructure;
     using Infrastructure.Messaging;
-    using Messages;
-
+    using ViewModels;
 
     /// <summary>
     /// Interaction logic for DropBoxSignIn.xaml

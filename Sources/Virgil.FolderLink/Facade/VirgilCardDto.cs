@@ -1,4 +1,4 @@
-﻿namespace Virgil.LocalStorage
+﻿namespace Virgil.FolderLink.Facade
 {
     using System;
 

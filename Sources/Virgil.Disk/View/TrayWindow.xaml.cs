@@ -1,18 +1,13 @@
-﻿namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
     using System;
     using System.IO;
-    using System.Text;
-    using System.Threading;
     using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Forms;
     using Hardcodet.Wpf.TaskbarNotification;
     using Infrastructure;
     using Infrastructure.Messaging;
-    using LocalStorage;
-    using Messages;
-    using Newtonsoft.Json;
+    using Infrastructure.Messaging.Application;
     using Ookii.Dialogs.Wpf;
     using Application = System.Windows.Application;
 

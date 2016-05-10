@@ -1,7 +1,6 @@
 ﻿namespace Infrastructure
 {
     using System.Security.Cryptography;
-    using Virgil.LocalStorage.Encryption;
 
     public class WindowsPerUserEncryptor : IEncryptor
     {

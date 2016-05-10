@@ -1,10 +1,10 @@
-﻿namespace Virgil.Disk.ViewModels
+﻿namespace Virgil.Sync.ViewModels
 {
     using System;
     using System.Windows.Input;
     using Infrastructure.Messaging;
+    using Infrastructure.Messaging.Application;
     using Infrastructure.Mvvm;
-    using Messages;
     using Operations;
     using SDK.Exceptions;
     using Sync.Messages;
@@ -100,10 +100,10 @@
                     switch (this.state)
                     {
                         case State.CreateNewAccount:
-                            operation = new CreateAccountOperation(this.aggregator, this.IsPasswordUsed, IsUploadPrivateKey);
+                            operation = new CreateAccountOperation(this.aggregator, this.IsPasswordUsed, this.IsUploadPrivateKey);
                             break;
                         case State.RegenerateKeyPair:
-                            operation = new RegenerateKeyPairOperation(this.aggregator, this.IsPasswordUsed, IsUploadPrivateKey);
+                            operation = new RegenerateKeyPairOperation(this.aggregator, this.IsPasswordUsed, this.IsUploadPrivateKey);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException(nameof(state), state, null);

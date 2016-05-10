@@ -1,4 +1,4 @@
-namespace Virgil.Disk.View.Converters
+namespace Virgil.Sync.View.Converters
 {
     using System;
     using System.Globalization;

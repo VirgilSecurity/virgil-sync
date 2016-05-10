@@ -1,9 +1,8 @@
-﻿<Application x:Class="Virgil.Disk.App"
+﻿<Application x:Class="Virgil.Sync.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:view="clr-namespace:Virgil.Disk.View"
-             xmlns:converters="clr-namespace:Virgil.Disk.View.Converters"
-             xmlns:controls="clr-namespace:Virgil.Disk.View.Controls">
+             xmlns:converters="clr-namespace:Virgil.Sync.View.Converters"
+             xmlns:controls="clr-namespace:Virgil.Sync.View.Controls">
     <Application.Resources>
 
         <Brush x:Key="ErrorBackground">#FFdc000c</Brush>
@@ -117,8 +116,6 @@
             <Setter Property="Height" Value="45" />
             <Setter Property="Margin" Value="30 0 30 15"/>
         </Style>
-
-
 
 
         <!--Scrollbar Thumbs-->

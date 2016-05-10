@@ -1,4 +1,4 @@
-namespace Virgil.Disk.Model
+namespace Virgil.FolderLink.Facade
 {
     using System;
     using System.IO;
@@ -29,14 +29,14 @@ namespace Virgil.Disk.Model
 
             try
             {
-                if (!Directory.Exists(FolderPath))
+                if (!Directory.Exists(this.FolderPath))
                 {
-                    errors.AddErrorFor(nameof(FolderPath), "Directory not found");
+                    errors.AddErrorFor(nameof(this.FolderPath), "Directory not found");
                 }
             }
             catch (Exception exception)
             {
-                errors.AddErrorFor(nameof(FolderPath), $"Exception: {exception.Message}");
+                errors.AddErrorFor(nameof(this.FolderPath), $"Exception: {exception.Message}");
             }
 
             return errors;
@@ -44,7 +44,7 @@ namespace Virgil.Disk.Model
 
         public bool IsValid()
         {
-            return Validate().Count == 0;
+            return this.Validate().Count == 0;
         }
 
         public bool IntersectsWith(string other)

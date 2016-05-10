@@ -1,11 +1,6 @@
-﻿using System.Windows.Controls;
-
-namespace Virgil.Disk.View
+﻿namespace Virgil.Sync.View
 {
-    using System;
-    using System.Threading.Tasks;
-    using System.Windows;
-    using ViewModels;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Interaction logic for FolderSettings.xaml
