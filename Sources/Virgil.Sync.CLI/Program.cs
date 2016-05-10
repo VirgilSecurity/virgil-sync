@@ -1,4 +1,6 @@
-﻿namespace Virgil.Sync.CLI
+﻿using System.Linq;
+
+namespace Virgil.Sync.CLI
 {
     using System;
     using System.Collections.Generic;
@@ -15,6 +17,17 @@
     using SDK;
     using SDK.Domain;
 
+
+	public class Listener : IHandle<ErrorMessage>
+	{
+		#region IHandle implementation
+		public void Handle (ErrorMessage message)
+		{
+			Console.WriteLine (message.Error);
+		}
+		#endregion
+	}
+
     class Program
     {
         private const string RedirectUri = "https://virgilsecurity.com/";
@@ -24,6 +37,13 @@
 
         public static void Main(string[] args)
         {
+
+			Console.WriteLine ("Hello");
+
+			var files = Directory.EnumerateFiles ("/Users/r2d2/Projects/Sync-Mac/virgil-sync/Docs", "*", SearchOption.AllDirectories).ToList();
+
+
+
 #if DEBUG
             var virgilHub = ServiceHub.Create(SDK.ServiceHubConfig
                 .UseAccessToken(ApiConfig.VirgilTokenStaging)
@@ -39,8 +59,11 @@
             Bootstrapper = new Bootstrapper();
             Bootstrapper.Initialize();
 
+
+			Bootstrapper.Container.Resolve<IEventAggregator> ().Subscribe (new Listener ());
+
             AppState = Bootstrapper.Container.Resolve<ApplicationState>();
-            AppState.Restore();
+            
 
             FolderSettings = Bootstrapper.Container.Resolve<FolderSettingsStorage>();
 
@@ -65,20 +88,20 @@
             var authUri = DropboxOAuth2Helper.GetAuthorizeUri(
                 OAuthResponseType.Token, ApiConfig.DropboxClientId, new Uri(RedirectUri), state: oauth2State)
                 .ToString();
-
-            //var process = Process.Start(authUri);
-
+//
+//            var process = Process.Start(authUri);
+//
             var folderLinkFacade = Bootstrapper.Container.Resolve<FolderLinkFacade>();
-
-            //var uri = Console.ReadLine();
-
-            //var result = DropboxOAuth2Helper.ParseTokenFragment(new Uri(uri));
-
-            //if (result.State != oauth2State)
-            //{
-            //    Console.WriteLine("Beda");
-            //    return;
-            //}
+//
+//            var uri = Console.ReadLine();
+//
+//            var result = DropboxOAuth2Helper.ParseTokenFragment(new Uri(uri));
+//
+//            if (result.State != oauth2State)
+//            {
+//                Console.WriteLine("Beda");
+//                return;
+//            }
             
             FolderSettings.SetDropboxCredentials(new DropboxCredentials
             {
@@ -86,10 +109,11 @@
                 UserId = Settings.Default.UserId,
             });
 
-            FolderSettings.SetLocalFoldersSettings(new Folder("test", @"C:\Virgil\SOURCE\"), new List<Folder>());
+			FolderSettings.SetLocalFoldersSettings(new Folder("test", @"/Users/r2d2/Projects/Sync-Mac/virgil-sync/Docs"), new List<Folder>());
             folderLinkFacade.Rebuild();
+
             Console.ReadLine();
-        }
+		}
 
         public static FolderSettingsStorage FolderSettings { get; set; }
 
