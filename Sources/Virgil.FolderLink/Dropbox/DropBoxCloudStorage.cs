@@ -36,8 +36,9 @@ namespace Virgil.FolderLink.Dropbox
                 var data = await this.client.Files.GetMetadataAsync(storedPath);
                 return data.IsFile ? data.AsFile : null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+				Console.WriteLine (e.ToString());
                 return null;
             }
         }
@@ -52,7 +53,8 @@ namespace Virgil.FolderLink.Dropbox
 
                 var fileInfo = new FileInfo(localPath.Value);
                 var lastWriteTimeLocal = fileInfo.LastWriteTimeUtc;
-                var lastWriteTimeServer = (await this.GetFileMetadata(serverPath, token))?.ClientModified;
+				var fileMetadata = (await this.GetFileMetadata (serverPath, token));
+                var lastWriteTimeServer = fileMetadata?.ClientModified;
                 if (lastWriteTimeLocal.AlmostEquals(lastWriteTimeServer))
                 {
                     progress?.Report(100);
