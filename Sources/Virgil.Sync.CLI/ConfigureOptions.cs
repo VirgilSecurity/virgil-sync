@@ -6,12 +6,14 @@
     using CommandLine;
     using CommandLine.Text;
 
-    public class ResoteOptions
+    [Verb("start", HelpText = "Starts configured application")]
+    public class StartOptions
     {
         
     }
 
-    public class SetupOptions
+    [Verb("config", HelpText = "Configures Virgil Sync to use specific Virgil card and dropbox account")]
+    public class ConfigureOptions
     {
         [Option('v', "virgil-card", Required = true, HelpText = "Path to the virgil card file created from CLI.")]
         public string VirgilCardPath { get; set; }
@@ -21,8 +23,7 @@
         
         [Option('s', "source-dir", Required = true, HelpText = "Path to the directory you want to sync with DropBox.")]
         public string SourceDirectory { get; set; }
-
-        [HelpOption]
+        
         public string GetUsage()
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -35,7 +36,6 @@
                 AddDashesToOption = true
             };
             
-            help.AddOptions(this);
             return help;
         }
 

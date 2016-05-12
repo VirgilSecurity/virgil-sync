@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Virgil.Sync.CLI</RootNamespace>
-    <AssemblyName>Virgil.Sync.CLI</AssemblyName>
+    <AssemblyName>vsync</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,8 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+    <Reference Include="CommandLine, Version=2.0.275.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.0.275-beta\lib\net45\CommandLine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -77,10 +77,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="StartSyncParams.cs" />
     <Compile Include="Try.cs" />
     <Compile Include="UnixEncryptor.cs" />
     <Compile Include="UnixStorage.cs" />
-    <Compile Include="SetupOptions.cs" />
+    <Compile Include="ConfigureOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,10 +113,6 @@
     <ProjectReference Include="..\Virgil.SDK.Domain\Virgil.SDK.Domain.csproj">
       <Project>{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}</Project>
       <Name>Virgil.SDK.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Virgl.LocalStorage\Virgil.LocalStorage.csproj">
-      <Project>{09AD9C7C-D857-493C-8E03-81D5B552F73D}</Project>
-      <Name>Virgil.LocalStorage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

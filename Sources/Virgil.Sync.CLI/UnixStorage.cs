@@ -5,13 +5,15 @@
 
     public class UnixStorage : IStorageProvider
     {
-        const string StoreFileName = "storage.txt";
+        const string StoreFileName = "VirgilSecurity/access";
 
         public string Load(string path = null)
         {
-            if (File.Exists(path ?? StoreFileName))
+            var actualPath = path ?? StoreFileName;
+
+            if (File.Exists(actualPath))
             {
-                return File.ReadAllText(StoreFileName);
+                return File.ReadAllText(actualPath);
             }
 
             return null;
@@ -19,7 +21,15 @@
 
         public void Save(string data, string path = null)
         {
-            File.WriteAllText(path ?? StoreFileName, data);
+            var actualPath = path ?? StoreFileName;
+
+            var localDir = Path.GetDirectoryName(actualPath);
+            if (!string.IsNullOrEmpty(localDir) && !Directory.Exists(localDir))
+            {
+                Directory.CreateDirectory(localDir);
+            }
+            
+            File.WriteAllText(actualPath, data);
         }
     }
 }

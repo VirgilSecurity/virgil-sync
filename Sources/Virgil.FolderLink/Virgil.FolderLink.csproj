@@ -93,6 +93,7 @@
     <Compile Include="Core\ServerPath.cs" />
     <Compile Include="Core\OperationsBatch.cs" />
     <Compile Include="Core\Time.cs" />
+    <Compile Include="Core\UniversalPath.cs" />
     <Compile Include="Dropbox\Handler\DropBoxLinkParams.cs" />
     <Compile Include="Dropbox\Handler\FileDiff.cs" />
     <Compile Include="Dropbox\Handler\FileMapping.cs" />

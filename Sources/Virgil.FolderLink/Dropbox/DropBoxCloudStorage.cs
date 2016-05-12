@@ -38,7 +38,7 @@ namespace Virgil.FolderLink.Dropbox
             }
             catch (Exception e)
             {
-				Console.WriteLine (e.ToString());
+				//Console.WriteLine (e.ToString());
                 return null;
             }
         }
@@ -67,7 +67,7 @@ namespace Virgil.FolderLink.Dropbox
                 {
                     using (var encryptor = new CipherStreamEncryptor(fileStream))
                     {
-                        encryptor.AddEncryptedValue(OriginalFileNameKey, localPath.AsRelativeToRoot(), 
+                        encryptor.AddEncryptedValue(OriginalFileNameKey, localPath.ToUniversalPath().Value, 
                             this.credentials.GetRecepientId(), this.credentials.PublicKey);
 
                         var contentInfo = encryptor.Init(
@@ -88,7 +88,7 @@ namespace Virgil.FolderLink.Dropbox
 
                             if (encryptor.HasMore())
                             {
-                                await this.client.Files.UploadSessionAppendAsync(cursor, new MemoryStream(chunk));
+                                await this.client.Files.UploadSessionAppendV2Async(cursor, false, new MemoryStream(chunk));
                                 written += (ulong)chunk.Length;
                                 progress?.Report(100.0 * written / fileStream.Length);
                             }
@@ -125,10 +125,15 @@ namespace Virgil.FolderLink.Dropbox
                         this.credentials.PrivateKey.Data, this.privateKeyPassword);
 
                     var originalFileName = cipherStreamDecryptor.GetEncryptedValue(OriginalFileNameKey);
-                    var localPath = LocalPath.CreateFromRelative(originalFileName, root);
+                    var fromServerPath = new UniversalPath(originalFileName);
+                    
+                    var localPath = LocalPath.CreateFromUniversal(fromServerPath, root);
                     var tempLocalName = localPath.Value + VirgilTempExtension;
 
-                    if (download.Response.ClientModified.AlmostEquals(new FileInfo(localPath.Value).LastWriteTimeUtc))
+                    var serverWriteTimeUtc = download.Response.ClientModified;
+                    var localWriteTimeUtc = new FileInfo(localPath.Value).LastWriteTimeUtc;
+                    
+                    if (serverWriteTimeUtc.AlmostEquals(localWriteTimeUtc))
                     {
                         progress?.Report(100);
                         return;
@@ -161,7 +166,7 @@ namespace Virgil.FolderLink.Dropbox
 
                             //File.Delete(localPath.Value);
                             File.Copy(tempLocalName, localPath.Value, true);
-                            File.SetLastWriteTimeUtc(localPath.Value, download.Response.ClientModified);
+                            File.SetLastWriteTimeUtc(localPath.Value, serverWriteTimeUtc);
                         }
                         finally
                         {

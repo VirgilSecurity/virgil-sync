@@ -37,8 +37,13 @@ namespace Virgil.FolderLink.Facade
 
         public void Handle(CardLoaded message)
         {
-            this.CurrentCard = message.Card;
-            this.PrivateKeyPassword = message.PrivateKeyPassword;
+            this.StoreAccessData(message.Card, message.PrivateKeyPassword);
+        }
+
+        public void StoreAccessData(PersonalCard card, string privateKeyPassword)
+        {
+            this.CurrentCard = card;
+            this.PrivateKeyPassword = privateKeyPassword;
             this.HasAccount = true;
 
             var data = new StorageDto { PrivateKeyPassword = this.PrivateKeyPassword, PersonalCard = this.CurrentCard.Export() };

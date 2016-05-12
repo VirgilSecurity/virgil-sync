@@ -5,9 +5,12 @@
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using System.Threading;
     using Autofac;
     using CommandLine;
     using Dropbox.Api;
+    using FolderLink.Core;
+    using FolderLink.Dropbox.Messages;
     using FolderLink.Facade;
     using Infrastructure.Messaging;
     using Infrastructure.Messaging.Application;
@@ -16,18 +19,95 @@
     using SDK.Domain;
     using SDK.Models;
     using ServiceLocator = SDK.Domain.ServiceLocator;
-    
+
     class Program
     {
         private const string RedirectUri = "https://virgilsecurity.com/";
 
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
-            var virgilOptions = ParseOptions(args);
-            if (virgilOptions == null) return;
+            return ParseOptions(args);
+        }
+
+        private static int ParseOptions(string[] args)
+        {   
+            var parserResult = Parser.Default.ParseArguments<ConfigureOptions, StartOptions>(args);
+
+            return parserResult.MapResult<ConfigureOptions, StartOptions, int>(
+                (ConfigureOptions options) => HandleConfig(options),
+                (StartOptions r) => HandleStart(),
+                (IEnumerable<Error> errs) => 1);
+        }
+
+        private static int HandleStart()
+        {
+            var virgilHub = ServiceHub.Create(ServiceHubConfig.UseAccessToken(ApiConfig.VirgilToken));
+            ServiceLocator.Setup(virgilHub);
+
+            var bootstrapper = new Bootstrapper();
+            bootstrapper.Initialize();
+
+            var eventAggregator = bootstrapper.Container.Resolve<IEventAggregator>();
+            eventAggregator.Subscribe(new Listener());
+
+            var appState = bootstrapper.Container.Resolve<ApplicationState>();
+            appState.Restore();
+
+            if (!appState.HasAccount)
+            {
+                Console.WriteLine("    There is no Virgil Card stored");
+                return 1;
+            }
+
+            var folderSettings = bootstrapper.Container.Resolve<FolderSettingsStorage>();
+
+            if (folderSettings.FolderSettings.IsEmpty())
+            {
+                Console.WriteLine("    There is no folder to bropbox link configured");
+                return 1;
+            }
             
-            var personalCard = TryBuildPersonalCard(virgilOptions);
-            if (personalCard == null) return;
+
+            var validationErrors = folderSettings.FolderSettings.Validate();
+            if (validationErrors.Any())
+            {
+                foreach (var validationError in validationErrors)
+                {
+                    Console.WriteLine("    " + validationError);
+                }
+                return 1;
+            }
+
+            ExceptionNotifier.Current.OnDropboxSessionExpired(() =>
+            {
+                eventAggregator.Publish(new DropboxSessionExpired());
+                Console.WriteLine("    Dropbox session has expired");
+                Environment.Exit(1);
+            });
+
+            var folderLinkFacade = bootstrapper.Container.Resolve<FolderLinkFacade>();
+            folderLinkFacade.Rebuild();
+
+            Console.WriteLine("    Virgil sync is running");
+            Console.WriteLine("    Press enter key to exit...");
+            Console.ReadLine();
+            return 0;
+        }
+
+        private static int HandleConfig(ConfigureOptions options)
+        {
+            var validate = options.Validate();
+            if (validate.Any())
+            {
+                foreach (var error in validate)
+                {
+                    Console.WriteLine("    " + error);
+                }
+                return 1;
+            }
+
+            var personalCard = TryBuildPersonalCard(options);
+            if (personalCard == null) return 1;
 
             string password = null;
             if (personalCard.IsPrivateKeyEncrypted)
@@ -41,63 +121,42 @@
                 }
             }
 
-            var dropboxCredentials = ParseDropboxUri();
-            if (dropboxCredentials == null)
-            {
-                return;
-            }
+            //var dropboxCredentials = ParseDropboxUri();
+            //if (dropboxCredentials == null)
+            //{
+            //    return 1;
+            //}
 
-            var virgilHub = ServiceHub.Create(ServiceHubConfig.UseAccessToken(ApiConfig.VirgilToken));
-            ServiceLocator.Setup(virgilHub);
+            var dropboxCredentials = new DropboxCredentials()
+            {
+                AccessToken = "14c-HsvO9WUAAAAAAAADnzWzvjFvup8vGQolOSkprSz2qKUwJ7EQ_YSVKJjaAmVN",
+                UserId = "151132913"
+            };
+
+            var @params = new StartSyncParams(
+                personalCard,
+                password,
+                dropboxCredentials,
+                options.SourceDirectory);
 
             var bootstrapper = new Bootstrapper();
             bootstrapper.Initialize();
 
-            bootstrapper.Container.Resolve<IEventAggregator>().Subscribe(new Listener());
-
             var appState = bootstrapper.Container.Resolve<ApplicationState>();
-            appState.Handle(new CardLoaded(personalCard, password));
+            appState.StoreAccessData(@params.PersonalCard, @params.Password);
 
             var folderSettings = bootstrapper.Container.Resolve<FolderSettingsStorage>();
-            var folderLinkFacade = bootstrapper.Container.Resolve<FolderLinkFacade>();
+            folderSettings.SetDropboxCredentials(@params.DropboxCredentials);
+            folderSettings.SetLocalFoldersSettings(new Folder("Source", @params.SourceDir), new List<Folder>());
 
-            folderSettings.SetDropboxCredentials(dropboxCredentials);
+            Console.WriteLine("Success!");
 
-            folderSettings.SetLocalFoldersSettings(new Folder("Source", virgilOptions.SourceDirectory), new List<Folder>());
-            folderLinkFacade.Rebuild();
-
-            Console.ReadLine();
-		}
-
-        private static SetupOptions ParseOptions(string[] args)
-        {
-            var virgilOptions = new SetupOptions();
-
-            var parserResult = Parser.Default.ParseArgumentsStrict(args, virgilOptions);
-
-            if (!parserResult)
-            {
-                Console.WriteLine(virgilOptions.GetUsage());
-                return null;
-            }
-
-            var validate = virgilOptions.Validate();
-            if (validate.Any())
-            {
-                foreach (var error in validate)
-                {
-                    Console.WriteLine("    " + error);
-                }
-
-                return null;
-            }
-
-            return virgilOptions;
+            return 0;
         }
 
-        private static PersonalCard TryBuildPersonalCard(SetupOptions setupOptions)
+        private static PersonalCard TryBuildPersonalCard(ConfigureOptions configureOptions)
         {
-            var buildPersonalCard = BuildPersonalCard(setupOptions);
+            var buildPersonalCard = BuildPersonalCard(configureOptions);
             if (!buildPersonalCard.IsValid())
             {
                 foreach (var error in buildPersonalCard.GetErrors())
@@ -110,7 +169,7 @@
             return buildPersonalCard.Result;
         }
 
-        private static Try<PersonalCard> BuildPersonalCard(SetupOptions options)
+        private static Try<PersonalCard> BuildPersonalCard(ConfigureOptions options)
         {
             var result = new Try<PersonalCard>();
 

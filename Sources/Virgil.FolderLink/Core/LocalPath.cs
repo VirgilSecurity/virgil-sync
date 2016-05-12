@@ -14,21 +14,44 @@
             this.Value = path;
         }
 
-        public static LocalPath CreateFromRelative(string path, LocalFolderRoot root)
+        public static LocalPath CreateFromUniversal(UniversalPath path, LocalFolderRoot root)
         {
-            var result = new LocalPath {Root = root};
-            var pathRoot = Path.GetPathRoot(path);
-            if (pathRoot == Path.DirectorySeparatorChar.ToString())
+            var rootPath = root.Value;
+
+            var separator = Path.DirectorySeparatorChar.ToString();
+
+            if (!root.Value.EndsWith(separator))
             {
-                result.Value = Path.Combine(root.Value, path.Substring(1));
+                rootPath = rootPath + separator;
             }
-            else
+
+            var localRelativePath = path.Value.Replace("/", separator);
+            var combine = Path.GetFullPath(rootPath + localRelativePath);
+
+            var result = new LocalPath
             {
-                result.Value = path;
-            }
+                Root = root,
+                Value = combine
+            };
 
             return result;
         }
+
+        //public static LocalPath CreateFromRelative(string path, LocalFolderRoot root)
+        //{
+        //    var result = new LocalPath {Root = root};
+        //    var pathRoot = Path.GetPathRoot(path);
+        //    if (pathRoot == Path.DirectorySeparatorChar.ToString())
+        //    {
+        //        result.Value = Path.Combine(root.Value, path.Substring(1));
+        //    }
+        //    else
+        //    {
+        //        result.Value = path;
+        //    }
+
+        //    return result;
+        //}
 
         public ServerPath ToServerPath()
         {
@@ -36,9 +59,20 @@
             return ServerPath.FromLocalPath(this);
         }
 
+        public UniversalPath ToUniversalPath()
+        {
+            return new UniversalPath(this);
+        }
+
         public string AsRelativeToRoot()
         {
-            return this.Value.Replace(this.Root.Value, Path.DirectorySeparatorChar.ToString());
+            var separator = Path.DirectorySeparatorChar.ToString();
+            var relativeToRoot = this.Value.Replace(this.Root.Value, separator);
+            if (relativeToRoot.StartsWith(separator + separator))
+            {
+                relativeToRoot = relativeToRoot.Substring(1);
+            }
+            return relativeToRoot;
         }
 
         public LocalPath ReplaceRoot(LocalFolderRoot newParent)
