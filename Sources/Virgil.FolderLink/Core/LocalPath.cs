@@ -37,25 +37,8 @@
             return result;
         }
 
-        //public static LocalPath CreateFromRelative(string path, LocalFolderRoot root)
-        //{
-        //    var result = new LocalPath {Root = root};
-        //    var pathRoot = Path.GetPathRoot(path);
-        //    if (pathRoot == Path.DirectorySeparatorChar.ToString())
-        //    {
-        //        result.Value = Path.Combine(root.Value, path.Substring(1));
-        //    }
-        //    else
-        //    {
-        //        result.Value = path;
-        //    }
-
-        //    return result;
-        //}
-
         public ServerPath ToServerPath()
         {
-            //this.Value.Replace(this.Root.Value, "").Replace("\\", "/")
             return ServerPath.FromLocalPath(this);
         }
 

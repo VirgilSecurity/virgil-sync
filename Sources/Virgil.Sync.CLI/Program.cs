@@ -121,17 +121,11 @@
                 }
             }
 
-            //var dropboxCredentials = ParseDropboxUri();
-            //if (dropboxCredentials == null)
-            //{
-            //    return 1;
-            //}
-
-            var dropboxCredentials = new DropboxCredentials()
+            var dropboxCredentials = ParseDropboxUri();
+            if (dropboxCredentials == null)
             {
-                AccessToken = "14c-HsvO9WUAAAAAAAADnzWzvjFvup8vGQolOSkprSz2qKUwJ7EQ_YSVKJjaAmVN",
-                UserId = "151132913"
-            };
+                return 1;
+            }
 
             var @params = new StartSyncParams(
                 personalCard,
@@ -255,8 +249,8 @@
 
                 return new DropboxCredentials
                 {
-                    AccessToken = Settings.Default.AccessToken,
-                    UserId = Settings.Default.UserId,
+                    AccessToken = result.AccessToken,
+                    UserId = result.Uid,
                 };
             }
             catch (Exception e)
