@@ -20,7 +20,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>config -v "//users//r2d2/Downloads/virgilclitests.vcard" -k "//users//r2d2/Downloads/private.key" -s "//users//r2d2/Downloads/Source"</Commandlineparameters>
+    <Commandlineparameters>config -v "//users//r2d2/Downloads/dimon3.vcard" -k "//users//r2d2/Downloads/private-2.key" -s "//users//r2d2/Downloads/Source"</Commandlineparameters>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

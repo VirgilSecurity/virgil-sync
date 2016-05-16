@@ -1,4 +1,7 @@
-﻿namespace Virgil.Sync.CLI.Monomac
+﻿using Virgil.CLI.Common;
+using System;
+
+namespace Virgil.Sync.CLI.Monomac
 {
 	using CommandLine;
 	using Virgil.CLI.Common.Handlers;

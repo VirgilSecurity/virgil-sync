@@ -74,6 +74,7 @@
     <Compile Include="Random\Try.cs" />
     <Compile Include="Random\UnixEncryptor.cs" />
     <Compile Include="Random\UnixStorage.cs" />
+    <Compile Include="Random\ConsolePasswordReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

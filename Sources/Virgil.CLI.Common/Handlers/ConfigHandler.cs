@@ -37,11 +37,13 @@ namespace Virgil.CLI.Common.Handlers
             if (personalCard.IsPrivateKeyEncrypted)
             {
                 Console.WriteLine("    The private key file specified is encrypted. Please provide password:");
-                password = Console.ReadLine();
+				password = ConsolePasswordReader.GetPassword ();
+				Console.WriteLine ();
 
                 if (!personalCard.CheckPrivateKeyPassword(password))
                 {
                     Console.WriteLine("    Wrong password");
+					return 1;
                 }
             }
 
