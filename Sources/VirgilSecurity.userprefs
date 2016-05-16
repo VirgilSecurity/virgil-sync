@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Virgil.Sync.CLI.Monomac/Virgil.Sync.CLI.Monomac.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Virgil.CLI.Common/Options/ConfigureOptions.cs">
+    <Files>
+      <File FileName="Virgil.CLI.Common/Options/ConfigureOptions.cs" Line="40" Column="47" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/r2d2/Projects/Sync-Mac/virgil-sync/Sources/Virgil.CLI.Common/Options/ConfigureOptions.cs" line="40" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>FolderLink.Tests/FolderLink.Tests.csproj</String>
+  </DisabledProjects>
+</Properties>
