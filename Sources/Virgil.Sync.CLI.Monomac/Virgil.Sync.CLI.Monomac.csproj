@@ -6,7 +6,7 @@
     <ProjectGuid>{098022CB-8DCE-446B-B892-D7C7F1C97A6D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Virgil.Sync.CLI.Monomac</RootNamespace>
-    <AssemblyName>vsync</AssemblyName>
+    <AssemblyName>test</AssemblyName>
     <ReleaseVersion>1.0.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -40,10 +40,15 @@
     <Reference Include="Virgil.Crypto">
       <HintPath>..\packages\Virgil.Crypto.1.5.0\lib\xamarinmac20\Virgil.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral" />
+    <Reference Include="XamMac">
+      <HintPath>..\..\..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\2.4.2.1\lib\mono\XamMac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EmptyClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Virgil.Crypto.1.5.0\build\xamarinmac20\Virgil.Crypto.targets" Condition="Exists('..\packages\Virgil.Crypto.1.5.0\build\xamarinmac20\Virgil.Crypto.targets')" />
