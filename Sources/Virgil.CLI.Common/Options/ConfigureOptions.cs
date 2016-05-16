@@ -1,16 +1,10 @@
-﻿namespace Virgil.Sync.CLI
+﻿namespace Virgil.CLI.Common.Options
 {
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
     using CommandLine;
     using CommandLine.Text;
-
-    [Verb("start", HelpText = "Starts configured application")]
-    public class StartOptions
-    {
-        
-    }
 
     [Verb("config", HelpText = "Configures Virgil Sync to use specific Virgil card and dropbox account")]
     public class ConfigureOptions

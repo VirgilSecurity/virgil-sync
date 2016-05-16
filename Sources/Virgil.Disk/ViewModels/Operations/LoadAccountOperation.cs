@@ -48,7 +48,7 @@ namespace Virgil.Sync.ViewModels.Operations
             var search = await Cards.Search(this.email);
             if (search.Count == 0)
             {
-                throw new VirgilException("Can't find such card");
+                throw new VirgilException("Account doesn't exist");
             }
             
             this.recipientCard = search

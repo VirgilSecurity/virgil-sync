@@ -1,4 +1,4 @@
-namespace Virgil.Sync.CLI
+namespace Virgil.CLI.Common.Options
 {
     using FolderLink.Facade;
     using SDK.Domain;

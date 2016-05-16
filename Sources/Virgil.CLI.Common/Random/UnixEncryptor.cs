@@ -1,4 +1,4 @@
-namespace Virgil.Sync.CLI
+namespace Virgil.CLI.Common.Random
 {
     using Infrastructure;
 

@@ -1,4 +1,4 @@
-﻿namespace Virgil.Sync.CLI
+﻿namespace Virgil.Sync.CLI.Windows
 {
     using CommandLine;
     using Virgil.CLI.Common.Handlers;
