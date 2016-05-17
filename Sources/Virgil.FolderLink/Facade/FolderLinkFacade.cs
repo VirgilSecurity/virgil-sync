@@ -87,6 +87,9 @@ namespace Virgil.FolderLink.Facade
 
         private async Task Initialize(FolderSettings folderSettings)
         {
+			try
+			{
+
             var sourceFolder = folderSettings.SourceFolder.FolderPath;
 
             var error = !Directory.Exists(sourceFolder);
@@ -125,6 +128,12 @@ namespace Virgil.FolderLink.Facade
             await this.dropBoxLink.Launch();
 
             this.eventAggregator.Publish(new DropBoxLinkChanged {Instance = this.dropBoxLink });
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine (e.Message);
+				throw;
+			}
         }
 
         public void Handle(Logout message)

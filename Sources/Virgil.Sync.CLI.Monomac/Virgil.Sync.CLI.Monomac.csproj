@@ -6,7 +6,7 @@
     <ProjectGuid>{098022CB-8DCE-446B-B892-D7C7F1C97A6D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Virgil.Sync.CLI.Monomac</RootNamespace>
-    <AssemblyName>test</AssemblyName>
+    <AssemblyName>vsync</AssemblyName>
     <ReleaseVersion>1.0.0.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -20,7 +20,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>config -v "//users//r2d2/Downloads/dimon3.vcard" -k "//users//r2d2/Downloads/private-2.key" -s "//users//r2d2/Downloads/Source"</Commandlineparameters>
+    <Commandlineparameters>start</Commandlineparameters>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -44,7 +44,7 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="XamMac">
-      <HintPath>C:\Users\dmitr_000\Desktop\XamMac.dll</HintPath>
+      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\2.4.2.3\lib\mono\XamMac.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +83,9 @@
     <None Include="packages.config" />
     <None Include="..\packages\Virgil.Crypto.1.5.0\build\native\mac\libvirgil_crypto_net.dylib">
       <Link>libvirgil_crypto_net.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libxammac.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

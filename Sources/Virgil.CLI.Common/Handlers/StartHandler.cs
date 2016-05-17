@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Virgil.CLI.Common.Handlers
 {
     using System;
@@ -15,9 +17,10 @@ namespace Virgil.CLI.Common.Handlers
     public class StartHandler : CommandHandler<StartOptions>
     {
 		Bootstrapper bootstrapper;
+		FolderLinkFacade folderLinkFacade;
 
 		public StartHandler (Bootstrapper bootstrapper)
-		{
+		{		
 			this.bootstrapper = bootstrapper;
 		}
 		
@@ -64,12 +67,17 @@ namespace Virgil.CLI.Common.Handlers
                 Environment.Exit(1);
             });
 
-            var folderLinkFacade = bootstrapper.Container.Resolve<FolderLinkFacade>();
-            folderLinkFacade.Rebuild();
+			this.folderLinkFacade = bootstrapper.Container.Resolve<FolderLinkFacade>();
+            
+			Task.Factory.StartNew(() =>  folderLinkFacade.Rebuild());
 
             Console.WriteLine("    Virgil sync is running");
-            Console.WriteLine("    Press enter key to exit...");
-            Console.ReadLine();
+
+			while (true) 
+			{
+				Console.ReadLine ();
+			}
+
             return 0;
         }
     }

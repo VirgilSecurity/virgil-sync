@@ -53,7 +53,8 @@ namespace Virgil.FolderLink.Dropbox.Handler
             this.localFolderWatcher.Start();
             await this.serverFolderWatcher.Start();
 
-            var localFiles = this.localFolder.Files.ToList();
+
+			var localFiles = this.localFolder.Files.ToList();
             var serverFiles = this.serverFolder.Files.ToList();
 
             var diffResult = FileDiff.Calculate(localFiles, serverFiles);

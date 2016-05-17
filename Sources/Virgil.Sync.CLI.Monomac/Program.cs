@@ -1,4 +1,7 @@
-﻿namespace Virgil.Sync.CLI.Monomac
+﻿using MonoMac.Security;
+using MonoMac.AppKit;
+
+namespace Virgil.Sync.CLI.Monomac
 {
 	using CommandLine;
 	using Virgil.CLI.Common.Handlers;
@@ -8,7 +11,9 @@
 	class MainClass
 	{
 		public static int Main(string[] args)
-        {
+		{
+			NSApplication.Init ();
+
 		    var bootstrapper = new MacBootstrapper();
             bootstrapper.Initialize();
 

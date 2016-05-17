@@ -37,9 +37,10 @@ namespace Virgil.Sync.CLI.Monomac
 
                 if (record == null)
                 {
-                    record = new SecRecord(SecKind.Key)
+					record = new SecRecord(SecKind.InternetPassword)
                     {
                         Service = ServiceName,
+						Label = ServiceName,
                         Account = parsedPath,
                         ValueData = NSData.FromString(data)
                     };
@@ -60,7 +61,7 @@ namespace Virgil.Sync.CLI.Monomac
 
         private static SecRecord FetchRecord(string path, out SecRecord searchRecord)
         {
-            searchRecord = new SecRecord(SecKind.Key)
+			searchRecord = new SecRecord(SecKind.InternetPassword)
             {
                 Service = ServiceName,
                 Account = path

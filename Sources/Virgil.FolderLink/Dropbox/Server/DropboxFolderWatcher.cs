@@ -22,19 +22,28 @@ namespace Virgil.FolderLink.Dropbox.Server
         }
 
         private async Task Init()
-        {
-            var folderStructure = await this.GetFiles(this.token);
-            if (folderStructure != null)
-            {
-                this.serverFolder.Init(folderStructure);
-            }
+		{
+			try
+			{
+			
+	            var folderStructure = await this.GetFiles(this.token);
+	            if (folderStructure != null)
+	            {
+	                this.serverFolder.Init(folderStructure);
+	            }
+			}
+			catch(Exception e)
+			{
+				Console.WriteLine (e.Message);
+				throw;
+			}
         }
 
         private async Task<Delta> GetFiles(CancellationToken token)
         {
             var delta = new Delta();
 
-            var list = await this.client.Files.ListFolderAsync("", true, false, false);
+			var list = await this.client.Files.ListFolderAsync("", true, false, false);
 
             if (token.IsCancellationRequested)
             {
