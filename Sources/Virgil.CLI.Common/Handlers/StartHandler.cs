@@ -14,13 +14,17 @@ namespace Virgil.CLI.Common.Handlers
 
     public class StartHandler : CommandHandler<StartOptions>
     {
+		Bootstrapper bootstrapper;
+
+		public StartHandler (Bootstrapper bootstrapper)
+		{
+			this.bootstrapper = bootstrapper;
+		}
+		
         public override int Handle(StartOptions command)
         {
             var virgilHub = ServiceHub.Create(ServiceHubConfig.UseAccessToken(ApiConfig.VirgilToken));
             ServiceLocator.Setup(virgilHub);
-
-            var bootstrapper = new Bootstrapper();
-            bootstrapper.Initialize();
 
             var eventAggregator = bootstrapper.Container.Resolve<IEventAggregator>();
             eventAggregator.Subscribe(new Listener());

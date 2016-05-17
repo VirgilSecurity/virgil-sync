@@ -18,6 +18,13 @@ namespace Virgil.CLI.Common.Handlers
     {
         private const string RedirectUri = "https://virgilsecurity.com/";
 
+		Bootstrapper bootstrapper;
+
+		public ConfigHandler (Bootstrapper bootstrapper)
+		{
+			this.bootstrapper = bootstrapper;
+		}
+
         public override int Handle(ConfigureOptions command)
         {
             var validate = command.Validate();
@@ -64,12 +71,10 @@ namespace Virgil.CLI.Common.Handlers
             return 0;
         }
 
-        private static void Bootstrap(StartSyncParams @params)
-        {
-            var bootstrapper = new Bootstrapper();
-            bootstrapper.Initialize();
+        private void Bootstrap(StartSyncParams @params)
+        {          
 
-            var appState = bootstrapper.Container.Resolve<ApplicationState>();
+			var appState = bootstrapper.Container.Resolve<ApplicationState>();
             appState.StoreAccessData(@params.PersonalCard, @params.Password);
 
             var folderSettings = bootstrapper.Container.Resolve<FolderSettingsStorage>();

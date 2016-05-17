@@ -1,33 +1,20 @@
-﻿<Properties StartupItem="Virgil.Sync.CLI.Monomac/Virgil.Sync.CLI.Monomac.csproj" RefactoringSettings.EnableRefactorings="True">
+﻿<Properties StartupItem="Virgil.Sync.CLI/Virgil.Sync.CLI.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="test/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Virgil.CLI.Common/Handlers/ConfigHandler.cs">
     <Files>
-      <File FileName="Virgil.Sync.CLI.Monomac/Program.cs" Line="6" Column="20" />
-      <File FileName="Virgil.Sync.CLI.Monomac/EmptyClass.cs" Line="19" Column="2" />
-      <File FileName="test/AppDelegate.cs" Line="21" Column="4" />
-      <File FileName="test/Main.cs" Line="13" Column="6" />
-      <File FileName="test/Info.plist" />
-      <File FileName="test/Resources/Images.xcassets/AppIcons.appiconset/Contents.json" />
-      <File FileName="test/packages.config" Line="1" Column="1" />
+      <File FileName="Virgil.Sync.CLI/Program.cs" Line="1" Column="1" />
+      <File FileName="Virgil.Sync.CLI.Monomac/Program.cs" Line="1" Column="1" />
+      <File FileName="Virgil.CLI.Common/Random/Bootstrapper.cs" Line="1" Column="1" />
+      <File FileName="Virgil.CLI.Common/Handlers/ConfigHandler.cs" Line="21" Column="3" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="VirgilSecurity" expanded="True">
-            <Node name="CLI" expanded="True">
-              <Node name="test" expanded="True" selected="True" />
-            </Node>
-            <Node name="Core" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <DisabledProjects>
-    <String>FolderLink.Tests/FolderLink.Tests.csproj</String>
+    <String>Virgil.Sync.CLI/Virgil.Sync.CLI.csproj</String>
+    <String>Virgil.Sync.CLI.Windows/Virgil.Sync.CLI.Windows.csproj</String>
+    <String>Virgil.Sync.CLI.Linux/Virgil.Sync.CLI.Linux.csproj</String>
   </DisabledProjects>
 </Properties>

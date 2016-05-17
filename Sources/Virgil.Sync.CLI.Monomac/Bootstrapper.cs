@@ -7,7 +7,7 @@ namespace Virgil.CLI.Common.Random
 
     public class Bootstrapper
     {
-        public virtual void Initialize()
+        public void Initialize()
         {
             var builder = new ContainerBuilder();
 
@@ -23,6 +23,8 @@ namespace Virgil.CLI.Common.Random
             this.Container = builder.Build();
         }
 
-        public IContainer Container { get; protected set; }
+
+
+        public IContainer Container { get; private set; }
     }
 }
