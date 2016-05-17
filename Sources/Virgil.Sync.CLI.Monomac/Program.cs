@@ -1,26 +1,21 @@
-﻿using Virgil.CLI.Common;
-using System;
-using MonoMac.Security;
-using MonoMac.Foundation;
-using Virgil.CLI.Common.Random;
-
-namespace Virgil.Sync.CLI.Monomac
+﻿namespace Virgil.Sync.CLI.Monomac
 {
 	using CommandLine;
 	using Virgil.CLI.Common.Handlers;
 	using Virgil.CLI.Common.Options;
-
-
-		
+    
 
 	class MainClass
 	{
 		public static int Main(string[] args)
-		{
-			var parserResult = Parser.Default.ParseArguments<ConfigureOptions, StartOptions>(args);
+        {
+		    var bootstrapper = new MacBootstrapper();
+            bootstrapper.Initialize();
 
-			var configHandler = new ConfigHandler();
-			var startHandler = new StartHandler();
+		    var configHandler = new ConfigHandler(bootstrapper);
+            var startHandler = new StartHandler(bootstrapper);
+
+            var parserResult = Parser.Default.ParseArguments<ConfigureOptions, StartOptions>(args);
 
 			return parserResult.MapResult(
 				(ConfigureOptions options) => configHandler.Handle(options),

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -40,15 +40,15 @@
     <Reference Include="Virgil.Crypto">
       <HintPath>..\packages\Virgil.Crypto.1.5.0\lib\xamarinmac20\Virgil.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral" />
-    <Reference Include="XamMac">
-      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\2.4.2.3\lib\mono\XamMac.dll</HintPath>
-    </Reference>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="XamMac">
+      <HintPath>C:\Users\dmitr_000\Desktop\XamMac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MacKeychainStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmptyClass.cs" />

@@ -1,15 +1,9 @@
-using Virgil.CLI.Common;
-using System;
 using MonoMac.Security;
 using MonoMac.Foundation;
 
 namespace Virgil.Sync.CLI.Monomac
 {
-	using CommandLine;
-	using Virgil.CLI.Common.Handlers;
-	using Virgil.CLI.Common.Options;
-
-	public static class KeychainAccess
+    public static class KeychainAccess
 	{
 		// Update to the name of your service
 		private const string ServiceName = "Virgil.Sync.CLI.Monomac";
