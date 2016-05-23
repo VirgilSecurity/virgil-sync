@@ -44,7 +44,7 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="XamMac">
-      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\2.4.2.3\lib\mono\XamMac.dll</HintPath>
+      <HintPath>XamMac.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
