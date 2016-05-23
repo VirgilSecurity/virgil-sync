@@ -66,7 +66,7 @@ namespace Virgil.CLI.Common.Handlers
                 dropboxCredentials,
                 command.SourceDirectory);
 
-            Bootstrap(@params);
+            this.Bootstrap(@params);
 
             return 0;
         }
@@ -74,10 +74,10 @@ namespace Virgil.CLI.Common.Handlers
         private void Bootstrap(StartSyncParams @params)
         {          
 
-			var appState = bootstrapper.Container.Resolve<ApplicationState>();
+			var appState = this.bootstrapper.Container.Resolve<ApplicationState>();
             appState.StoreAccessData(@params.PersonalCard, @params.Password);
 
-            var folderSettings = bootstrapper.Container.Resolve<FolderSettingsStorage>();
+            var folderSettings = this.bootstrapper.Container.Resolve<FolderSettingsStorage>();
             folderSettings.SetDropboxCredentials(@params.DropboxCredentials);
             folderSettings.SetLocalFoldersSettings(new Folder("Source", @params.SourceDir), new List<Folder>());
 

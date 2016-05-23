@@ -29,10 +29,10 @@ namespace Virgil.CLI.Common.Handlers
             var virgilHub = ServiceHub.Create(ServiceHubConfig.UseAccessToken(ApiConfig.VirgilToken));
             ServiceLocator.Setup(virgilHub);
 
-            var eventAggregator = bootstrapper.Container.Resolve<IEventAggregator>();
+            var eventAggregator = this.bootstrapper.Container.Resolve<IEventAggregator>();
             eventAggregator.Subscribe(new Listener());
 
-            var appState = bootstrapper.Container.Resolve<ApplicationState>();
+            var appState = this.bootstrapper.Container.Resolve<ApplicationState>();
             appState.Restore();
 
             if (!appState.HasAccount)
@@ -41,7 +41,7 @@ namespace Virgil.CLI.Common.Handlers
                 return 1;
             }
 
-            var folderSettings = bootstrapper.Container.Resolve<FolderSettingsStorage>();
+            var folderSettings = this.bootstrapper.Container.Resolve<FolderSettingsStorage>();
 
             if (folderSettings.FolderSettings.IsEmpty())
             {
@@ -67,9 +67,9 @@ namespace Virgil.CLI.Common.Handlers
                 Environment.Exit(1);
             });
 
-			this.folderLinkFacade = bootstrapper.Container.Resolve<FolderLinkFacade>();
+			this.folderLinkFacade = this.bootstrapper.Container.Resolve<FolderLinkFacade>();
             
-			Task.Factory.StartNew(() =>  folderLinkFacade.Rebuild());
+			Task.Factory.StartNew(() => this.folderLinkFacade.Rebuild());
 
             Console.WriteLine("    Virgil sync is running");
 

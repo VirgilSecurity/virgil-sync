@@ -63,12 +63,15 @@
   <ItemGroup>
     <Compile Include="Handlers\CommandHandler.cs" />
     <Compile Include="Handlers\ConfigHandler.cs" />
+    <Compile Include="Handlers\ResetHandler.cs" />
     <Compile Include="Handlers\StartHandler.cs" />
     <Compile Include="Options\ConfigureOptions.cs" />
+    <Compile Include="Options\ResetOptions.cs" />
     <Compile Include="Options\StartOptions.cs" />
     <Compile Include="Options\StartSyncParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Random\ApiConfig.cs" />
+    <Compile Include="Random\DefaultImplementation.cs" />
     <Compile Include="Random\Listener.cs" />
     <Compile Include="Random\Try.cs" />
     <Compile Include="Random\UnixEncryptor.cs" />

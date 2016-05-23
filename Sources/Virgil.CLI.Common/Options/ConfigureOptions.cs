@@ -6,7 +6,7 @@
     using CommandLine;
     using CommandLine.Text;
 
-    [Verb("config", HelpText = "Configures Virgil Sync to use specific Virgil card and dropbox account")]
+    [Verb("config", HelpText = "Configures Virgil Sync to use specific Virgil card and dropbox account.")]
     public class ConfigureOptions
     {
         [Option('v', "virgil-card", Required = true, HelpText = "Path to the virgil card file created from CLI.")]
