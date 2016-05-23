@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CommandLine, Version=2.0.275.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.0.275-beta\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +56,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
+      <Project>{a32d8707-67f6-447c-9329-73ddb97fd70f}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{7c04c9ea-37aa-4f31-92b2-fadd0a205ab2}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.CLI.Common\Virgil.CLI.Common.csproj">
+      <Project>{39771eea-b6b5-4a12-9cec-6f372defa973}</Project>
+      <Name>Virgil.CLI.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.FolderLink\Virgil.FolderLink.csproj">
+      <Project>{10188a5a-ff14-4d1e-86ac-0f775d3c7c7e}</Project>
+      <Name>Virgil.FolderLink</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.SDK.Domain\Virgil.SDK.Domain.csproj">
+      <Project>{5a1ce0b6-d6fe-4620-bac5-9a319e461913}</Project>
+      <Name>Virgil.SDK.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

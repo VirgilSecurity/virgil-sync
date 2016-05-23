@@ -1,17 +1,16 @@
-namespace Virgil.CLI.Common.Random
+namespace Virgil.Sync.CLI.Windows
 {
     using Autofac;
     using FolderLink.Facade;
     using Infrastructure;
     using Infrastructure.Messaging;
+    using Virgil.CLI.Common.Random;
 
-    public class Bootstrapper
+    public class WindowsBootstrapper : Bootstrapper
     {
-        public void Initialize()
+        public override void Initialize()
         {
             var builder = new ContainerBuilder();
-
-            // Register individual components
 
             builder.RegisterType<ApplicationState>().InstancePerLifetimeScope();
             builder.RegisterType<FolderSettingsStorage>().InstancePerLifetimeScope();
@@ -22,7 +21,5 @@ namespace Virgil.CLI.Common.Random
 
             this.Container = builder.Build();
         }
-
-        public IContainer Container { get; private set; }
     }
 }

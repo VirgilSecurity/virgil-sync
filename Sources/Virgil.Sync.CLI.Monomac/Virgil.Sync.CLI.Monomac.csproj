@@ -51,7 +51,6 @@
     <Compile Include="MacKeychainStorage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EmptyClass.cs" />
     <Compile Include="KeychainAccess.cs" />
     <Compile Include="MacBootstrapper.cs" />
   </ItemGroup>
