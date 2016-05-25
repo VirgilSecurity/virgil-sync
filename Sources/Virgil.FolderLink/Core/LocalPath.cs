@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Text;
 
     public struct LocalPath
     {
@@ -11,7 +12,8 @@
         public LocalPath(string path, LocalFolderRoot root)
         {
             this.Root = root;
-            this.Value = path;
+            // mac filesystem uses some messed up unicode
+            this.Value = path?.Normalize(NormalizationForm.FormC);
         }
 
         public static LocalPath CreateFromUniversal(UniversalPath path, LocalFolderRoot root)

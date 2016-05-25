@@ -29,7 +29,7 @@ namespace Virgil.FolderLink.Core
 
         public static ServerPath FromServerPath(string path)
         {
-            return new ServerPath {Value = path};
+            return new ServerPath {Value = path?.Normalize(NormalizationForm.FormC)};
         }
 
         #region Boilerplate

@@ -1,6 +1,7 @@
 ﻿namespace Virgil.FolderLink.Core
 {
     using System.IO;
+    using System.Text;
 
     public struct UniversalPath
     {
@@ -8,7 +9,7 @@
 
         public UniversalPath(string value)
         {
-            this.Value = value;
+            this.Value = value?.Normalize(NormalizationForm.FormC);
         }
 
         public UniversalPath(LocalPath path)
