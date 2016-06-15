@@ -42,8 +42,8 @@
             {
                 Description = "Virgil Sync",
                 Version = version,
-                SetupUrl = $@"https://downloads.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe",
-                DownloadUrl = $@"https://downloads.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe"
+                SetupUrl = $@"https://cdn.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe",
+                DownloadUrl = $@"https://cdn.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe"
             };
 
             var ser = new DataContractJsonSerializer(typeof(UpdatesInfo), new DataContractJsonSerializerSettings()

@@ -15,7 +15,7 @@
         private Timer timer;
         private static bool isShown = false;
              
-        private const string VirgilDiskVersionUrl = "https://downloads.virgilsecurity.com/apps/virgil-sync/windows/updates/version.json";
+        private const string VirgilDiskVersionUrl = "https://cdn.virgilsecurity.com/apps/virgil-sync/windows/updates/version.json";
         
         public void Start()
         {
