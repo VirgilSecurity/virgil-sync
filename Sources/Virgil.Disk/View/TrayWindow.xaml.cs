@@ -142,6 +142,43 @@
                 }
             });
         }
+
+        private void OnExportClick2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                await Task.Delay(200);
+
+                var dialog = new VistaSaveFileDialog
+                {
+                    Title = "Export Virgil Card",
+                    CheckFileExists = false,
+                    CheckPathExists = true,
+                    DefaultExt = "*.vcard",
+                    Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
+                    FilterIndex = 2
+                };
+
+
+                if (dialog.ShowDialog() == true)
+                {
+                    var dialog2 = new VistaSaveFileDialog
+                    {
+                        Title = "Export Private Key",
+                        CheckFileExists = false,
+                        CheckPathExists = true,
+                        DefaultExt = "*.vcard",
+                        Filter = "All files (*.*)|*.*|Private Key Files (*.key)|*.key",
+                        FilterIndex = 2
+                    };
+
+                    if (dialog2.ShowDialog() == true)
+                    {
+                        ((App)Application.Current).AppState.ExportCurrentAccount(dialog.FileName, dialog2.FileName);
+                    }
+                }
+            });
+        }
     }
 }
 

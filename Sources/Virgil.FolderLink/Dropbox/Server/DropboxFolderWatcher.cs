@@ -6,6 +6,7 @@ namespace Virgil.FolderLink.Dropbox.Server
     using System.Threading.Tasks;
     using Core;
     using global::Dropbox.Api;
+    using global::Dropbox.Api.Files;
 
     public class DropboxFolderWatcher
     {
@@ -15,6 +16,8 @@ namespace Virgil.FolderLink.Dropbox.Server
         private CancellationTokenSource cts = new CancellationTokenSource();
         private CancellationToken token;
 
+        private string deltaCursor;
+
         public DropboxFolderWatcher(DropboxClient client, ServerFolder serverFolder)
         {
             this.serverFolder = serverFolder;
@@ -22,30 +25,28 @@ namespace Virgil.FolderLink.Dropbox.Server
         }
 
         private async Task Init()
-		{
-			try
-			{
-			
-	            var folderStructure = await this.GetFiles(this.token);
-	            if (folderStructure != null)
-	            {
-	                this.serverFolder.Init(folderStructure);
-	            }
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine (e.Message);
-				throw;
-			}
+        {
+            try
+            {
+                var folderStructure = await this.GetFiles();
+                if (folderStructure != null)
+                {
+                    this.serverFolder.Init(folderStructure);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
 
-        private async Task<Delta> GetFiles(CancellationToken token)
+        private async Task<Delta> GetFiles()
         {
             var delta = new Delta();
+            var list = await this.client.Files.ListFolderAsync("", true, false, false);
 
-			var list = await this.client.Files.ListFolderAsync("", true, false, false);
-
-            if (token.IsCancellationRequested)
+            if (this.token.IsCancellationRequested)
             {
                 return null;
             }
@@ -53,17 +54,15 @@ namespace Virgil.FolderLink.Dropbox.Server
             delta.Consume(list);
             while (list.HasMore)
             {
-
                 list = await this.client.Files.ListFolderContinueAsync(list.Cursor);
-                if (token.IsCancellationRequested)
+                if (this.token.IsCancellationRequested)
                 {
                     return null;
                 }
                 delta.Consume(list);
-
             }
 
-            this.DeltaCursor = delta.Cursor;
+            this.deltaCursor = delta.Cursor;
             return delta;
         }
 
@@ -86,59 +85,53 @@ namespace Virgil.FolderLink.Dropbox.Server
 
         private async Task CloudWatcher()
         {
-            try
+            int currentRetry = 0;
+
+            while (!this.token.IsCancellationRequested)
             {
-                while (!this.token.IsCancellationRequested)
+                try
                 {
-                    var longpollResult = await this.client.Files.ListFolderLongpollAsync(this.DeltaCursor, 30);
+                    var longpollResult = await this.client.Files.ListFolderLongpollAsync(this.deltaCursor);
 
                     if (longpollResult.Changes)
                     {
                         var delta = new Delta();
-
-                        var list = await this.client.Files.ListFolderContinueAsync(this.DeltaCursor);
-
+                        var list = await this.client.Files.ListFolderContinueAsync(this.deltaCursor);
                         delta.Consume(list);
+
                         while (list.HasMore)
                         {
                             list = await this.client.Files.ListFolderContinueAsync(list.Cursor);
                             delta.Consume(list);
                         }
-
-                        await this.HandleDelta(delta);
+                        
+                        this.deltaCursor = delta.Cursor;
+                        await this.serverFolder.HandleDelta(delta);
                     }
 
                     if (longpollResult.Backoff.HasValue)
                     {
                         await Task.Delay(TimeSpan.FromSeconds(longpollResult.Backoff.Value), this.token);
                     }
+
+                    currentRetry = 0;
+                }
+                catch (global::Dropbox.Api.AuthException e) when (e.ErrorResponse.IsInvalidAccessToken)
+                {
+                    ExceptionNotifier.Current.NotifyDropboxSessionExpired();
+                    return;
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine(exception);
+                    currentRetry++;
+                    if (currentRetry > 3)
+                    {
+                        Console.WriteLine("Max retry count occured for dropbox file watcher");
+                        return;
+                    }
                 }
             }
-            catch (global::Dropbox.Api.AuthException e) when (e.ErrorResponse.IsInvalidAccessToken)
-            {
-                ExceptionNotifier.Current.NotifyDropboxSessionExpired();
-            }
-            catch (Exception exception)
-            {
-                Debug.WriteLine(exception);
-            }
         }
-
-        private async Task HandleDelta(Delta delta)
-        {
-            try
-            {
-                this.DeltaCursor = delta.Cursor;
-                await this.serverFolder.HandleDelta(delta);
-                
-            }
-            catch (Exception exception)
-            {
-                Debug.WriteLine(exception.Message);
-            }
-            
-        }
-
-        public string DeltaCursor { get; set; }
     }
 }

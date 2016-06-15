@@ -16,8 +16,7 @@ namespace Virgil.CLI.Common.Handlers
 
     public class StartHandler : CommandHandler<StartOptions>
     {
-		Bootstrapper bootstrapper;
-		FolderLinkFacade folderLinkFacade;
+        private readonly Bootstrapper bootstrapper;
 
 		public StartHandler (Bootstrapper bootstrapper)
 		{		
@@ -49,7 +48,6 @@ namespace Virgil.CLI.Common.Handlers
                 return 1;
             }
 
-
             var validationErrors = folderSettings.FolderSettings.Validate();
             if (validationErrors.Any())
             {
@@ -67,9 +65,9 @@ namespace Virgil.CLI.Common.Handlers
                 Environment.Exit(1);
             });
 
-			this.folderLinkFacade = this.bootstrapper.Container.Resolve<FolderLinkFacade>();
+			var folderLinkFacade = this.bootstrapper.Container.Resolve<FolderLinkFacade>();
             
-			Task.Factory.StartNew(() => this.folderLinkFacade.Rebuild());
+			Task.Factory.StartNew(() => folderLinkFacade.Rebuild());
 
             Console.WriteLine("    Virgil sync is running");
 
@@ -77,8 +75,6 @@ namespace Virgil.CLI.Common.Handlers
 			{
 				Console.ReadLine ();
 			}
-
-            return 0;
         }
     }
 }

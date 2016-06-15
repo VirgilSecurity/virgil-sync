@@ -28,15 +28,8 @@
             base.OnStartup(e);
 
             this.DispatcherUnhandledException += this.OnDispatcherUnhandledException;
-#if DEBUG
-            var virgilHub =  ServiceHub.Create( SDK.ServiceHubConfig
-                .UseAccessToken(ApiConfig.VirgilTokenStaging)
-                .WithPublicServicesAddress("https://keys-stg.virgilsecurity.com")
-                .WithIdentityServiceAddress("https://identity-stg.virgilsecurity.com")
-                .WithPrivateServicesAddress("https://keys-private-stg.virgilsecurity.com"));
-#else
+
             var virgilHub = ServiceHub.Create(ServiceHubConfig.UseAccessToken(ApiConfig.VirgilToken));
-#endif
 
             Virgil.SDK.Domain.ServiceLocator.Setup(virgilHub);
 

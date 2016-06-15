@@ -79,6 +79,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="..\packages\Virgil.Crypto.1.5.0\build\native\mac\libvirgil_crypto_net.dylib">
       <Link>libvirgil_crypto_net.dylib</Link>

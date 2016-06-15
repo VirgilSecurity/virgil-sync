@@ -80,14 +80,19 @@
 
         public string Export()
         {
+            return JsonConvert.SerializeObject(this.GetStorageDto());
+        }
+
+        public PersonalCardStorageDto GetStorageDto()
+        {
             var data = new PersonalCardStorageDto
             {
                 virgil_card = this.VirgilCardDto,
                 private_key = this.PrivateKey.Data
             };
-
-            return JsonConvert.SerializeObject(data);
+            return data;
         }
+
 
         public byte[] Export(string password)
         {

@@ -3,6 +3,8 @@ namespace Virgil.FolderLink.Facade
     using System;
     using System.IO;
     using System.Text;
+    using Crypto;
+    using Crypto.Foundation.Asn1;
     using Infrastructure;
     using Infrastructure.Messaging;
     using Infrastructure.Messaging.Application;
@@ -114,6 +116,17 @@ namespace Virgil.FolderLink.Facade
             var json = JsonConvert.SerializeObject(new[] { dto });
             var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(json));
             File.WriteAllText(filepath, base64);
+        }
+
+        public void ExportCurrentAccount(string cardPath, string privateKeyPath)
+        {
+            var dto = this.CurrentCard.GetStorageDto();
+
+            var card = JsonConvert.SerializeObject(dto.virgil_card);
+            var pk = Encoding.ASCII.GetString(Convert.FromBase64String(Encoding.ASCII.GetString(dto.private_key)));
+
+            File.WriteAllText(cardPath, card);
+            File.WriteAllText(privateKeyPath, pk);
         }
     }
 }
